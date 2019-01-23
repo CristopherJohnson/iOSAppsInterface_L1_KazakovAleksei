@@ -78,6 +78,7 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="C3d-Qy-zB0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="5o1-5y-kPB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C3d-Qy-zB0" secondAttribute="trailing" constant="20" id="AI4-5N-Cdy"/>
@@ -86,6 +87,9 @@
                             <constraint firstItem="C3d-Qy-zB0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oHZ-aL-qSd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="z7z-oy-Uux" appends="YES" id="cC3-Db-GHi"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="rZe-R4-ORb" id="iT4-zA-Ulq"/>
@@ -98,6 +102,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="z7z-oy-Uux">
+                    <connections>
+                        <action selector="closeKbAction" destination="BYZ-38-t0r" id="8YQ-UT-ODC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>

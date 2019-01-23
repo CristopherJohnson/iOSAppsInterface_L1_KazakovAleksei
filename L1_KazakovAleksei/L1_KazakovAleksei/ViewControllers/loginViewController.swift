@@ -8,7 +8,7 @@
 
 import UIKit
 
-class loginViewController: UIViewController {
+class loginViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet private weak var scrollView: UIScrollView?
     @IBOutlet private weak var titleLable: UILabel?
@@ -56,6 +56,13 @@ class loginViewController: UIViewController {
         }
         
         
+    }
+    
+    
+    
+    @IBAction func closeKbAction() {
+        print("closeKbAction")
+        self.view.endEditing(true)
     }
 
 }
