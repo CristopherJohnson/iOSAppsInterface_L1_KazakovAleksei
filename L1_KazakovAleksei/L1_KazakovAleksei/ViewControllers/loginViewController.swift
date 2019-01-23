@@ -9,22 +9,25 @@
 import UIKit
 
 class loginViewController: UIViewController {
+    
+    @IBOutlet private weak var scrollView: UIScrollView?
+    @IBOutlet private weak var titleLable: UILabel?
+    @IBOutlet private weak var loginLable: UILabel?
+    @IBOutlet private weak var loginTextField: UITextField?
+    @IBOutlet private weak var passLable: UILabel?
+    @IBOutlet private weak var passTextField: UITextField?
+    @IBOutlet private weak var loginButton: UIButton?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Actions
+    
+    @IBAction func loginButtonAction (){
+        
     }
-    */
 
 }
