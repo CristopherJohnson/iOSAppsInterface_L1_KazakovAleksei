@@ -18,6 +18,9 @@ class loginViewController: UIViewController {
     @IBOutlet private weak var passTextField: UITextField?
     @IBOutlet private weak var loginButton: UIButton?
     
+    private let demoLogin = "root"
+    private let demoPass = "1234"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +29,32 @@ class loginViewController: UIViewController {
     
     // MARK: - Actions
     
+    func showAlert (){
+        let alert = UIAlertController(title: "Whoops", message: "Invalid login or password", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Try Again", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func loginButtonAction (){
+        print("loginButtonAction")
+        
+        guard let loginText = self.loginTextField?.text else {
+            print("loginText is empty")
+            return
+        }
+        
+        guard let passText = self.passTextField?.text else {
+            print("loginText is empty")
+            return
+        }
+        
+        if self.demoLogin == loginText && self.demoPass == passText {
+            print("success")
+        } else {
+            showAlert()
+        }
+        
         
     }
 
