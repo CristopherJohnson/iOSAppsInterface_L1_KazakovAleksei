@@ -62,13 +62,14 @@ class loginViewController: UIViewController, UITextFieldDelegate{
     }
     
     
-    // 
+    // В функции ниже, скорее всего, не самый правильный код. Прошу указать на ошибки.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if let loginText = self.loginTextField, loginText.isFirstResponder {
             passTextField?.becomeFirstResponder()
         } else if let passText = self.passTextField, passText.isFirstResponder {
             passTextField?.resignFirstResponder()
+            loginButtonAction()
         }
         return true
     }
@@ -78,6 +79,37 @@ class loginViewController: UIViewController, UITextFieldDelegate{
     @IBAction func closeKbAction() {
         print("closeKbAction")
         self.view.endEditing(true)
+    }
+    
+    // MARK: - notifications
+    
+    @objc func kbWasShown (notification: Notification) {
+        let info = notification.userInfo! as NSDictionary
+        let kbSize = (info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue).cgRectValue.size
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0.0)
+        
+        self.scrollView?.contentInset = contentInsets
+        scrollView?.scrollIndicatorInsets = contentInsets
+    }
+    
+    @objc func kbWillBeHidden (notification: Notification) {
+        let contentInsets = UIEdgeInsets.zero
+        scrollView?.contentInset = contentInsets
+        scrollView?.scrollIndicatorInsets = contentInsets
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.kbWasShown), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.kbWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
 }
