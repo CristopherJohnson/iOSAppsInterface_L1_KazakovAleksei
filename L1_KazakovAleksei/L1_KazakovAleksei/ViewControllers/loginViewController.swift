@@ -24,6 +24,9 @@ class loginViewController: UIViewController, UITextFieldDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loginTextField?.delegate = self
+        passTextField?.delegate = self
 
     }
     
@@ -56,6 +59,18 @@ class loginViewController: UIViewController, UITextFieldDelegate{
         }
         
         
+    }
+    
+    
+    // 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if let loginText = self.loginTextField, loginText.isFirstResponder {
+            passTextField?.becomeFirstResponder()
+        } else if let passText = self.passTextField, passText.isFirstResponder {
+            passTextField?.resignFirstResponder()
+        }
+        return true
     }
     
     
