@@ -1,0 +1,18 @@
+
+/* Class = "UITextField"; placeholder = "Your password"; ObjectID = "1x7-9R-ea3"; */
+"1x7-9R-ea3.placeholder" = "Your password";
+
+/* Class = "UITextField"; placeholder = "Your login"; ObjectID = "CYJ-Zt-ucw"; */
+"CYJ-Zt-ucw.placeholder" = "Your login";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "Hvk-hn-85j"; */
+"Hvk-hn-85j.text" = "Password";
+
+/* Class = "UILabel"; text = "Weather App"; ObjectID = "LWL-AW-sHA"; */
+"LWL-AW-sHA.text" = "Weather App";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "o0v-w5-Ums"; */
+"o0v-w5-Ums.text" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Log in"; ObjectID = "rZe-R4-ORb"; */
+"rZe-R4-ORb.normalTitle" = "Log in";
