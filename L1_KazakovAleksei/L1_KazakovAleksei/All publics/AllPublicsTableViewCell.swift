@@ -9,16 +9,25 @@
 import UIKit
 
 class AllPublicsTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var publicNameLable: UILabel?
+    @IBOutlet weak var publicImageView: UIImageView?
+    var publicId: String?
+    
 
+    func setPublic(settingPublic: Public) {
+        self.publicNameLable?.text = settingPublic.name
+        self.publicImageView?.image = UIImage(named: settingPublic.imageName ?? "No_Image")
+        self.publicId? = settingPublic.id ?? "000000"
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        if let image = publicImageView {
+            image.layer.cornerRadius = image.frame.size.width / 2
+            image.clipsToBounds = true
+        }
+        
     }
 
 }

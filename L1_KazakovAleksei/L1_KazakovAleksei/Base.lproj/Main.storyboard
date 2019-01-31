@@ -156,33 +156,14 @@
         <!--All publics-->
         <scene sceneID="Wcz-Fy-b8e">
             <objects>
-                <tableViewController id="cgI-Sk-Mn2" sceneMemberID="viewController">
+                <tableViewController id="cgI-Sk-Mn2" customClass="AllPublicsTableViewController" customModule="L1_KazakovAleksei" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="xAf-Ap-SPB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Search" id="DPG-OG-lk8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllPublicsTableViewCell" id="aKR-gu-OBE" customClass="AllPublicsTableViewCell" customModule="L1_KazakovAleksei" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DPG-OG-lk8" id="weW-YM-iEj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="aWX-sc-bp1">
-                                            <rect key="frame" x="0.0" y="-6" width="375" height="56"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </searchBar>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="aWX-sc-bp1" firstAttribute="leading" secondItem="weW-YM-iEj" secondAttribute="leading" id="9KD-EP-4zQ"/>
-                                        <constraint firstItem="aWX-sc-bp1" firstAttribute="top" secondItem="weW-YM-iEj" secondAttribute="top" constant="-6" id="hfs-mp-nLG"/>
-                                        <constraint firstAttribute="trailing" secondItem="aWX-sc-bp1" secondAttribute="trailing" id="pho-7o-2VO"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Public List" id="aKR-gu-OBE">
-                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aKR-gu-OBE" id="uDe-VQ-AIj">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -210,6 +191,10 @@
                                         <constraint firstItem="rTi-Ic-qI9" firstAttribute="leading" secondItem="uDe-VQ-AIj" secondAttribute="leading" constant="15" id="yji-jI-hE4"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="publicImageView" destination="rTi-Ic-qI9" id="VJx-vc-DVd"/>
+                                    <outlet property="publicNameLable" destination="YQe-uJ-jWa" id="sYW-Kt-u6k"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

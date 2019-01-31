@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A330872822036CA3006D70C8 /* AllPublicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330872722036CA3006D70C8 /* AllPublicsTableViewController.swift */; };
+		A330872A22036D14006D70C8 /* AllPublicsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330872922036D14006D70C8 /* AllPublicsTableViewCell.swift */; };
+		A330872D22036F15006D70C8 /* PublicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330872C22036F15006D70C8 /* PublicsModel.swift */; };
 		A3A94A9A21F8D51D001BC531 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94A9921F8D51D001BC531 /* AppDelegate.swift */; };
 		A3A94A9F21F8D51D001BC531 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3A94A9D21F8D51D001BC531 /* Main.storyboard */; };
 		A3A94AA121F8D51E001BC531 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3A94AA021F8D51E001BC531 /* Assets.xcassets */; };
@@ -34,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A330872722036CA3006D70C8 /* AllPublicsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPublicsTableViewController.swift; sourceTree = "<group>"; };
+		A330872922036D14006D70C8 /* AllPublicsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPublicsTableViewCell.swift; sourceTree = "<group>"; };
+		A330872C22036F15006D70C8 /* PublicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicsModel.swift; sourceTree = "<group>"; };
 		A3A94A9621F8D51D001BC531 /* L1_KazakovAleksei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = L1_KazakovAleksei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3A94A9921F8D51D001BC531 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3A94A9E21F8D51D001BC531 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,6 +80,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A330872622036C49006D70C8 /* All publics */ = {
+			isa = PBXGroup;
+			children = (
+				A330872722036CA3006D70C8 /* AllPublicsTableViewController.swift */,
+				A330872922036D14006D70C8 /* AllPublicsTableViewCell.swift */,
+			);
+			path = "All publics";
+			sourceTree = "<group>";
+		};
+		A330872B22036EED006D70C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A330872C22036F15006D70C8 /* PublicsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A3A94A8D21F8D51C001BC531 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +120,8 @@
 		A3A94A9821F8D51D001BC531 /* L1_KazakovAleksei */ = {
 			isa = PBXGroup;
 			children = (
+				A330872B22036EED006D70C8 /* Models */,
+				A330872622036C49006D70C8 /* All publics */,
 				A3A94AC721F8D534001BC531 /* Login View Controller */,
 				A3A94A9921F8D51D001BC531 /* AppDelegate.swift */,
 				A3A94A9D21F8D51D001BC531 /* Main.storyboard */,
@@ -266,6 +291,9 @@
 			files = (
 				A3A94AC921F8D560001BC531 /* loginViewController.swift in Sources */,
 				A3A94A9A21F8D51D001BC531 /* AppDelegate.swift in Sources */,
+				A330872A22036D14006D70C8 /* AllPublicsTableViewCell.swift in Sources */,
+				A330872822036CA3006D70C8 /* AllPublicsTableViewController.swift in Sources */,
+				A330872D22036F15006D70C8 /* PublicsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,38 +9,82 @@
 import UIKit
 
 class AllPublicsTableViewController: UITableViewController {
+    
+    
+    var publics: [Public] = []
+    
+    var searchController: UISearchController?
+    var filteredResultArray: [Public] = []
+    
+    func filterContentFor(searchText text: String) {
+        filteredResultArray = publics.filter{ (publ) -> Bool in
+            return (publ.name?.lowercased().contains(text.lowercased()))!
+        }
+    
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        let names = ["Love Cats", "More Cats", "Cats", "WTF? It was cat?", "Just a cat"]
+        let imageName = ["Public1", "Public2", "Public3", "Public4", "Public5"]
+        let id = ["1", "2", "3", "4", "5"]
+        
+        
+        for i in 0...4 {
+            let pub = Public()
+            pub.name = names[i]
+            pub.imageName = imageName[i]
+            pub.id = id[i]
+            
+            self.publics.append(pub)
+        }
+        
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController?.searchResultsUpdater = self
+        searchController?.dimsBackgroundDuringPresentation = false
+        tableView.tableHeaderView = searchController?.searchBar
+        
+       
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if (searchController?.isActive)! && searchController?.searchBar.text != "" {
+            return filteredResultArray.count
+        }
+        return self.publics.count
     }
 
-    /*
+    func publicToDisplayAt (indexPath: IndexPath) -> Public {
+        let publ: Public
+        if (searchController?.isActive)! && searchController?.searchBar.text != "" {
+            publ = filteredResultArray[indexPath.row]
+        } else {
+            publ = publics[indexPath.row]
+        }
+        return publ
+    }
+  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AllPublicsTableViewCell", for: indexPath) as! AllPublicsTableViewCell
+        
+        let publ = publicToDisplayAt(indexPath: indexPath)
+        cell.setPublic(settingPublic: publ)
 
-        // Configure the cell...
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -87,4 +131,11 @@ class AllPublicsTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension AllPublicsTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentFor(searchText: searchController.searchBar.text!)
+        tableView.reloadData()
+    }
 }

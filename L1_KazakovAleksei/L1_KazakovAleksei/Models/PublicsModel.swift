@@ -8,3 +8,8 @@
 
 import Foundation
 
+class Public {
+    var name: String?
+    var imageName: String?
+    var id: String?
+}
