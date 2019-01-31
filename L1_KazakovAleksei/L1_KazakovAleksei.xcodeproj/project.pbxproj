@@ -97,7 +97,7 @@
 		A3A94A9821F8D51D001BC531 /* L1_KazakovAleksei */ = {
 			isa = PBXGroup;
 			children = (
-				A3A94AC721F8D534001BC531 /* ViewControllers */,
+				A3A94AC721F8D534001BC531 /* Login View Controller */,
 				A3A94A9921F8D51D001BC531 /* AppDelegate.swift */,
 				A3A94A9D21F8D51D001BC531 /* Main.storyboard */,
 				A3A94AA021F8D51E001BC531 /* Assets.xcassets */,
@@ -125,12 +125,12 @@
 			path = L1_KazakovAlekseiUITests;
 			sourceTree = "<group>";
 		};
-		A3A94AC721F8D534001BC531 /* ViewControllers */ = {
+		A3A94AC721F8D534001BC531 /* Login View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				A3A94AC821F8D560001BC531 /* loginViewController.swift */,
 			);
-			path = ViewControllers;
+			path = "Login View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
