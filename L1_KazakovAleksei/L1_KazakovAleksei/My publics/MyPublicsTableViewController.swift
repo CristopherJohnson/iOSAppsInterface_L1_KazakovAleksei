@@ -9,6 +9,8 @@
 import UIKit
 
 class MyPublicsTableViewController: UITableViewController {
+    
+    var publics: [Public] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,23 +26,45 @@ class MyPublicsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return publics.count
     }
 
-    /*
+   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyPublicsTableViewCell", for: indexPath) as! MyPublicsTableViewCell
+        
+        let publ = self.publics[indexPath.row]
+        cell.setPublic(settingPublic: publ)
 
         return cell
     }
-    */
+    
+    @IBAction func addPublic(seque: UIStoryboardSegue) {
+        if seque.identifier == "addPublic"{
+            let allPublicsController = seque.source as! AllPublicsTableViewController
+            if let indexPath = allPublicsController.tableView.indexPathForSelectedRow {
+                let publ = allPublicsController.publicToDisplayAt(indexPath: indexPath)
+                var contains = false
+                for publicInVc in self.publics {
+                    if publ.id == publicInVc.id {
+                        contains = true
+                        break
+                    }
+                }
+                if contains == false {
+                    self.publics.append(publ)
+                    tableView.reloadData()
+                }
+            }
+        }
+        
+    }
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -50,17 +74,16 @@ class MyPublicsTableViewController: UITableViewController {
     }
     */
 
-    /*
+  
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            publics.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
+
+
 
     /*
     // Override to support rearranging the table view.
