@@ -27,7 +27,22 @@ class loginViewController: UIViewController, UITextFieldDelegate{
         
         loginTextField?.delegate = self
         passTextField?.delegate = self
+        self.passTextField?.isSecureTextEntry = true
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.kbWasShown), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.kbWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // MARK: - Actions
@@ -54,6 +69,7 @@ class loginViewController: UIViewController, UITextFieldDelegate{
         
         if self.demoLogin == loginText && self.demoPass == passText {
             print("success")
+            self.performSegue(withIdentifier: "openApp", sender: nil)
         } else {
             showAlert()
         }
@@ -62,12 +78,11 @@ class loginViewController: UIViewController, UITextFieldDelegate{
     }
     
     
-    // В функции ниже, скорее всего, не самый правильный код. Прошу указать на ошибки.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if let loginText = self.loginTextField, loginText.isFirstResponder {
+        if let loginText = self.loginTextField, loginText == textField {
             passTextField?.becomeFirstResponder()
-        } else if let passText = self.passTextField, passText.isFirstResponder {
+        } else if let passText = self.passTextField, passText == textField {
             passTextField?.resignFirstResponder()
             loginButtonAction()
         }
@@ -98,18 +113,6 @@ class loginViewController: UIViewController, UITextFieldDelegate{
         scrollView?.scrollIndicatorInsets = contentInsets
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.kbWasShown), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.kbWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
 
 }
