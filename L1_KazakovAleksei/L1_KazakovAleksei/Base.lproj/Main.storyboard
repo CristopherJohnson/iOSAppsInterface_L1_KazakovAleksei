@@ -277,7 +277,7 @@
                                 <connections>
                                     <outlet property="friendImageView" destination="kYt-yb-QYg" id="TMz-CR-w9l"/>
                                     <outlet property="friendNameLable" destination="VF2-ou-YJq" id="laT-C6-uAv"/>
-                                    <segue destination="nYT-FZ-NPX" kind="show" id="Rwb-pH-Y23"/>
+                                    <segue destination="nYT-FZ-NPX" kind="show" identifier="watchPhotoes" id="MKD-Hg-uqT"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -301,25 +301,39 @@
         <!--Screen 1-2-->
         <scene sceneID="Cyu-SD-4aa">
             <objects>
-                <collectionViewController id="nYT-FZ-NPX" sceneMemberID="viewController">
+                <collectionViewController id="nYT-FZ-NPX" customClass="FriendsPhotoesCollectionViewController" customModule="L1_KazakovAleksei" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rlx-h0-pTw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lDK-a9-Kt5">
-                            <size key="itemSize" width="50" height="50"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="lDK-a9-Kt5">
+                            <size key="itemSize" width="150" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Uoa-RE-aSp">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FriendsPhotoesCollectionViewCell" id="Uoa-RE-aSp" customClass="FriendsPhotoesCollectionViewCell" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P1S-eq-oBF">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="P1S-eq-oBF" firstAttribute="top" secondItem="Uoa-RE-aSp" secondAttribute="top" id="2TU-h9-DYD"/>
+                                    <constraint firstItem="P1S-eq-oBF" firstAttribute="leading" secondItem="Uoa-RE-aSp" secondAttribute="leading" id="8IM-7C-NJ2"/>
+                                    <constraint firstAttribute="bottom" secondItem="P1S-eq-oBF" secondAttribute="bottom" id="F0s-9Q-6Dk"/>
+                                    <constraint firstAttribute="trailing" secondItem="P1S-eq-oBF" secondAttribute="trailing" id="KGJ-G3-gSt"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="friendPhotoImageView" destination="P1S-eq-oBF" id="hC0-gb-5GD"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -331,7 +345,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Zo-a5-irC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3607" y="1653"/>
+            <point key="canvasLocation" x="3605.5999999999999" y="1652.9235382308848"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="sfy-0J-ECK">

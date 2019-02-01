@@ -50,6 +50,18 @@ class MyFriendsTableViewController: UITableViewController {
         return cell
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "watchPhotoes" {
+            let friendPhotoesVC = segue.destination as! FriendsPhotoesCollectionViewController
+            let friendsListVC = segue.source as! MyFriendsTableViewController
+            let indexPath = friendsListVC.tableView.indexPathForSelectedRow
+            let friend = friendsListVC.friends[indexPath!.row]
+            friendPhotoesVC.friend = friend
+        }
+        
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.

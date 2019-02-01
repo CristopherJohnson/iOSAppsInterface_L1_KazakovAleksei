@@ -11,6 +11,8 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class FriendsPhotoesCollectionViewController: UICollectionViewController {
+    
+    var friend: Friend?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,19 +40,19 @@ class FriendsPhotoesCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return 10
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendsPhotoesCollectionViewCell", for: indexPath) as! FriendsPhotoesCollectionViewCell
     
-        // Configure the cell
+        cell.friendPhotoImageView?.image = UIImage(named: friend?.imageName ?? "No_Image")
     
         return cell
     }
