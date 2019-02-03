@@ -96,6 +96,10 @@ class loginViewController: UIViewController, UITextFieldDelegate{
         self.view.endEditing(true)
     }
     
+    @IBAction func logOutAction(segue: UIStoryboardSegue?) {
+        
+    }
+    
     // MARK: - notifications
     
     @objc func kbWasShown (notification: Notification) {
