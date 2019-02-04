@@ -48,7 +48,7 @@ class MyPublicsTableViewController: UITableViewController {
         if seque.identifier == "addPublic"{
             let allPublicsController = seque.source as! AllPublicsTableViewController
             if let indexPath = allPublicsController.tableView.indexPathForSelectedRow {
-                let publ = allPublicsController.publicToDisplayAt(indexPath: indexPath)
+                let publ = allPublicsController.filteredResultArray[indexPath.row]
                 var contains = false
                 for publicInVc in self.publics {
                     if publ.id == publicInVc.id {

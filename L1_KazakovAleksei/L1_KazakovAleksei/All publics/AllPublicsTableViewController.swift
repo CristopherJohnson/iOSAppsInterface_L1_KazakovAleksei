@@ -11,16 +11,25 @@ import UIKit
 class AllPublicsTableViewController: UITableViewController {
     
     
-    var publics: [Public] = []
+    private var publics: [Public] = []
     
     var searchController: UISearchController?
     var filteredResultArray: [Public] = []
     
     func filterContentFor(searchText text: String) {
-        filteredResultArray = publics.filter{ (publ) -> Bool in
-            return (publ.name?.lowercased().contains(text.lowercased()))!
+        
+        if text == "" {
+            filteredResultArray = publics
+        } else {
+            filteredResultArray = publics.filter{ (publ) -> Bool in
+                guard let name = publ.name else {
+                    return false
+                }
+                
+                return (name.lowercased().contains(text.lowercased())) //(publ.name?.lowercased().contains(text.lowercased()))!
+            }
         }
-    
+
     }
 
     override func viewDidLoad() {
@@ -45,9 +54,8 @@ class AllPublicsTableViewController: UITableViewController {
         searchController?.searchResultsUpdater = self
         searchController?.dimsBackgroundDuringPresentation = false
         tableView.tableHeaderView = searchController?.searchBar
-        
-       
-        
+        filterContentFor(searchText: "")
+
     }
 
     // MARK: - Table view data source
@@ -59,26 +67,27 @@ class AllPublicsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if (searchController?.isActive)! && searchController?.searchBar.text != "" {
-            return filteredResultArray.count
-        }
-        return self.publics.count
+//        if (searchController?.isActive)! && searchController?.searchBar.text != "" {
+//            return filteredResultArray.count
+//        }
+        return self.filteredResultArray.count
     }
 
-    func publicToDisplayAt (indexPath: IndexPath) -> Public {
-        let publ: Public
-        if (searchController?.isActive)! && searchController?.searchBar.text != "" {
-            publ = filteredResultArray[indexPath.row]
-        } else {
-            publ = publics[indexPath.row]
-        }
-        return publ
-    }
-  
+//    func publicToDisplayAt (indexPath: IndexPath) -> Public {
+//        let publ: Public
+//        if (searchController?.isActive)! && searchController?.searchBar.text != "" {
+//            publ = filteredResultArray[indexPath.row]
+//        } else {
+//            publ = publics[indexPath.row]
+//        }
+//        return publ
+//    }
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllPublicsTableViewCell", for: indexPath) as! AllPublicsTableViewCell
         
-        let publ = publicToDisplayAt(indexPath: indexPath)
+        let publ = self.filteredResultArray[indexPath.row]
         cell.setPublic(settingPublic: publ)
 
 
