@@ -26,7 +26,7 @@ class AllPublicsTableViewController: UITableViewController {
                     return false
                 }
                 
-                return (name.lowercased().contains(text.lowercased())) //(publ.name?.lowercased().contains(text.lowercased()))!
+                return (name.lowercased().contains(text.lowercased()))
             }
         }
 

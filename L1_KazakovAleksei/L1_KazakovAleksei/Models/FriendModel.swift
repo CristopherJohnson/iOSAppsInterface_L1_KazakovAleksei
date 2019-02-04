@@ -12,4 +12,5 @@ class Friend {
     var name: String?
     var imageName: String?
     var id: String?
+    var surname: String?
 }
