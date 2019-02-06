@@ -255,63 +255,43 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Opi-X5-0QX" customClass="FriendPhoto" customModule="L1_KazakovAleksei" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="7" width="30" height="30"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q12-Ha-u7e">
-                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="15"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="6Ve-Sz-tj7"/>
-                                                        <constraint firstAttribute="width" constant="30" id="CXP-RP-Q3L"/>
-                                                        <constraint firstItem="q12-Ha-u7e" firstAttribute="top" secondItem="Opi-X5-0QX" secondAttribute="top" id="CYs-a5-nH8"/>
-                                                        <constraint firstAttribute="trailing" secondItem="q12-Ha-u7e" secondAttribute="trailing" id="JJi-ts-cq8"/>
-                                                        <constraint firstAttribute="bottom" secondItem="q12-Ha-u7e" secondAttribute="bottom" id="Ovz-cb-cA1"/>
-                                                        <constraint firstItem="q12-Ha-u7e" firstAttribute="leading" secondItem="Opi-X5-0QX" secondAttribute="leading" id="zwp-kP-khd"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                            <real key="value" value="0.5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                            <real key="value" value="8"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                            <size key="value" width="0.0" height="0.0"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxb-eO-38u">
                                                     <rect key="frame" x="60" y="11.5" width="285" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vZR-Wk-myS" customClass="FriendPhoto" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="7" width="30" height="30"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Iam-bX-rtX"/>
+                                                        <constraint firstAttribute="width" constant="30" id="utf-uk-hJB"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="0.5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Opi-X5-0QX" firstAttribute="centerY" secondItem="feY-U0-bDn" secondAttribute="centerY" id="FjD-tX-ruP"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Kxb-eO-38u" secondAttribute="trailing" constant="15" id="JnR-9W-Ttj"/>
+                                                <constraint firstItem="vZR-Wk-myS" firstAttribute="centerY" secondItem="feY-U0-bDn" secondAttribute="centerY" id="F2E-Dj-pNX"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Kxb-eO-38u" secondAttribute="trailing" constant="15" id="ZJv-jt-SgK"/>
                                                 <constraint firstItem="Kxb-eO-38u" firstAttribute="centerY" secondItem="feY-U0-bDn" secondAttribute="centerY" id="lub-o2-2Bn"/>
-                                                <constraint firstItem="Kxb-eO-38u" firstAttribute="leading" secondItem="Opi-X5-0QX" secondAttribute="trailing" constant="15" id="pIU-ad-YY1"/>
-                                                <constraint firstItem="Opi-X5-0QX" firstAttribute="leading" secondItem="feY-U0-bDn" secondAttribute="leading" constant="15" id="tGV-G6-gfw"/>
+                                                <constraint firstItem="vZR-Wk-myS" firstAttribute="leading" secondItem="feY-U0-bDn" secondAttribute="leading" constant="15" id="vtl-MF-mRW"/>
+                                                <constraint firstItem="Kxb-eO-38u" firstAttribute="leading" secondItem="vZR-Wk-myS" secondAttribute="trailing" constant="15" id="zha-wG-XVz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="friendImageView" destination="q12-Ha-u7e" id="1lH-JI-1fh"/>
                                             <outlet property="friendNameLable" destination="Kxb-eO-38u" id="uZL-3U-Qtv"/>
+                                            <outlet property="myFriendImageView" destination="vZR-Wk-myS" id="KnS-ET-hVV"/>
                                             <segue destination="nYT-FZ-NPX" kind="show" identifier="watchFriendPhotoes" id="sLS-Nz-hIj"/>
                                         </connections>
                                     </tableViewCell>
@@ -344,7 +324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZW-ay-5V8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2796" y="1680"/>
+            <point key="canvasLocation" x="2796" y="1679.9100449775115"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="fsl-E4-UMP">
