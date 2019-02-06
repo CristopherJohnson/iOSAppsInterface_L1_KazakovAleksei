@@ -11,8 +11,8 @@ import UIKit
 class MyFriendsViewController: UIViewController {
 
     var friends: [Friend] = []
-//    var index: IndexPath?
-
+    
+    @IBOutlet weak var tableView: UITableView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,16 +37,16 @@ class MyFriendsViewController: UIViewController {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "watchFriendPhotoes" {
-//            let friendPhotoesVC = segue.destination as! FriendsPhotoesCollectionViewController
-//            let friendsListVC = segue.source as! MyFriendsViewController
-//            let indexPath = friendsListVC.tableView
-//            let friend = friendsListVC.friends[indexPath!.row]
-//            friendPhotoesVC.friend = friend
-//        }
-//    }
+//     In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "watchFriendPhotoes" {
+            let friendPhotoesVC = segue.destination as! FriendsPhotoesCollectionViewController
+            let friendsListVC = segue.source as! MyFriendsViewController
+            let indexPath = friendsListVC.tableView?.indexPathForSelectedRow
+            let friend = friendsListVC.friends[indexPath!.row]
+            friendPhotoesVC.friend = friend
+        }
+    }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "watchFriendPhotoes" {
@@ -61,11 +61,6 @@ class MyFriendsViewController: UIViewController {
     
 
 extension MyFriendsViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "watchFriendPhotoes", sender: indexPath)
-    }
-    
     
 }
 
@@ -86,14 +81,4 @@ extension MyFriendsViewController: UITableViewDataSource {
         return cell
     }
     
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "watchFriendPhotoes" {
-//            let friendPhotoesVC = segue.destination as! FriendsPhotoesCollectionViewController
-//            let friendsListVC = segue.source as! MyFriendsViewController
-//            let indexPath = friendsListVC.tableView
-//            let friend = friendsListVC.friends[indexPath!.row]
-//            friendPhotoesVC.friend = friend
-//        }
-//    }
 }
