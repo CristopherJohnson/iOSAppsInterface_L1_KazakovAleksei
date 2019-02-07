@@ -14,8 +14,22 @@ class MyFriendsViewController: UIViewController {
     var friendsSectionTitles: [String] = []
     var friendsDictionary: [String : [Friend]] = [:]
     
+
+    
     @IBOutlet weak var tableView: UITableView?
     @IBOutlet weak var friendsSectionIndexVC: FriendsSectionIndex?
+    @IBAction func charButtonChanged() {
+        print("charButtonChanged")
+        if let char = friendsSectionIndexVC?.selectedChar {
+            if friendsSectionTitles.contains(char.title) {
+                print("friendsSectionTitles.contains")
+                let section = friendsSectionTitles.firstIndex(of: char.title)
+                let indexPath = IndexPath(row: 0, section: section!)
+                self.tableView?.scrollToRow(at: indexPath, at: .top, animated: true)
+            }
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +60,8 @@ class MyFriendsViewController: UIViewController {
         }
         friendsSectionTitles = [String](friendsDictionary.keys)
         friendsSectionTitles = friendsSectionTitles.sorted(by: { $0 < $1})
-        self.friendsSectionIndexVC?.allChars = friendsSectionTitles
+        self.friendsSectionIndexVC?.allExistingChars = friendsSectionTitles
+        self.friendsSectionIndexVC?.reload()
     }
         
         
@@ -64,6 +79,7 @@ class MyFriendsViewController: UIViewController {
             friendPhotoesVC.friend = friend
         }
     }
+    
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "watchFriendPhotoes" {

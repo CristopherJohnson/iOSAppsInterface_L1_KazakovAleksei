@@ -307,6 +307,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="EQG-73-Eja"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="charButtonChanged" destination="VRF-Ek-ZDr" eventType="valueChanged" id="XFW-Os-5HX"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
