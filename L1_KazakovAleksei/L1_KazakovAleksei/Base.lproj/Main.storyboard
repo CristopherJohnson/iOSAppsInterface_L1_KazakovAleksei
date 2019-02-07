@@ -245,14 +245,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ov3-JA-VeO">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="30" y="64" width="345" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyFriendsCell" id="ZTM-vI-nID" customClass="MyFriendTwoTableViewCell" customModule="L1_KazakovAleksei" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="345" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZTM-vI-nID" id="feY-U0-bDn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxb-eO-38u">
@@ -301,13 +301,23 @@
                                     <outlet property="delegate" destination="VRF-Ek-ZDr" id="Owt-EZ-b5A"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3Q-AH-IAs" customClass="FriendsSectionIndex" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="30" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="EQG-73-Eja"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ov3-JA-VeO" firstAttribute="leading" secondItem="NMo-HH-Yuv" secondAttribute="leading" id="GuV-dx-LIX"/>
+                            <constraint firstItem="e3Q-AH-IAs" firstAttribute="bottom" secondItem="NMo-HH-Yuv" secondAttribute="bottom" id="Bpw-Fz-jVm"/>
+                            <constraint firstItem="ov3-JA-VeO" firstAttribute="leading" secondItem="e3Q-AH-IAs" secondAttribute="trailing" id="CD6-JJ-IhO"/>
+                            <constraint firstItem="e3Q-AH-IAs" firstAttribute="leading" secondItem="NMo-HH-Yuv" secondAttribute="leading" id="Isq-Cg-U9Z"/>
                             <constraint firstItem="NMo-HH-Yuv" firstAttribute="bottom" secondItem="ov3-JA-VeO" secondAttribute="bottom" id="Lt4-yj-tEg"/>
                             <constraint firstItem="ov3-JA-VeO" firstAttribute="trailing" secondItem="NMo-HH-Yuv" secondAttribute="trailing" id="b6y-2P-WkE"/>
                             <constraint firstItem="ov3-JA-VeO" firstAttribute="top" secondItem="NMo-HH-Yuv" secondAttribute="top" id="gih-Zh-TGQ"/>
+                            <constraint firstItem="e3Q-AH-IAs" firstAttribute="top" secondItem="NMo-HH-Yuv" secondAttribute="top" id="mJr-Iu-XPR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NMo-HH-Yuv"/>
                     </view>
@@ -319,6 +329,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="friendsSectionIndexVC" destination="e3Q-AH-IAs" id="sP7-UJ-dKv"/>
                         <outlet property="tableView" destination="ov3-JA-VeO" id="cJH-Mm-WCS"/>
                     </connections>
                 </viewController>
@@ -326,27 +337,40 @@
             </objects>
             <point key="canvasLocation" x="2796" y="1679.9100449775115"/>
         </scene>
-        <!--View Controller-->
+        <!--Test Like Button View Controller-->
         <scene sceneID="fsl-E4-UMP">
             <objects>
-                <viewController id="aum-bH-qtd" sceneMemberID="viewController">
+                <viewController id="aum-bH-qtd" customClass="TestLikeButtonViewController" customModule="L1_KazakovAleksei" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fha-Lq-J9n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uvo-LL-I0u" customClass="LikeButton" customModule="L1_KazakovAleksei" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uvo-LL-I0u" customClass="LikeButton" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="100" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="GVo-GU-rVK"/>
+                                    <constraint firstAttribute="height" constant="50" id="McO-EJ-l7l"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="likeButtonChanged" destination="aum-bH-qtd" eventType="valueChanged" id="qkt-Sq-Hm1"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Uvo-LL-I0u" firstAttribute="leading" secondItem="zsQ-SG-Jdf" secondAttribute="leading" id="ZOz-y5-YTj"/>
+                            <constraint firstItem="Uvo-LL-I0u" firstAttribute="top" secondItem="zsQ-SG-Jdf" secondAttribute="top" id="qE1-N9-rYK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zsQ-SG-Jdf"/>
                     </view>
+                    <connections>
+                        <outlet property="likeButton" destination="Uvo-LL-I0u" id="Krh-kG-jcN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DhW-7J-fxx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2796" y="2439"/>
+            <point key="canvasLocation" x="2796" y="2438.2308845577213"/>
         </scene>
         <!--Screen 1-2-->
         <scene sceneID="Cyu-SD-4aa">

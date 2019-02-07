@@ -11,18 +11,21 @@ import UIKit
 class MyFriendsViewController: UIViewController {
 
     var friends: [Friend] = []
+    var friendsSectionTitles: [String] = []
+    var friendsDictionary: [String : [Friend]] = [:]
     
     @IBOutlet weak var tableView: UITableView?
+    @IBOutlet weak var friendsSectionIndexVC: FriendsSectionIndex?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let names = ["Ivan", "Petr", "Ilya", "Lil", "30"]
-        let imageName = ["Avatar1", "Avatar2", "Avatar3", "Avatar4", "Avatar5"]
-        let id = ["11", "22", "33", "44", "55"]
-        let surnames = ["Ivanov", "Petrov", "Just Ilya", "Pip", "Cents"]
+        let names = ["Ivan", "Petr", "Ilya", "Lil", "30", "AAA", "BBB", "DDD", "EEE", "FFF", "GGG", "HHH", "KKK", "LLL", "MMM", "NNN", "OOO"]
+        let imageName = ["Avatar1", "Avatar2", "Avatar3", "Avatar4", "Avatar5", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image"]
+        let id = ["11", "22", "33", "44", "55", "66", "77", "88", "99", "111", "222", "333", "444", "555", "666", "777", "888"]
+        let surnames = ["Ivanov", "Petrov", "Just Ilya", "Pip", "Cents", "AAA", "BBB", "DDD", "EEE", "FFF", "GGG", "HHH", "KKK", "LLL", "MMM", "NNN", "OOO"]
         
-        for i in 0...4 {
+        for i in 0...(id.count - 1) {
             let friend = Friend()
             friend.name = names[i]
             friend.surname = surnames[i]
@@ -30,6 +33,20 @@ class MyFriendsViewController: UIViewController {
             friend.id = id[i]
             self.friends.append(friend)
         }
+        
+        for friend in friends {
+            let friendKey = String(friend.surname?.prefix(1) ?? "NS")
+            if var friendValues = friendsDictionary[friendKey] {
+                friendValues.append(friend)
+                friendsDictionary[friendKey] = friendValues
+            } else {
+                friendsDictionary[friendKey] = [friend]
+            }
+            
+        }
+        friendsSectionTitles = [String](friendsDictionary.keys)
+        friendsSectionTitles = friendsSectionTitles.sorted(by: { $0 < $1})
+        self.friendsSectionIndexVC?.allChars = friendsSectionTitles
     }
         
         
@@ -66,19 +83,38 @@ extension MyFriendsViewController: UITableViewDelegate {
 
 extension MyFriendsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return friendsSectionTitles.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.friends.count
+        
+        let friendKey = friendsSectionTitles[section]
+        
+        if let friendValues = friendsDictionary[friendKey] {
+            return friendValues.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyFriendsCell", for: indexPath) as! MyFriendTwoTableViewCell
         
-        let friend = self.friends[indexPath.row]
-        cell.setFriend(settingFriend: friend)
+        let friend = friendsSectionTitles[indexPath.section]
+        if let friendValues = friendsDictionary[friend] {
+            cell.setFriend(settingFriend: friendValues[indexPath.row])
+        }
+     
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return friendsSectionTitles[section]
+    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return friendsSectionTitles
+    }
+    
     
 }

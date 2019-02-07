@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A3015CDB220C563B0021318E /* TestLikeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3015CDA220C563B0021318E /* TestLikeButtonViewController.swift */; };
+		A3015CDE220C8C9D0021318E /* FriendsSectionIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3015CDD220C8C9D0021318E /* FriendsSectionIndex.swift */; };
 		A330872822036CA3006D70C8 /* AllPublicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330872722036CA3006D70C8 /* AllPublicsTableViewController.swift */; };
 		A330872A22036D14006D70C8 /* AllPublicsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330872922036D14006D70C8 /* AllPublicsTableViewCell.swift */; };
 		A330872D22036F15006D70C8 /* PublicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330872C22036F15006D70C8 /* PublicsModel.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A3015CDA220C563B0021318E /* TestLikeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLikeButtonViewController.swift; sourceTree = "<group>"; };
+		A3015CDD220C8C9D0021318E /* FriendsSectionIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSectionIndex.swift; sourceTree = "<group>"; };
 		A330872722036CA3006D70C8 /* AllPublicsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPublicsTableViewController.swift; sourceTree = "<group>"; };
 		A330872922036D14006D70C8 /* AllPublicsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPublicsTableViewCell.swift; sourceTree = "<group>"; };
 		A330872C22036F15006D70C8 /* PublicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicsModel.swift; sourceTree = "<group>"; };
@@ -98,6 +102,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A3015CDC220C8C570021318E /* Section Index */ = {
+			isa = PBXGroup;
+			children = (
+				A3015CDD220C8C9D0021318E /* FriendsSectionIndex.swift */,
+			);
+			path = "Section Index";
+			sourceTree = "<group>";
+		};
 		A330872622036C49006D70C8 /* All publics */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				A38D78E02208C8F10018B747 /* LikeButton.swift */,
+				A3015CDA220C563B0021318E /* TestLikeButtonViewController.swift */,
 			);
 			path = LikeButton;
 			sourceTree = "<group>";
@@ -175,6 +188,7 @@
 		A3A94A9821F8D51D001BC531 /* L1_KazakovAleksei */ = {
 			isa = PBXGroup;
 			children = (
+				A3015CDC220C8C570021318E /* Section Index */,
 				A38D78DF2208C8A80018B747 /* LikeButton */,
 				A38D78D622085E400018B747 /* My Friend VC */,
 				A330873A2203BB8C006D70C8 /* Friends Photoes */,
@@ -357,8 +371,10 @@
 				A33087392203B46D006D70C8 /* FriendModel.swift in Sources */,
 				A330872A22036D14006D70C8 /* AllPublicsTableViewCell.swift in Sources */,
 				A330872822036CA3006D70C8 /* AllPublicsTableViewController.swift in Sources */,
+				A3015CDB220C563B0021318E /* TestLikeButtonViewController.swift in Sources */,
 				A330873E2203BC08006D70C8 /* FriendsPhotoesCollectionViewCell.swift in Sources */,
 				A38D78E12208C8F10018B747 /* LikeButton.swift in Sources */,
+				A3015CDE220C8C9D0021318E /* FriendsSectionIndex.swift in Sources */,
 				A330872D22036F15006D70C8 /* PublicsModel.swift in Sources */,
 				A38D78DA220861E00018B747 /* FriendPhoto.swift in Sources */,
 				A330873C2203BBDB006D70C8 /* FriendsPhotoesCollectionViewController.swift in Sources */,
