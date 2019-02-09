@@ -10,9 +10,49 @@ import UIKit
 
 class MyFriendsViewController: UIViewController {
 
-    var friends: [Friend] = []
+    private var friends: [Friend] = []
     var friendsSectionTitles: [String] = []
     var friendsDictionary: [String : [Friend]] = [:]
+    
+    var filteredResultArray: [Friend] = []
+    
+
+    private var searchController: UISearchController?
+    
+    func filterContentFor (searchText text: String) {
+        friendsDictionary.removeAll()
+        friendsSectionTitles.removeAll()
+        
+        if text == "" {
+            filteredResultArray = friends
+        } else {
+            filteredResultArray = friends.filter{ (friend) -> Bool in
+                guard let name = friend.name else {
+                    return false
+                }
+                guard let surname = friend.surname else {
+                    return false
+                }
+                    
+                return (name.lowercased().contains(text.lowercased()) || surname.lowercased().contains(text.lowercased()))
+            }
+            
+        }
+        
+        for friend in filteredResultArray {
+            let friendKey = String(friend.surname?.prefix(1) ?? "NS")
+            if var friendValues = self.friendsDictionary[friendKey] {
+                friendValues.append(friend)
+                self.friendsDictionary[friendKey] = friendValues
+            } else {
+                self.friendsDictionary[friendKey] = [friend]
+            }
+            
+        }
+        self.friendsSectionTitles = [String](friendsDictionary.keys)
+        self.friendsSectionTitles = self.friendsSectionTitles.sorted(by: { $0 < $1 })
+        
+    }
     
 
     
@@ -48,20 +88,29 @@ class MyFriendsViewController: UIViewController {
             self.friends.append(friend)
         }
         
-        for friend in friends {
-            let friendKey = String(friend.surname?.prefix(1) ?? "NS")
-            if var friendValues = friendsDictionary[friendKey] {
-                friendValues.append(friend)
-                friendsDictionary[friendKey] = friendValues
-            } else {
-                friendsDictionary[friendKey] = [friend]
-            }
-            
-        }
-        friendsSectionTitles = [String](friendsDictionary.keys)
-        friendsSectionTitles = friendsSectionTitles.sorted(by: { $0 < $1 })
-        self.friendsSectionIndexVC?.allExistingChars = friendsSectionTitles
+        self.filterContentFor(searchText: "")
+        
+//        for friend in filteredResultArray {
+//            let friendKey = String(friend.surname?.prefix(1) ?? "NS")
+//            if var friendValues = self.friendsDictionary[friendKey] {
+//                friendValues.append(friend)
+//                self.friendsDictionary[friendKey] = friendValues
+//            } else {
+//                self.friendsDictionary[friendKey] = [friend]
+//            }
+//
+//        }
+//        self.friendsSectionTitles = [String](friendsDictionary.keys)
+//        self.friendsSectionTitles = self.friendsSectionTitles.sorted(by: { $0 < $1 })
+        self.friendsSectionIndexVC?.allExistingChars = self.friendsSectionTitles
         self.friendsSectionIndexVC?.reload()
+        
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController?.searchResultsUpdater = self
+        self.searchController?.dimsBackgroundDuringPresentation = false
+        self.tableView?.tableHeaderView = self.searchController?.searchBar
+        
+        
     }
         
         
@@ -81,16 +130,6 @@ class MyFriendsViewController: UIViewController {
             friendPhotoesVC.friend = friend
         }
     }
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "watchFriendPhotoes" {
-//            let indexPath = tableView
-//        }
-//    }
-
-        
-    
 
 }
     
@@ -101,14 +140,14 @@ extension MyFriendsViewController: UITableViewDelegate {
 
 extension MyFriendsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return friendsSectionTitles.count
+        return self.friendsSectionTitles.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let friendKey = friendsSectionTitles[section]
+        let friendKey = self.friendsSectionTitles[section]
         
-        if let friendValues = friendsDictionary[friendKey] {
+        if let friendValues = self.friendsDictionary[friendKey] {
             return friendValues.count
         }
         
@@ -118,8 +157,8 @@ extension MyFriendsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyFriendsCell", for: indexPath) as! MyFriendTwoTableViewCell
         
-        let friend = friendsSectionTitles[indexPath.section]
-        if let friendValues = friendsDictionary[friend] {
+        let friend = self.friendsSectionTitles[indexPath.section]
+        if let friendValues = self.friendsDictionary[friend] {
             cell.setFriend(settingFriend: friendValues[indexPath.row])
         }
      
@@ -127,12 +166,21 @@ extension MyFriendsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return friendsSectionTitles[section]
+        return self.friendsSectionTitles[section]
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return friendsSectionTitles
+        return self.friendsSectionTitles
     }
     
+    
+}
+
+
+extension MyFriendsViewController : UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        self.filterContentFor(searchText: searchController.searchBar.text!)
+        self.tableView?.reloadData()
+    }
     
 }
