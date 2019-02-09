@@ -75,7 +75,10 @@ class MyFriendsViewController: UIViewController {
             let friendPhotoesVC = segue.destination as! FriendsPhotoesCollectionViewController
             let friendsListVC = segue.source as! MyFriendsViewController
             let indexPath = friendsListVC.tableView?.indexPathForSelectedRow
-            let friend = friendsListVC.friends[indexPath!.row]
+            let friendSection = friendsListVC.friendsSectionTitles[indexPath!.section]
+            let friendValues = friendsListVC.friendsDictionary[friendSection]
+            let friend = friendValues![indexPath!.row]
+            
             friendPhotoesVC.friend = friend
         }
     }
