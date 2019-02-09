@@ -17,6 +17,14 @@ class LikeButton: UIControl {
             self.update()
             self.sendActions(for: .valueChanged)
         }
+        
+        willSet {
+            if newValue == true {
+                self.counter += 1
+            } else {
+                self.counter -= 1
+            }
+        }
     }
     
     private weak var iconImageView: UIImageView?
@@ -109,12 +117,6 @@ class LikeButton: UIControl {
     private func updateCountLable() {
         let textColor = self.isLiked ? UIColor.red : UIColor.gray
         self.countLable?.textColor = textColor
-        
-        if self.isLiked {
-            self.counter += 1
-        } else {
-            self.counter -= 1
-        }
         
         self.countLable?.text = "\(self.counter)"
     }

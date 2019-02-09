@@ -59,7 +59,7 @@ class MyFriendsViewController: UIViewController {
             
         }
         friendsSectionTitles = [String](friendsDictionary.keys)
-        friendsSectionTitles = friendsSectionTitles.sorted(by: { $0 < $1})
+        friendsSectionTitles = friendsSectionTitles.sorted(by: { $0 < $1 })
         self.friendsSectionIndexVC?.allExistingChars = friendsSectionTitles
         self.friendsSectionIndexVC?.reload()
     }
@@ -78,7 +78,6 @@ class MyFriendsViewController: UIViewController {
             let friendSection = friendsListVC.friendsSectionTitles[indexPath!.section]
             let friendValues = friendsListVC.friendsDictionary[friendSection]
             let friend = friendValues![indexPath!.row]
-            
             friendPhotoesVC.friend = friend
         }
     }

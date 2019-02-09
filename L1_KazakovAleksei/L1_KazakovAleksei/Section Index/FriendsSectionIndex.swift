@@ -106,10 +106,6 @@ enum Char: Int {
         switch pan.state {
         case .changed:
             let currentPoint = pan.location(in: self)
-//            let selectedButton = hitTest(currentPoint, with: nil)
-//            if selectedButton != nil {
-//                let button: UIButton = selectedButton
-//            }
             for button in buttons {
                 if button.frame.contains(currentPoint) {
                     let index = self.buttons.index(of: button)
@@ -118,12 +114,6 @@ enum Char: Int {
                 }
             }
             
-//        case .began:
-//            guard let index = self.buttons.index(of: sender) else { return }
-//            guard let char = Char(rawValue: index) else { return }
-//            if char != self.selectedChar {
-//                self.selectedChar = char
-//            }
         default:
             return
         }
