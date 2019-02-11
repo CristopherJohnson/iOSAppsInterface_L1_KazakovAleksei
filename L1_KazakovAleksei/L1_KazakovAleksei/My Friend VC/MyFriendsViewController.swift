@@ -89,19 +89,6 @@ class MyFriendsViewController: UIViewController {
         }
         
         self.filterContentFor(searchText: "")
-        
-//        for friend in filteredResultArray {
-//            let friendKey = String(friend.surname?.prefix(1) ?? "NS")
-//            if var friendValues = self.friendsDictionary[friendKey] {
-//                friendValues.append(friend)
-//                self.friendsDictionary[friendKey] = friendValues
-//            } else {
-//                self.friendsDictionary[friendKey] = [friend]
-//            }
-//
-//        }
-//        self.friendsSectionTitles = [String](friendsDictionary.keys)
-//        self.friendsSectionTitles = self.friendsSectionTitles.sorted(by: { $0 < $1 })
         self.friendsSectionIndexVC?.allExistingChars = self.friendsSectionTitles
         self.friendsSectionIndexVC?.reload()
         
@@ -109,7 +96,7 @@ class MyFriendsViewController: UIViewController {
         self.searchController?.searchResultsUpdater = self
         self.searchController?.dimsBackgroundDuringPresentation = false
         self.tableView?.tableHeaderView = self.searchController?.searchBar
-        
+        definesPresentationContext = true
         
     }
         
