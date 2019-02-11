@@ -19,8 +19,8 @@
 		A330873E2203BC08006D70C8 /* FriendsPhotoesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330873D2203BC08006D70C8 /* FriendsPhotoesCollectionViewCell.swift */; };
 		A33E91192211D29C00814DBF /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33E91182211D29C00814DBF /* FeedViewController.swift */; };
 		A33E911C2211D3F500814DBF /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33E911A2211D3F500814DBF /* FeedTableViewCell.swift */; };
-		A33E911D2211D3F500814DBF /* FeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A33E911B2211D3F500814DBF /* FeedTableViewCell.xib */; };
 		A33E911F2211E07500814DBF /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33E911E2211E07500814DBF /* NewsModel.swift */; };
+		A33E9121221200EB00814DBF /* FeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A33E9120221200EB00814DBF /* FeedTableViewCell.xib */; };
 		A38D78D822085E6A0018B747 /* MyFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D78D722085E6A0018B747 /* MyFriendsViewController.swift */; };
 		A38D78DA220861E00018B747 /* FriendPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D78D9220861E00018B747 /* FriendPhoto.swift */; };
 		A38D78DC220862F20018B747 /* MyFriendTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D78DB220862F20018B747 /* MyFriendTwoTableViewCell.swift */; };
@@ -64,8 +64,8 @@
 		A330873D2203BC08006D70C8 /* FriendsPhotoesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotoesCollectionViewCell.swift; sourceTree = "<group>"; };
 		A33E91182211D29C00814DBF /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A33E911A2211D3F500814DBF /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
-		A33E911B2211D3F500814DBF /* FeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTableViewCell.xib; sourceTree = "<group>"; };
 		A33E911E2211E07500814DBF /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		A33E9120221200EB00814DBF /* FeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTableViewCell.xib; sourceTree = "<group>"; };
 		A38D78D722085E6A0018B747 /* MyFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsViewController.swift; sourceTree = "<group>"; };
 		A38D78D9220861E00018B747 /* FriendPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhoto.swift; sourceTree = "<group>"; };
 		A38D78DB220862F20018B747 /* MyFriendTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendTwoTableViewCell.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 			children = (
 				A33E91182211D29C00814DBF /* FeedViewController.swift */,
 				A33E911A2211D3F500814DBF /* FeedTableViewCell.swift */,
-				A33E911B2211D3F500814DBF /* FeedTableViewCell.xib */,
+				A33E9120221200EB00814DBF /* FeedTableViewCell.xib */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -356,7 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3A94AA421F8D51E001BC531 /* LaunchScreen.storyboard in Resources */,
-				A33E911D2211D3F500814DBF /* FeedTableViewCell.xib in Resources */,
+				A33E9121221200EB00814DBF /* FeedTableViewCell.xib in Resources */,
 				A3A94AA121F8D51E001BC531 /* Assets.xcassets in Resources */,
 				A3A94A9F21F8D51D001BC531 /* Main.storyboard in Resources */,
 			);

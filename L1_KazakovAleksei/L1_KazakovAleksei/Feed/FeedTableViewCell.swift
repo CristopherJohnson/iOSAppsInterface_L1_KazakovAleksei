@@ -11,17 +11,22 @@ import UIKit
 class FeedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var newsLable: UILabel?
-//    @IBOutlet weak var newsImageView: UIImageView?
+    @IBOutlet weak var newsImageView: UIImageView?
+    @IBOutlet weak var wathCount: UILabel?
+    
+    
     
     func setNews (settingNews news: NewsModel) {
         newsLable?.text = news.newsText
-//        newsImageView?.image = UIImage(named: news.newsImageName ?? "No_Image")
+        newsImageView?.image = UIImage(named: news.newsImageName ?? "No_Image")
+        wathCount?.text = "300к"
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        self.newsImageView = nil
+        self.newsImageView?.image = nil
         self.newsLable?.text = nil
+        self.wathCount?.text = nil
     }
 
 //    override func awakeFromNib() {

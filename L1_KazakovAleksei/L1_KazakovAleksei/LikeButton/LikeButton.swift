@@ -55,6 +55,7 @@ class LikeButton: UIControl {
         super.layoutSubviews()
         
         self.iconImageView?.frame = CGRect(x: 0, y: 0, width: self.frame.size.width / 2, height: self.frame.size.height)
+        self.iconImageView?.contentMode = UIView.ContentMode.scaleAspectFill
         self.countLable?.frame = CGRect(x: self.frame.size.width / 2, y: 0, width: self.frame.size.width / 2, height: self.frame.size.height)
     }
     

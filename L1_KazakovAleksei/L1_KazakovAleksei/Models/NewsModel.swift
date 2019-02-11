@@ -11,5 +11,5 @@ import Foundation
 
 class NewsModel {
     var newsText: String?
-//    var newsImageName: String?
+    var newsImageName: String?
 }
