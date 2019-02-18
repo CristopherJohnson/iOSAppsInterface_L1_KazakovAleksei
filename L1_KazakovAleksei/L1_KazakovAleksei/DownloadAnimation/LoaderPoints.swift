@@ -22,7 +22,15 @@ class LoaderPoints: UIView {
     private weak var pointImageView3: UIImageView?
     private var stackView: UIStackView?
     
-    //Mark: - Init
+    var animationStep: LoaderAnimationStep = .step1 {
+        didSet {
+            self.updateStep()
+        }
+    }
+    
+    let animationDuration: TimeInterval = 0.5
+    
+    //MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +42,7 @@ class LoaderPoints: UIView {
         self.setupView()
     }
     
-    //Mark: - Layout
+    //MARK: - Layout
     
     private func setupView () {
         let pointImage = UIImageView(image: UIImage(named: "loadingPoint"))
@@ -62,6 +70,63 @@ class LoaderPoints: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.stackView?.frame = bounds
+    }
+    
+    //MARK: - Animation
+    
+    func startAnimation () {
+        self.updateStep()
+    }
+    
+    func updateStep() {
+        switch self.animationStep {
+        case .step1:
+            self.animateStep1()
+        case .step2:
+            self.animateStep2()
+        case .step3:
+            self.animateStep3()
+        case .stepEnd:
+            self.animateStepEnd()
+        }
+    }
+    
+    func animateStep1 () {
+        UIView.animate(withDuration: self.animationDuration,
+                       animations: {
+                        self.pointImageView1?.alpha = 1
+        }) { (finished: Bool) in
+            self.animationStep = .step2
+        }
+    }
+    
+    func animateStep2 () {
+        UIView.animate(withDuration: self.animationDuration,
+                       animations: {
+                        self.pointImageView2?.alpha = 1
+        }) { (finished: Bool) in
+            self.animationStep = .step3
+        }
+    }
+    
+    func animateStep3 () {
+        UIView.animate(withDuration: self.animationDuration,
+                       animations: {
+                        self.pointImageView3?.alpha = 1
+        }) { (finished: Bool) in
+            self.animationStep = .stepEnd
+        }
+    }
+    
+    func animateStepEnd () {
+        UIView.animate(withDuration: self.animationDuration,
+                       animations: {
+                        self.pointImageView1?.alpha = 0.5
+                        self.pointImageView2?.alpha = 0.5
+                        self.pointImageView3?.alpha = 0.5
+        }) { (finished: Bool) in
+            self.animationStep = .step1
+        }
     }
 
 }
