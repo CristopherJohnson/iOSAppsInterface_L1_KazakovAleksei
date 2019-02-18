@@ -33,7 +33,7 @@
                             <constraint firstAttribute="width" secondItem="Ndk-OZ-P3d" secondAttribute="height" multiplier="1:1" id="kZZ-vd-JS5"/>
                         </constraints>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="CxF-Jm-vdG">
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="CxF-Jm-vdG">
                         <rect key="frame" x="0.0" y="563.5" width="415" height="25"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ec-p4-Zcr" customClass="LikeButton" customModule="L1_KazakovAleksei" customModuleProvider="target">
@@ -45,7 +45,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUO-vc-xek">
-                                <rect key="frame" x="90" y="0.0" width="25" height="25"/>
+                                <rect key="frame" x="50" y="0.0" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="Unl-ak-N3r"/>
                                     <constraint firstAttribute="height" constant="25" id="XcC-mx-3N3"/>
@@ -53,7 +53,7 @@
                                 <state key="normal" image="share"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdn-EN-mT5">
-                                <rect key="frame" x="155" y="0.0" width="25" height="25"/>
+                                <rect key="frame" x="75" y="0.0" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="19j-Eu-IYg"/>
                                     <constraint firstAttribute="width" constant="25" id="oTj-ib-K9t"/>
@@ -61,7 +61,7 @@
                                 <state key="normal" image="comment"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PhS-Tf-eIh">
-                                <rect key="frame" x="220" y="0.0" width="195" height="25"/>
+                                <rect key="frame" x="100" y="0.0" width="315" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
