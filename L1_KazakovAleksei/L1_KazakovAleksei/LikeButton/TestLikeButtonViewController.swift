@@ -10,10 +10,7 @@ import UIKit
 
 class TestLikeButtonViewController: UIViewController {
     
-    @IBOutlet weak var likeButton: LikeButton?
-    @IBAction func likeButtonChanged() {
-        
-    }
+    @IBOutlet weak var loaderPoints: LoaderPoints?
 
     override func viewDidLoad() {
         super.viewDidLoad()

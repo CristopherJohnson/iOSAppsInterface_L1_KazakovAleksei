@@ -348,27 +348,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uvo-LL-I0u" customClass="LikeButton" customModule="L1_KazakovAleksei" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="100" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7C3-Kh-ivA" customClass="LoaderPoints" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84" width="375" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="GVo-GU-rVK"/>
-                                    <constraint firstAttribute="height" constant="50" id="McO-EJ-l7l"/>
+                                    <constraint firstAttribute="height" constant="50" id="xvb-8d-o0g"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="likeButtonChanged" destination="aum-bH-qtd" eventType="valueChanged" id="qkt-Sq-Hm1"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Uvo-LL-I0u" firstAttribute="leading" secondItem="zsQ-SG-Jdf" secondAttribute="leading" id="ZOz-y5-YTj"/>
-                            <constraint firstItem="Uvo-LL-I0u" firstAttribute="top" secondItem="zsQ-SG-Jdf" secondAttribute="top" id="qE1-N9-rYK"/>
+                            <constraint firstItem="zsQ-SG-Jdf" firstAttribute="trailing" secondItem="7C3-Kh-ivA" secondAttribute="trailing" id="59L-SJ-eCM"/>
+                            <constraint firstItem="7C3-Kh-ivA" firstAttribute="leading" secondItem="zsQ-SG-Jdf" secondAttribute="leading" id="GT7-fQ-g2r"/>
+                            <constraint firstItem="7C3-Kh-ivA" firstAttribute="top" secondItem="zsQ-SG-Jdf" secondAttribute="top" constant="20" id="I9U-fU-kVU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zsQ-SG-Jdf"/>
                     </view>
                     <connections>
-                        <outlet property="likeButton" destination="Uvo-LL-I0u" id="Krh-kG-jcN"/>
+                        <outlet property="loaderPoints" destination="7C3-Kh-ivA" id="DQW-A2-TrW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DhW-7J-fxx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -397,7 +394,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P1S-eq-oBF">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P1S-eq-oBF">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         </imageView>
                                     </subviews>
