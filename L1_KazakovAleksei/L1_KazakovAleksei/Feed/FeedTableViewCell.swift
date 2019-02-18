@@ -14,6 +14,41 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var newsImageView: UIImageView?
     @IBOutlet weak var wathCount: UILabel?
     
+    @IBOutlet weak var stackImage1: FeedImages?
+    
+    @IBOutlet weak var newsimageViewButton: UIButton?
+    
+    private let scaleTransform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+    
+    @IBAction func touchDown() {
+        UIView.animate(withDuration: 0.2) {
+            self.newsImageView?.transform = self.scaleTransform
+        }
+    }
+    
+    @IBAction func touchUpInside() {
+        
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.5, options: [], animations: {
+            self.newsImageView?.transform = CGAffineTransform.identity
+        }) { (finished: Bool) in
+            
+        }
+        
+    }
+    
+    @IBAction func touchUpOutside() {
+        UIView.animate(withDuration: 0.2) {
+            self.newsImageView?.transform = CGAffineTransform.identity
+        }
+        
+    }
+    
+    @IBAction func touchCancel (){
+        UIView.animate(withDuration: 0.2) {
+            self.newsImageView?.transform = CGAffineTransform.identity
+        }
+        
+    }
     
     
     func setNews (settingNews news: NewsModel) {
@@ -28,16 +63,5 @@ class FeedTableViewCell: UITableViewCell {
         self.newsLable?.text = nil
         self.wathCount?.text = nil
     }
-
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
     
 }
