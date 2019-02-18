@@ -15,28 +15,23 @@ class FeedImages: UIView {
     
     private let insert: CGFloat = 5.0
     
-    private var isTouched: Bool = false
-    
-    
     //MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubviewes()
-        self.addPostImage()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.addSubviewes()
-        self.addPostImage()
     }
     
     // MARK: - Layout
     
     private func addSubviewes() {
         self.addPostImageView()
-        self.addButton()        
+        self.addButton()
     }
     
     private func addPostImageView() {
@@ -46,6 +41,7 @@ class FeedImages: UIView {
         let imageView = UIImageView()
         self.addSubview(imageView)
         self.postImageView = imageView
+        
     }
     
     private func addButton() {
@@ -62,65 +58,78 @@ class FeedImages: UIView {
         
     }
     
-    func addPostImage () {
-        let imageName = "test"
+    public func setPostImage (imageName name: String) {
+        let imageName = name
         let image = UIImage(named: imageName)
         self.postImageView?.image = image
-    }
-    
-
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.postImageView?.frame = self.bounds
-        if self.isTouched == true {
-            self.postImageView?.frame = CGRect(x: 0 + self.insert, y: 0 + self.insert, width: self.frame.size.width - (self.insert * 2), height: self.frame.size.height - (self.insert * 2))
-        } else {
-            self.postImageView?.frame = self.bounds
-        }
         
         self.postImageView?.contentMode = UIView.ContentMode.scaleAspectFill
         self.postImageView?.clipsToBounds = true
-        self.button?.frame = self.bounds
+    }
+    
+    
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
         print("layoutSubviews")
+        
+        self.postImageView?.frame = self.bounds
+        self.button?.frame = self.bounds
+        
+        var inset: CGFloat = 0
+        if let isTouched = self.button?.isHighlighted, isTouched == true {
+            inset = self.insert
+        }
+        self.postImageView?.frame = CGRect(x: inset,
+                                           y: inset,
+                                           width: self.frame.size.width - (inset * 2),
+                                           height: self.frame.size.height - (inset * 2))
     }
     
     @objc func touchDown () {
         print("touchDown")
-        UIView.animate(withDuration: 0.2) {
-            self.isTouched = true
-            self.layoutIfNeeded()
-            self.postImageView?.frame = CGRect(x: 0 + self.insert, y: 0 + self.insert, width: self.frame.size.width - (self.insert * 2), height: self.frame.size.height - (self.insert * 2))
-        }
+        self.animateDefault()
     }
     
     @objc func touchUpInside () {
         print("touchUpInside")
-        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.5, options: [], animations: {
-            self.isTouched = false
-            self.layoutIfNeeded()
-            self.postImageView?.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
-        }) { (finished: Bool) in
-            
-        }
+        self.button?.isHighlighted = false
+        self.animateWithJump()
     }
     
     @objc func touchUpOutside () {
         print("touchUpOutside")
-        UIView.animate(withDuration: 0.2) {
-            self.isTouched = false
-            self.layoutIfNeeded()
-            self.postImageView?.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
-        }
+        self.animateDefault()
     }
     
     @objc func touchCanceled () {
         print("touchCanceled")
+        self.animateDefault()
+    }
+    
+    // MARK: - Animations
+    
+    private func animateDefault() {
         UIView.animate(withDuration: 0.2) {
-            self.isTouched = false
+            self.setNeedsLayout()
             self.layoutIfNeeded()
-            self.postImageView?.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         }
+    }
+    
+    private func animateWithJump() {
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.5, options: [], animations: {
+            self.setNeedsLayout()
+            self.layoutIfNeeded()
+        }) { (finished: Bool) in
+            
+        }
+//        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.5, options: [], animations: {
+//            self.setNeedsLayout()
+//            self.layoutIfNeeded()
+//        }) { (finished: Bool) in
+//
+//        }
     }
     
     

@@ -93,54 +93,63 @@
                                 <rect key="frame" x="0.0" y="0.0" width="415" height="415"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="BW4-Jg-Kdw">
-                                        <rect key="frame" x="0.0" y="0.0" width="415" height="103.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="415" height="65"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="64T-SA-wx4">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="103.5"/>
-                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E9A-dB-77j" customClass="FeedImages" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="65"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="11y-fV-EQX" customClass="FeedImages" customModule="L1_KazakovAleksei" customModuleProvider="target">
-                                                <rect key="frame" x="208" y="0.0" width="207" height="103.5"/>
+                                                <rect key="frame" x="208" y="0.0" width="207" height="65"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="1Zv-Kq-e9x">
-                                        <rect key="frame" x="0.0" y="104.5" width="415" height="103.5"/>
+                                        <rect key="frame" x="0.0" y="66" width="415" height="94"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="eNj-7K-Mf0">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="103.5"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="7LJ-mG-MvD">
-                                                <rect key="frame" x="208" y="0.0" width="207" height="103.5"/>
-                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="II0-UI-itR" customClass="FeedImages" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="94"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83A-ds-kOA" customClass="FeedImages" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                                <rect key="frame" x="208" y="0.0" width="207" height="94"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ATX-jb-PEp">
-                                        <rect key="frame" x="0.0" y="209" width="415" height="103.5"/>
+                                        <rect key="frame" x="0.0" y="161" width="415" height="125"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="jHa-T9-PXC">
-                                                <rect key="frame" x="0.0" y="0.0" width="137.5" height="103.5"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="a8A-Vd-Vvp">
-                                                <rect key="frame" x="138.5" y="0.0" width="138" height="103.5"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="vqI-OI-iDt">
-                                                <rect key="frame" x="277.5" y="0.0" width="137.5" height="103.5"/>
-                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xDi-hV-ywx" customClass="FeedImages" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="137.5" height="125"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J4S-DA-UUY" customClass="FeedImages" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                                <rect key="frame" x="138.5" y="0.0" width="138" height="125"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYR-I8-kCS" customClass="FeedImages" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                                <rect key="frame" x="277.5" y="0.0" width="137.5" height="125"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="9yI-5a-1yp">
-                                        <rect key="frame" x="0.0" y="313.5" width="415" height="101.5"/>
+                                        <rect key="frame" x="0.0" y="287" width="415" height="128"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="8" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="lNc-Fo-3JS">
-                                                <rect key="frame" x="0.0" y="0.0" width="137.5" height="101.5"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="9" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="ISD-dV-SmK">
-                                                <rect key="frame" x="138.5" y="0.0" width="138" height="101.5"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="ce4-nR-nGU">
-                                                <rect key="frame" x="277.5" y="0.0" width="137.5" height="101.5"/>
-                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wnv-j4-LDa" customClass="FeedImages" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="137.5" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dnn-hD-QQa" customClass="FeedImages" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                                <rect key="frame" x="138.5" y="0.0" width="138" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aup-Zr-jlf" customClass="FeedImages" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                                <rect key="frame" x="277.5" y="0.0" width="137.5" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -185,7 +194,16 @@
                 <outlet property="newsImageView" destination="Ndk-OZ-P3d" id="0oB-ad-SkC"/>
                 <outlet property="newsLable" destination="ug2-eA-c1z" id="bJO-Lf-v0h"/>
                 <outlet property="newsimageViewButton" destination="kcd-Sm-Qyi" id="3he-II-YJH"/>
-                <outlet property="stackImage1" destination="11y-fV-EQX" id="cZW-xd-WKy"/>
+                <outlet property="stackImageView1" destination="E9A-dB-77j" id="L7D-5t-nBx"/>
+                <outlet property="stackImageView10" destination="Aup-Zr-jlf" id="yJh-tS-Lwu"/>
+                <outlet property="stackImageView2" destination="11y-fV-EQX" id="Gzu-Jq-CP0"/>
+                <outlet property="stackImageView3" destination="II0-UI-itR" id="Tff-H6-gwp"/>
+                <outlet property="stackImageView4" destination="83A-ds-kOA" id="ffP-8C-S5r"/>
+                <outlet property="stackImageView5" destination="xDi-hV-ywx" id="bfT-rc-nLI"/>
+                <outlet property="stackImageView6" destination="J4S-DA-UUY" id="ucH-fv-c6z"/>
+                <outlet property="stackImageView7" destination="AYR-I8-kCS" id="Xmf-wK-R1Z"/>
+                <outlet property="stackImageView8" destination="wnv-j4-LDa" id="wO1-OX-foy"/>
+                <outlet property="stackImageView9" destination="dnn-hD-QQa" id="flm-LC-Y2K"/>
                 <outlet property="wathCount" destination="PhS-Tf-eIh" id="3MS-gX-J1j"/>
             </connections>
             <point key="canvasLocation" x="141.5625" y="389.78873239436621"/>
@@ -194,6 +212,5 @@
     <resources>
         <image name="comment" width="48" height="48"/>
         <image name="share" width="48" height="48"/>
-        <image name="test" width="602" height="326"/>
     </resources>
 </document>

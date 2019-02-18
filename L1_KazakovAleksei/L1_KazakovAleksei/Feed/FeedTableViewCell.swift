@@ -14,7 +14,16 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var newsImageView: UIImageView?
     @IBOutlet weak var wathCount: UILabel?
     
-    @IBOutlet weak var stackImage1: FeedImages?
+    @IBOutlet weak var stackImageView1: FeedImages?
+    @IBOutlet weak var stackImageView2: FeedImages?
+    @IBOutlet weak var stackImageView3: FeedImages?
+    @IBOutlet weak var stackImageView4: FeedImages?
+    @IBOutlet weak var stackImageView5: FeedImages?
+    @IBOutlet weak var stackImageView6: FeedImages?
+    @IBOutlet weak var stackImageView7: FeedImages?
+    @IBOutlet weak var stackImageView8: FeedImages?
+    @IBOutlet weak var stackImageView9: FeedImages?
+    @IBOutlet weak var stackImageView10: FeedImages?
     
     @IBOutlet weak var newsimageViewButton: UIButton?
     
@@ -55,6 +64,16 @@ class FeedTableViewCell: UITableViewCell {
         newsLable?.text = news.newsText
         newsImageView?.image = UIImage(named: news.newsImageName ?? "No_Image")
         wathCount?.text = "300к"
+        stackImageView1?.setPostImage(imageName: "Avatar1")
+        stackImageView2?.setPostImage(imageName: "Avatar2")
+        stackImageView3?.setPostImage(imageName: "Avatar3")
+        stackImageView4?.setPostImage(imageName: "Avatar4")
+        stackImageView5?.setPostImage(imageName: "Avatar5")
+        stackImageView6?.setPostImage(imageName: "Public1")
+        stackImageView7?.setPostImage(imageName: "Public2")
+        stackImageView8?.setPostImage(imageName: "Public3")
+        stackImageView9?.setPostImage(imageName: "Public4")
+        stackImageView10?.setPostImage(imageName: "Public5")
     }
     
     override func prepareForReuse() {
