@@ -64,16 +64,16 @@ class FeedTableViewCell: UITableViewCell {
         newsLable?.text = news.newsText
         newsImageView?.image = UIImage(named: news.newsImageName ?? "No_Image")
         wathCount?.text = "300к"
-        stackImageView1?.setPostImage(imageName: "Avatar1")
-        stackImageView2?.setPostImage(imageName: "Avatar2")
-        stackImageView3?.setPostImage(imageName: "Avatar3")
-        stackImageView4?.setPostImage(imageName: "Avatar4")
-        stackImageView5?.setPostImage(imageName: "Avatar5")
-        stackImageView6?.setPostImage(imageName: "Public1")
-        stackImageView7?.setPostImage(imageName: "Public2")
-        stackImageView8?.setPostImage(imageName: "Public3")
-        stackImageView9?.setPostImage(imageName: "Public4")
-        stackImageView10?.setPostImage(imageName: "Public5")
+        stackImageView1?.setPostImage(imageName: news.stackImagesnames[0])
+        stackImageView2?.setPostImage(imageName: news.stackImagesnames[1])
+        stackImageView3?.setPostImage(imageName: news.stackImagesnames[2])
+        stackImageView4?.setPostImage(imageName: news.stackImagesnames[3])
+        stackImageView5?.setPostImage(imageName: news.stackImagesnames[4])
+        stackImageView6?.setPostImage(imageName: news.stackImagesnames[5])
+        stackImageView7?.setPostImage(imageName: news.stackImagesnames[6])
+        stackImageView8?.setPostImage(imageName: news.stackImagesnames[7])
+        stackImageView9?.setPostImage(imageName: news.stackImagesnames[8])
+        stackImageView10?.setPostImage(imageName: news.stackImagesnames[9])
     }
     
     override func prepareForReuse() {
@@ -81,6 +81,16 @@ class FeedTableViewCell: UITableViewCell {
         self.newsImageView?.image = nil
         self.newsLable?.text = nil
         self.wathCount?.text = nil
+        stackImageView1?.setPostImage(imageName: nil)
+        stackImageView2?.setPostImage(imageName: nil)
+        stackImageView3?.setPostImage(imageName: nil)
+        stackImageView4?.setPostImage(imageName: nil)
+        stackImageView5?.setPostImage(imageName: nil)
+        stackImageView6?.setPostImage(imageName: nil)
+        stackImageView7?.setPostImage(imageName: nil)
+        stackImageView8?.setPostImage(imageName: nil)
+        stackImageView9?.setPostImage(imageName: nil)
+        stackImageView10?.setPostImage(imageName: nil)
     }
     
 }

@@ -15,6 +15,10 @@ class FeedImages: UIView {
     
     private let insert: CGFloat = 5.0
     
+    var actionClosure: (() -> ())?
+    
+    
+    
     //MARK: - Init
     
     override init(frame: CGRect) {
@@ -58,9 +62,9 @@ class FeedImages: UIView {
         
     }
     
-    public func setPostImage (imageName name: String) {
+    public func setPostImage (imageName name: String?) {
         let imageName = name
-        let image = UIImage(named: imageName)
+        let image = UIImage(named: imageName ?? "No_Image")
         self.postImageView?.image = image
         
         self.postImageView?.contentMode = UIView.ContentMode.scaleAspectFill
@@ -96,6 +100,7 @@ class FeedImages: UIView {
         print("touchUpInside")
         self.button?.isHighlighted = false
         self.animateWithJump()
+        
     }
     
     @objc func touchUpOutside () {

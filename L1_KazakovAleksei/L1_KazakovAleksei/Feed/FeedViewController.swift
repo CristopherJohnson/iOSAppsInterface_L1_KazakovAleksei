@@ -30,6 +30,7 @@ class FeedViewController: UIViewController {
         
         tableView?.estimatedRowHeight = UITableView.automaticDimension
         tableView?.rowHeight = UITableView.automaticDimension
+        
     }
 
 }
