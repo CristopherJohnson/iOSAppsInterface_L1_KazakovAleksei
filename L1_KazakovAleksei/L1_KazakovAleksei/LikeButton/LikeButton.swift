@@ -21,8 +21,18 @@ class LikeButton: UIControl {
         willSet {
             if newValue == true {
                 self.counter += 1
+                UIView.transition(with: countLable!, duration: 0.2, options: .transitionFlipFromTop, animations: {
+                    self.countLable?.text = "\(self.counter)"
+                }) { (finished: Bool) in
+                   
+                }
             } else {
                 self.counter -= 1
+                UIView.transition(with: countLable!, duration: 0.2, options: .transitionFlipFromBottom, animations: {
+                    self.countLable?.text = "\(self.counter)"
+                }) { (finished: Bool) in
+                    
+                }
             }
         }
     }
@@ -122,12 +132,5 @@ class LikeButton: UIControl {
         self.countLable?.text = "\(self.counter)"
     }
  
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
 
 }

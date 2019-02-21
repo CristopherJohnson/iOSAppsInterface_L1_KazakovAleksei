@@ -10,10 +10,7 @@ import UIKit
 
 class TestLikeButtonViewController: UIViewController {
     
-    @IBOutlet weak var likeButton: LikeButton?
-    @IBAction func likeButtonChanged() {
-        
-    }
+    @IBOutlet weak var loaderPoints: LoaderPoints?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +18,11 @@ class TestLikeButtonViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.loaderPoints?.startAnimation()
+    }
 
     /*
     // MARK: - Navigation
