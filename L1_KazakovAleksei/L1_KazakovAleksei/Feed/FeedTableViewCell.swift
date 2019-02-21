@@ -14,6 +14,10 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var newsImageView: UIImageView?
     @IBOutlet weak var wathCount: UILabel?
     
+    weak var delegate: ShowDetailImage?
+    
+    var cellIndexPath: IndexPath?
+    
     @IBOutlet weak var stackImageView1: FeedImages?
     @IBOutlet weak var stackImageView2: FeedImages?
     @IBOutlet weak var stackImageView3: FeedImages?
@@ -74,6 +78,28 @@ class FeedTableViewCell: UITableViewCell {
         stackImageView8?.setPostImage(imageName: news.stackImagesnames[7])
         stackImageView9?.setPostImage(imageName: news.stackImagesnames[8])
         stackImageView10?.setPostImage(imageName: news.stackImagesnames[9])
+        
+        stackImageView1?.setId(id: 1)
+        stackImageView2?.setId(id: 2)
+        stackImageView3?.setId(id: 3)
+        stackImageView4?.setId(id: 4)
+        stackImageView5?.setId(id: 5)
+        stackImageView6?.setId(id: 6)
+        stackImageView7?.setId(id: 7)
+        stackImageView8?.setId(id: 8)
+        stackImageView9?.setId(id: 9)
+        stackImageView10?.setId(id: 10)
+        
+        stackImageView1?.cell = self
+        stackImageView2?.cell = self
+        stackImageView3?.cell = self
+        stackImageView4?.cell = self
+        stackImageView5?.cell = self
+        stackImageView6?.cell = self
+        stackImageView7?.cell = self
+        stackImageView8?.cell = self
+        stackImageView9?.cell = self
+        stackImageView10?.cell = self
     }
     
     override func prepareForReuse() {
@@ -81,16 +107,26 @@ class FeedTableViewCell: UITableViewCell {
         self.newsImageView?.image = nil
         self.newsLable?.text = nil
         self.wathCount?.text = nil
-        stackImageView1?.setPostImage(imageName: nil)
-        stackImageView2?.setPostImage(imageName: nil)
-        stackImageView3?.setPostImage(imageName: nil)
-        stackImageView4?.setPostImage(imageName: nil)
-        stackImageView5?.setPostImage(imageName: nil)
-        stackImageView6?.setPostImage(imageName: nil)
-        stackImageView7?.setPostImage(imageName: nil)
-        stackImageView8?.setPostImage(imageName: nil)
-        stackImageView9?.setPostImage(imageName: nil)
-        stackImageView10?.setPostImage(imageName: nil)
+        stackImageView1?.reuse()
+        stackImageView2?.reuse()
+        stackImageView3?.reuse()
+        stackImageView4?.reuse()
+        stackImageView5?.reuse()
+        stackImageView6?.reuse()
+        stackImageView7?.reuse()
+        stackImageView8?.reuse()
+        stackImageView9?.reuse()
+        stackImageView10?.reuse()
+    }
+    
+    func didSelectedImage(image: FeedImages) {
+        let imageId = image.id
+        
+        
+        self.delegate?.getImageIndex(index: imageId ?? 1, indexPath: self.cellIndexPath!)
+        
+        
+        print("id: \(imageId)")
     }
     
 }
