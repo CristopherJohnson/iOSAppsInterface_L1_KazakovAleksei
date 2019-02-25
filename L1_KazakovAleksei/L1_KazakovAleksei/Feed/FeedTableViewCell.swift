@@ -125,8 +125,6 @@ class FeedTableViewCell: UITableViewCell {
         
         self.delegate?.getImageIndex(index: imageId ?? 1, indexPath: self.cellIndexPath!)
         
-        
-        print("id: \(imageId)")
     }
     
 }

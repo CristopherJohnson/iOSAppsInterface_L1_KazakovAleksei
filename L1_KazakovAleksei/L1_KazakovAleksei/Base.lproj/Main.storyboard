@@ -521,7 +521,7 @@
         <!--Publics-->
         <scene sceneID="NlC-wU-HQ9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2F1-W7-7xY" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2F1-W7-7xY" customClass="CustomNavigationController" customModule="L1_KazakovAleksei" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Publics" id="kQ0-Yv-UmJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h22-GR-q2B">
@@ -557,7 +557,7 @@
         <!--Friends-->
         <scene sceneID="q9L-QC-s29">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EZh-Jy-ncB" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EZh-Jy-ncB" customClass="CustomNavigationController" customModule="L1_KazakovAleksei" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" id="5PE-j3-CKK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tYI-XF-M7p">
@@ -576,7 +576,7 @@
         <!--Feed-->
         <scene sceneID="PkZ-IC-Na8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aRf-Dz-GRv" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aRf-Dz-GRv" customClass="CustomNavigationController" customModule="L1_KazakovAleksei" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" id="PeK-1v-Hod"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TWQ-Vt-tev">
