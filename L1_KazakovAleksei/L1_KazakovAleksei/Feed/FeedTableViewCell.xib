@@ -27,7 +27,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ndk-OZ-P3d">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ndk-OZ-P3d">
                         <rect key="frame" x="0.0" y="138.5" width="415" height="415"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Ndk-OZ-P3d" secondAttribute="height" multiplier="1:1" id="kZZ-vd-JS5"/>

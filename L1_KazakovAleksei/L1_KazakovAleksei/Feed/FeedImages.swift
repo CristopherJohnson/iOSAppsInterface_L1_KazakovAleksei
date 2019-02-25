@@ -15,7 +15,11 @@ class FeedImages: UIView {
     
     private let insert: CGFloat = 5.0
     
-    var actionClosure: (() -> ())?
+    var id: Int?
+    
+    weak var cell: FeedTableViewCell?
+    
+    
     
     
     
@@ -62,13 +66,21 @@ class FeedImages: UIView {
         
     }
     
-    public func setPostImage (imageName name: String?) {
+    public func setPostImage (imageName name: String) {
         let imageName = name
-        let image = UIImage(named: imageName ?? "No_Image")
+        let image = UIImage(named: imageName)
         self.postImageView?.image = image
         
         self.postImageView?.contentMode = UIView.ContentMode.scaleAspectFill
         self.postImageView?.clipsToBounds = true
+    }
+    
+    public func reuse() {
+        self.postImageView?.image = nil
+    }
+    
+    public func setId (id: Int) {
+        self.id = id
     }
     
     
@@ -91,6 +103,8 @@ class FeedImages: UIView {
                                            height: self.frame.size.height - (inset * 2))
     }
     
+    //MARK: - Actions
+    
     @objc func touchDown () {
         print("touchDown")
         self.animateDefault()
@@ -100,6 +114,7 @@ class FeedImages: UIView {
         print("touchUpInside")
         self.button?.isHighlighted = false
         self.animateWithJump()
+        self.cell?.didSelectedImage(image: self)
         
     }
     
@@ -116,7 +131,7 @@ class FeedImages: UIView {
     // MARK: - Animations
     
     private func animateDefault() {
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.1) {
             self.setNeedsLayout()
             self.layoutIfNeeded()
         }
@@ -129,12 +144,7 @@ class FeedImages: UIView {
         }) { (finished: Bool) in
             
         }
-//        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.5, options: [], animations: {
-//            self.setNeedsLayout()
-//            self.layoutIfNeeded()
-//        }) { (finished: Bool) in
-//
-//        }
+
     }
     
     

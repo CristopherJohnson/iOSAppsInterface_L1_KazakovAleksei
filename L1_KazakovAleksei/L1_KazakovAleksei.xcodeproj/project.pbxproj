@@ -17,6 +17,7 @@
 		A33087392203B46D006D70C8 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33087382203B46D006D70C8 /* FriendModel.swift */; };
 		A330873C2203BBDB006D70C8 /* FriendsPhotoesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330873B2203BBDB006D70C8 /* FriendsPhotoesCollectionViewController.swift */; };
 		A330873E2203BC08006D70C8 /* FriendsPhotoesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330873D2203BC08006D70C8 /* FriendsPhotoesCollectionViewCell.swift */; };
+		A335C4A6221F2C5B00DF8917 /* DetailNewsPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A335C4A5221F2C5B00DF8917 /* DetailNewsPhotoViewController.swift */; };
 		A33B314F221AAC3D00CBAEBA /* LoaderPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B314E221AAC3D00CBAEBA /* LoaderPoints.swift */; };
 		A33E91192211D29C00814DBF /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33E91182211D29C00814DBF /* FeedViewController.swift */; };
 		A33E911C2211D3F500814DBF /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33E911A2211D3F500814DBF /* FeedTableViewCell.swift */; };
@@ -64,6 +65,7 @@
 		A33087382203B46D006D70C8 /* FriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
 		A330873B2203BBDB006D70C8 /* FriendsPhotoesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotoesCollectionViewController.swift; sourceTree = "<group>"; };
 		A330873D2203BC08006D70C8 /* FriendsPhotoesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotoesCollectionViewCell.swift; sourceTree = "<group>"; };
+		A335C4A5221F2C5B00DF8917 /* DetailNewsPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNewsPhotoViewController.swift; sourceTree = "<group>"; };
 		A33B314E221AAC3D00CBAEBA /* LoaderPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderPoints.swift; sourceTree = "<group>"; };
 		A33E91182211D29C00814DBF /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A33E911A2211D3F500814DBF /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
@@ -159,6 +161,14 @@
 			path = "Friends Photoes";
 			sourceTree = "<group>";
 		};
+		A335C4A4221F2C2300DF8917 /* DetailNewsPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				A335C4A5221F2C5B00DF8917 /* DetailNewsPhotoViewController.swift */,
+			);
+			path = DetailNewsPhoto;
+			sourceTree = "<group>";
+		};
 		A33B314D221AAAFE00CBAEBA /* DownloadAnimation */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +230,7 @@
 		A3A94A9821F8D51D001BC531 /* L1_KazakovAleksei */ = {
 			isa = PBXGroup;
 			children = (
+				A335C4A4221F2C2300DF8917 /* DetailNewsPhoto */,
 				A33B314D221AAAFE00CBAEBA /* DownloadAnimation */,
 				A33E91172211D26B00814DBF /* Feed */,
 				A3015CDC220C8C570021318E /* Section Index */,
@@ -414,6 +425,7 @@
 				A330873E2203BC08006D70C8 /* FriendsPhotoesCollectionViewCell.swift in Sources */,
 				A3580433221AD98A00A5CDE3 /* FeedImages.swift in Sources */,
 				A38D78E12208C8F10018B747 /* LikeButton.swift in Sources */,
+				A335C4A6221F2C5B00DF8917 /* DetailNewsPhotoViewController.swift in Sources */,
 				A3015CDE220C8C9D0021318E /* FriendsSectionIndex.swift in Sources */,
 				A330872D22036F15006D70C8 /* PublicsModel.swift in Sources */,
 				A38D78DA220861E00018B747 /* FriendPhoto.swift in Sources */,

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ShowDetailImage: class {
+    func getImageIndex (index: Int, indexPath: IndexPath)
+}
+
 class FeedViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView?
@@ -32,6 +36,17 @@ class FeedViewController: UIViewController {
         tableView?.rowHeight = UITableView.automaticDimension
         
     }
+    
+    private func getDetailPhotoVC() -> DetailNewsPhotoViewController? {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let detailNewsPhotoVC = storyboard.instantiateViewController(withIdentifier: "DetailNewsPhotoViewController") as? DetailNewsPhotoViewController else {
+            return nil
+        }
+        
+        return detailNewsPhotoVC
+    }
+    
+    
 
 }
 
@@ -55,9 +70,35 @@ extension FeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell", for: indexPath) as! FeedTableViewCell
+        cell.delegate = self
+        cell.cellIndexPath = indexPath
         let news = self.newsArray[indexPath.row]
         cell.setNews(settingNews: news)
         return cell
+    }
+    
+    
+}
+
+
+extension FeedViewController: ShowDetailImage{
+    func getImageIndex(index: Int, indexPath: IndexPath) {
+        let news = self.newsArray[indexPath.row]
+        let imageName = news.stackImagesnames[index - 1]
+        print("imageName: \(imageName) for indexPath: \(indexPath) ")
+        
+        guard let detailNewsPhotoVC = self.getDetailPhotoVC() else {
+            return
+        }
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        detailNewsPhotoVC.allPhotoesNames = news.stackImagesnames
+        detailNewsPhotoVC.selectedPhotoIndex = (index - 1)
+        
+        appDelegate.window?.rootViewController?.present(detailNewsPhotoVC, animated: true, completion: nil)
+        
     }
     
     
