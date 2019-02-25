@@ -35,9 +35,13 @@ class CustomPopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             source.view.transform = rotation
         }) { (finished: Bool) in
             
-            source.view.transform = CGAffineTransform.identity
-            source.view.removeFromSuperview()
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            if finished && !transitionContext.transitionWasCancelled {
+                source.view.removeFromSuperview()
+            } else if transitionContext.transitionWasCancelled {
+                source.view.transform = CGAffineTransform.identity
+            }
+
+            transitionContext.completeTransition(finished && !transitionContext.transitionWasCancelled)
         }
         
     }

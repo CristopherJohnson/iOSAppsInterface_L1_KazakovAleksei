@@ -27,6 +27,7 @@
 		A36AB96C22243AB4009F6141 /* CustomPushAnomator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AB96B22243AB4009F6141 /* CustomPushAnomator.swift */; };
 		A36AB96E2224419E009F6141 /* CustomPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AB96D2224419D009F6141 /* CustomPopAnimator.swift */; };
 		A36AB97022244371009F6141 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AB96F22244371009F6141 /* CustomNavigationController.swift */; };
+		A36AB972222467E5009F6141 /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AB971222467E5009F6141 /* CustomInteractiveTransition.swift */; };
 		A38D78D822085E6A0018B747 /* MyFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D78D722085E6A0018B747 /* MyFriendsViewController.swift */; };
 		A38D78DA220861E00018B747 /* FriendPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D78D9220861E00018B747 /* FriendPhoto.swift */; };
 		A38D78DC220862F20018B747 /* MyFriendTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D78DB220862F20018B747 /* MyFriendTwoTableViewCell.swift */; };
@@ -78,6 +79,7 @@
 		A36AB96B22243AB4009F6141 /* CustomPushAnomator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnomator.swift; sourceTree = "<group>"; };
 		A36AB96D2224419D009F6141 /* CustomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimator.swift; sourceTree = "<group>"; };
 		A36AB96F22244371009F6141 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		A36AB971222467E5009F6141 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
 		A38D78D722085E6A0018B747 /* MyFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsViewController.swift; sourceTree = "<group>"; };
 		A38D78D9220861E00018B747 /* FriendPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhoto.swift; sourceTree = "<group>"; };
 		A38D78DB220862F20018B747 /* MyFriendTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendTwoTableViewCell.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				A36AB96B22243AB4009F6141 /* CustomPushAnomator.swift */,
 				A36AB96D2224419D009F6141 /* CustomPopAnimator.swift */,
 				A36AB96F22244371009F6141 /* CustomNavigationController.swift */,
+				A36AB971222467E5009F6141 /* CustomInteractiveTransition.swift */,
 			);
 			path = "Custom Navigation Controller";
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				A330873E2203BC08006D70C8 /* FriendsPhotoesCollectionViewCell.swift in Sources */,
 				A3580433221AD98A00A5CDE3 /* FeedImages.swift in Sources */,
 				A38D78E12208C8F10018B747 /* LikeButton.swift in Sources */,
+				A36AB972222467E5009F6141 /* CustomInteractiveTransition.swift in Sources */,
 				A335C4A6221F2C5B00DF8917 /* DetailNewsPhotoViewController.swift in Sources */,
 				A3015CDE220C8C9D0021318E /* FriendsSectionIndex.swift in Sources */,
 				A330872D22036F15006D70C8 /* PublicsModel.swift in Sources */,
