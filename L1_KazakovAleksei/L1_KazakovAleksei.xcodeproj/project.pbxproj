@@ -28,6 +28,8 @@
 		A36AB96E2224419E009F6141 /* CustomPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AB96D2224419D009F6141 /* CustomPopAnimator.swift */; };
 		A36AB97022244371009F6141 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AB96F22244371009F6141 /* CustomNavigationController.swift */; };
 		A36AB972222467E5009F6141 /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AB971222467E5009F6141 /* CustomInteractiveTransition.swift */; };
+		A36AB97522247A21009F6141 /* OpenDetailNewsPhotoAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AB97422247A21009F6141 /* OpenDetailNewsPhotoAnimationController.swift */; };
+		A36AB9772224849D009F6141 /* PresentationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AB9762224849D009F6141 /* PresentationDelegate.swift */; };
 		A38D78D822085E6A0018B747 /* MyFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D78D722085E6A0018B747 /* MyFriendsViewController.swift */; };
 		A38D78DA220861E00018B747 /* FriendPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D78D9220861E00018B747 /* FriendPhoto.swift */; };
 		A38D78DC220862F20018B747 /* MyFriendTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D78DB220862F20018B747 /* MyFriendTwoTableViewCell.swift */; };
@@ -80,6 +82,8 @@
 		A36AB96D2224419D009F6141 /* CustomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimator.swift; sourceTree = "<group>"; };
 		A36AB96F22244371009F6141 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		A36AB971222467E5009F6141 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
+		A36AB97422247A21009F6141 /* OpenDetailNewsPhotoAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDetailNewsPhotoAnimationController.swift; sourceTree = "<group>"; };
+		A36AB9762224849D009F6141 /* PresentationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationDelegate.swift; sourceTree = "<group>"; };
 		A38D78D722085E6A0018B747 /* MyFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsViewController.swift; sourceTree = "<group>"; };
 		A38D78D9220861E00018B747 /* FriendPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhoto.swift; sourceTree = "<group>"; };
 		A38D78DB220862F20018B747 /* MyFriendTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendTwoTableViewCell.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				A335C4A5221F2C5B00DF8917 /* DetailNewsPhotoViewController.swift */,
+				A36AB97422247A21009F6141 /* OpenDetailNewsPhotoAnimationController.swift */,
+				A36AB9762224849D009F6141 /* PresentationDelegate.swift */,
 			);
 			path = DetailNewsPhoto;
 			sourceTree = "<group>";
@@ -440,6 +446,7 @@
 				A33E911C2211D3F500814DBF /* FeedTableViewCell.swift in Sources */,
 				A33E911F2211E07500814DBF /* NewsModel.swift in Sources */,
 				A330872A22036D14006D70C8 /* AllPublicsTableViewCell.swift in Sources */,
+				A36AB9772224849D009F6141 /* PresentationDelegate.swift in Sources */,
 				A330872822036CA3006D70C8 /* AllPublicsTableViewController.swift in Sources */,
 				A33E91192211D29C00814DBF /* FeedViewController.swift in Sources */,
 				A3015CDB220C563B0021318E /* TestLikeButtonViewController.swift in Sources */,
@@ -451,6 +458,7 @@
 				A36AB972222467E5009F6141 /* CustomInteractiveTransition.swift in Sources */,
 				A335C4A6221F2C5B00DF8917 /* DetailNewsPhotoViewController.swift in Sources */,
 				A3015CDE220C8C9D0021318E /* FriendsSectionIndex.swift in Sources */,
+				A36AB97522247A21009F6141 /* OpenDetailNewsPhotoAnimationController.swift in Sources */,
 				A330872D22036F15006D70C8 /* PublicsModel.swift in Sources */,
 				A38D78DA220861E00018B747 /* FriendPhoto.swift in Sources */,
 				A330873C2203BBDB006D70C8 /* FriendsPhotoesCollectionViewController.swift in Sources */,

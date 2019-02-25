@@ -9,14 +9,21 @@
 import UIKit
 
 protocol ShowDetailImage: class {
-    func getImageIndex (index: Int, indexPath: IndexPath)
+    func getImageIndex (index: Int, indexPath: IndexPath, image: FeedImages)
 }
+
+//protocol GetFrame: class {
+//    func getFrame (image: FeedImages)
+//}
 
 class FeedViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView?
     
     var newsArray: [NewsModel] = []
+    
+    var selectedImageFrame: CGRect?
+    let presentationDelegate = PresentationDelegate()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +50,10 @@ class FeedViewController: UIViewController {
             return nil
         }
         
+        
         return detailNewsPhotoVC
     }
+    
     
     
 
@@ -71,6 +80,7 @@ extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell", for: indexPath) as! FeedTableViewCell
         cell.delegate = self
+//        cell.frameDelegate = self
         cell.cellIndexPath = indexPath
         let news = self.newsArray[indexPath.row]
         cell.setNews(settingNews: news)
@@ -82,7 +92,7 @@ extension FeedViewController: UITableViewDataSource {
 
 
 extension FeedViewController: ShowDetailImage{
-    func getImageIndex(index: Int, indexPath: IndexPath) {
+    func getImageIndex(index: Int, indexPath: IndexPath, image: FeedImages) {
         let news = self.newsArray[indexPath.row]
         let imageName = news.stackImagesnames[index - 1]
         print("imageName: \(imageName) for indexPath: \(indexPath) ")
@@ -94,8 +104,15 @@ extension FeedViewController: ShowDetailImage{
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
+        let imageCoord = image.convert(image.frame, to: self.view)
+        print("\(imageCoord)")
+        self.selectedImageFrame = imageCoord
         detailNewsPhotoVC.allPhotoesNames = news.stackImagesnames
         detailNewsPhotoVC.selectedPhotoIndex = (index - 1)
+        detailNewsPhotoVC.imageCoord = self.selectedImageFrame
+        detailNewsPhotoVC.transitioningDelegate = self.presentationDelegate
+        
+        
         
         appDelegate.window?.rootViewController?.present(detailNewsPhotoVC, animated: true, completion: nil)
         
@@ -103,3 +120,13 @@ extension FeedViewController: ShowDetailImage{
     
     
 }
+
+//extension FeedViewController: GetFrame {
+//    func getFrame(image: FeedImages) {
+//        let imageCoord = image.convert(image.frame, to: self.view)
+//        print("\(imageCoord)")
+//        self.selectedImageFrame = imageCoord
+//    }
+//
+//
+//}
