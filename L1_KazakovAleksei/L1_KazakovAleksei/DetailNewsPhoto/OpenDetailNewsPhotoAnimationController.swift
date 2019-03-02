@@ -10,34 +10,39 @@ import UIKit
 
 class OpenDetailNewsPhotoAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 5
+        return 0.3
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let source = transitionContext.viewController(forKey: .from) else { return }
         
         guard let destination = transitionContext.viewController(forKey: .to) else { return }
         
-        var imageFrame: CGRect = CGRect.zero
+        transitionContext.containerView.addSubview(destination.view)
+        destination.view.frame = transitionContext.containerView.bounds
         
-//        if let feedViewController = source as? FeedViewController {
-//            imageFrame = feedViewController.selectedImageFrame!
-//        } else if let navigationVC = source as? UINavigationController,
-//            let feedViewController = navigationVC.viewControllers.first as? FeedViewController {
-//            imageFrame = feedViewController.selectedImageFrame!
-//        }
-        
-        if let destVC = destination as? DetailNewsPhotoViewController {
-            imageFrame = destVC.imageCoord!
+        if let destVC = destination as? DetailNewsPhotoViewController, let imageCoord = destVC.imageCoord {
+            
+            destVC.detailPhotoConstraintLeft?.constant   = imageCoord.origin.x
+            destVC.detailPhotoConstraintTop?.constant    = imageCoord.origin.y
+            destVC.detailPhotoConstraintWidth?.constant  = imageCoord.size.width
+            destVC.detailPhotoConstraintHeight?.constant = imageCoord.size.height
+            
+            destVC.view.layoutIfNeeded()
         }
         
-        transitionContext.containerView.addSubview(destination.view)
-        destination.view.frame = imageFrame
-        
         UIView.animate(withDuration: self.transitionDuration(using: transitionContext), animations: {
-            destination.view.frame = source.view.bounds
+            
+            if let destVC = destination as? DetailNewsPhotoViewController {
+                
+                destVC.detailPhotoConstraintLeft?.constant   = 0
+                destVC.detailPhotoConstraintTop?.constant    = 0
+                destVC.detailPhotoConstraintWidth?.constant  = transitionContext.containerView.frame.size.width
+                destVC.detailPhotoConstraintHeight?.constant = transitionContext.containerView.frame.size.height
+                destVC.view.layoutIfNeeded()
+            }
+            
         }) { (finished: Bool) in
-            source.view.removeFromSuperview()
+            //source.view.removeFromSuperview()
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }

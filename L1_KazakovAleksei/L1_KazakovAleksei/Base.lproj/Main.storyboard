@@ -466,8 +466,12 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qqU-eU-85c">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="667" id="8hU-kC-s6a"/>
+                                    <constraint firstAttribute="width" constant="375" id="9bz-hb-etN"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sH3-Mq-9pR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sH3-Mq-9pR">
                                 <rect key="frame" x="0.0" y="20" width="375" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -482,16 +486,18 @@
                         <constraints>
                             <constraint firstItem="HKD-KT-4hz" firstAttribute="trailing" secondItem="sH3-Mq-9pR" secondAttribute="trailing" id="5i8-jy-k8n"/>
                             <constraint firstItem="qqU-eU-85c" firstAttribute="top" secondItem="Tsn-pr-Wbk" secondAttribute="top" id="6Ud-6i-MhS"/>
-                            <constraint firstItem="qqU-eU-85c" firstAttribute="leading" secondItem="Tsn-pr-Wbk" secondAttribute="leading" id="KdX-hf-iU4"/>
+                            <constraint firstItem="qqU-eU-85c" firstAttribute="leading" secondItem="HKD-KT-4hz" secondAttribute="leading" id="Cf1-Tl-KY2"/>
                             <constraint firstItem="sH3-Mq-9pR" firstAttribute="top" secondItem="HKD-KT-4hz" secondAttribute="top" id="XKy-r4-C7p"/>
-                            <constraint firstItem="qqU-eU-85c" firstAttribute="trailing" secondItem="Tsn-pr-Wbk" secondAttribute="trailing" id="fV6-qe-1Nx"/>
                             <constraint firstItem="sH3-Mq-9pR" firstAttribute="leading" secondItem="HKD-KT-4hz" secondAttribute="leading" id="geo-zz-Ix7"/>
-                            <constraint firstAttribute="bottom" secondItem="qqU-eU-85c" secondAttribute="bottom" id="q4B-KB-hw8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HKD-KT-4hz"/>
                     </view>
                     <connections>
                         <outlet property="detailPhoto" destination="qqU-eU-85c" id="d6H-Oc-mes"/>
+                        <outlet property="detailPhotoConstraintHeight" destination="8hU-kC-s6a" id="0wy-dy-w1I"/>
+                        <outlet property="detailPhotoConstraintLeft" destination="Cf1-Tl-KY2" id="hq2-1w-XZl"/>
+                        <outlet property="detailPhotoConstraintTop" destination="6Ud-6i-MhS" id="zx0-1j-WTd"/>
+                        <outlet property="detailPhotoConstraintWidth" destination="9bz-hb-etN" id="aFN-AZ-OSw"/>
                         <outlet property="infoLable" destination="sH3-Mq-9pR" id="wjf-8e-Tc4"/>
                     </connections>
                 </viewController>

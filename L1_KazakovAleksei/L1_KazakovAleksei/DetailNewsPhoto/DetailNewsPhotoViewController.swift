@@ -16,10 +16,17 @@ class DetailNewsPhotoViewController: UIViewController {
     
     var imageCoord: CGRect?
     
+    var fromView: UIView?
+    
     private let scaleTransform = CGAffineTransform(scaleX: 0.9, y: 0.9)
     
     @IBOutlet weak var detailPhoto: UIImageView?
     @IBOutlet weak var infoLable: UILabel?
+    
+    @IBOutlet weak var detailPhotoConstraintLeft:   NSLayoutConstraint?
+    @IBOutlet weak var detailPhotoConstraintTop:    NSLayoutConstraint?
+    @IBOutlet weak var detailPhotoConstraintWidth:  NSLayoutConstraint?
+    @IBOutlet weak var detailPhotoConstraintHeight: NSLayoutConstraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +34,10 @@ class DetailNewsPhotoViewController: UIViewController {
         self.detailPhoto?.image = UIImage(named: allPhotoesNames[selectedPhotoIndex])
         self.infoLable?.text = "Selected index: \(selectedPhotoIndex), count \(allPhotoesNames.count)"
         self.detailPhoto?.isUserInteractionEnabled = true
+        
+        self.detailPhoto?.contentMode = UIView.ContentMode.scaleAspectFit
+        self.detailPhoto?.backgroundColor = UIColor.white
+        self.detailPhoto?.clipsToBounds = true
         
         swipeObserves()
 

@@ -104,15 +104,21 @@ extension FeedViewController: ShowDetailImage{
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-        let imageCoord = image.convert(image.frame, to: self.view)
+        let imageCoord = image.superview?.convert(image.frame, to: self.view)
         print("\(imageCoord)")
         self.selectedImageFrame = imageCoord
         detailNewsPhotoVC.allPhotoesNames = news.stackImagesnames
         detailNewsPhotoVC.selectedPhotoIndex = (index - 1)
         detailNewsPhotoVC.imageCoord = self.selectedImageFrame
         detailNewsPhotoVC.transitioningDelegate = self.presentationDelegate
+        detailNewsPhotoVC.fromView = image
         
+        self.providesPresentationContextTransitionStyle = true;
+        self.definesPresentationContext = true;
+        self.modalPresentationStyle = .custom
         
+        detailNewsPhotoVC.modalPresentationStyle = .overCurrentContext;
+        detailNewsPhotoVC.view.backgroundColor = UIColor.clear
         
         appDelegate.window?.rootViewController?.present(detailNewsPhotoVC, animated: true, completion: nil)
         
