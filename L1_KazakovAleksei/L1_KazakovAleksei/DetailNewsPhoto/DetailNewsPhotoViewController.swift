@@ -14,6 +14,8 @@ class DetailNewsPhotoViewController: UIViewController {
     
     var selectedPhotoIndex: Int = 0
     
+    var imageCoord: CGRect?
+    
     private let scaleTransform = CGAffineTransform(scaleX: 0.9, y: 0.9)
     
     @IBOutlet weak var detailPhoto: UIImageView?

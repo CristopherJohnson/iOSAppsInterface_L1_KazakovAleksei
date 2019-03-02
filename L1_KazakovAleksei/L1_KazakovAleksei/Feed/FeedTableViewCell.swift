@@ -15,6 +15,7 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var wathCount: UILabel?
     
     weak var delegate: ShowDetailImage?
+//    weak var frameDelegate: GetFrame?
     
     var cellIndexPath: IndexPath?
     
@@ -123,10 +124,12 @@ class FeedTableViewCell: UITableViewCell {
         let imageId = image.id
         
         
-        self.delegate?.getImageIndex(index: imageId ?? 1, indexPath: self.cellIndexPath!)
+        self.delegate?.getImageIndex(index: imageId ?? 1, indexPath: self.cellIndexPath!, image: image)
+//        self.frameDelegate?.getFrame(image: image)
         
         
-        print("id: \(imageId)")
     }
+    
+    
     
 }
