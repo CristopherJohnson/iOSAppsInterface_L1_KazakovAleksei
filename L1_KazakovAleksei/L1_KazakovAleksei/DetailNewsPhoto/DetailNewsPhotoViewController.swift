@@ -27,6 +27,8 @@ class DetailNewsPhotoViewController: UIViewController {
     @IBOutlet weak var detailPhotoConstraintTop:    NSLayoutConstraint?
     @IBOutlet weak var detailPhotoConstraintWidth:  NSLayoutConstraint?
     @IBOutlet weak var detailPhotoConstraintHeight: NSLayoutConstraint?
+    
+    let presentationDelegate = PresentationDelegate()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +102,7 @@ class DetailNewsPhotoViewController: UIViewController {
 //
             print("left swipe")
         case .up:
+            self.transitioningDelegate = self.presentationDelegate
             self.dismiss(animated: true, completion: nil)
             
             print("up swipe")

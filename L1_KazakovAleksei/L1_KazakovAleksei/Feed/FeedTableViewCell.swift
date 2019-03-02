@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedTableViewCell: UITableViewCell {
+class FeedTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
     @IBOutlet weak var newsLable: UILabel?
 
@@ -30,13 +30,73 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var stackImageView9: FeedImages?
     @IBOutlet weak var stackImageView10: FeedImages?
     
+    @IBOutlet weak var scrollView: UIScrollView?
+    @IBOutlet weak var pageControl: UIPageControl?
+    
 
     
+//    func setupSlides (imageNames: [String]) {
+//        var imageIndex = 1
+//        for name in imageNames {
+//            let image = FeedImages()
+//            image.setPostImage(imageName: name)
+//            image.cell = self
+//            image.setId(id: imageIndex)
+//            self.scrollViewImageSlides.append(image)
+//            imageIndex += 1
+//        }
+//    }
+    
+    func setupScrollView (imageNames: [String]) {
+        for subview in (self.scrollView?.subviews)! {
+            guard let feedImage = subview as? FeedImages else { continue }
+            if feedImage.tag < imageNames.count {
+                feedImage.setPostImage(imageName: imageNames[feedImage.tag])
+            } else {
+                
+            }
+            
+        }
+        scrollView?.contentSize = CGSize(width: ((scrollView?.frame.width)! * CGFloat(imageNames.count)), height: (scrollView?.frame.height)!)
+    }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        <#code#>
+//    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        for i in 0...9 {
+            let feedImage = FeedImages()
+            feedImage.cell = self
+            feedImage.setId(id: (i + 1))
+            self.scrollView?.addSubview(feedImage)
+            feedImage.tag = i
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        for subview in (self.scrollView?.subviews)! {
+            guard let feedImage = subview as? FeedImages else { continue }
+            feedImage.frame = CGRect(x: ((scrollView?.frame.width)! * CGFloat(feedImage.tag)), y: 0, width: (scrollView?.frame.width)!, height: (scrollView?.frame.height)!)
+        }
+    }
+
     
     func setNews (settingNews news: NewsModel) {
+        scrollView?.delegate = self
         newsLable?.text = news.newsText
 
         wathCount?.text = "300к"
+        
+        if news.stackImagesnames.count > 0 {
+            setupScrollView(imageNames: news.stackImagesnames)
+            pageControl?.numberOfPages = news.stackImagesnames.count
+            pageControl?.currentPage = 0
+            bringSubviewToFront(pageControl!)
+        }
+        
         stackImageView1?.setPostImage(imageName: news.stackImagesnames[0])
         stackImageView2?.setPostImage(imageName: news.stackImagesnames[1])
         stackImageView3?.setPostImage(imageName: news.stackImagesnames[2])
@@ -69,6 +129,10 @@ class FeedTableViewCell: UITableViewCell {
         stackImageView8?.cell = self
         stackImageView9?.cell = self
         stackImageView10?.cell = self
+        
+        
+        
+        
     }
     
     override func prepareForReuse() {

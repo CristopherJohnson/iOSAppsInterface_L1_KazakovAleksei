@@ -11,6 +11,6 @@ import Foundation
 
 class NewsModel {
     var newsText: String?
-    var newsImageName: String?
+
     let stackImagesnames: [String] = ["Avatar1", "Avatar2", "Avatar3", "Avatar4", "Avatar5", "Public1", "Public2", "Public3", "Public4", "Public5"]
 }
