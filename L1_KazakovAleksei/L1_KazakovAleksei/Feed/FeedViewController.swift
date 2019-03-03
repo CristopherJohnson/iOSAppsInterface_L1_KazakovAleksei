@@ -83,6 +83,7 @@ extension FeedViewController: UITableViewDataSource {
 //        cell.frameDelegate = self
         cell.cellIndexPath = indexPath
         let news = self.newsArray[indexPath.row]
+        cell.newsModel = news
         cell.setNews(settingNews: news)
         return cell
     }

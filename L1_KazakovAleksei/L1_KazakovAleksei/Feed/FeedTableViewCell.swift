@@ -18,6 +18,7 @@ class FeedTableViewCell: UITableViewCell, UIScrollViewDelegate {
 //    weak var frameDelegate: GetFrame?
     
     var cellIndexPath: IndexPath?
+    var newsModel: NewsModel?
     
     @IBOutlet weak var stackImageView1: FeedImages?
     @IBOutlet weak var stackImageView2: FeedImages?
@@ -33,36 +34,32 @@ class FeedTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView?
     @IBOutlet weak var pageControl: UIPageControl?
     
-
+    // далее в расчетах использовано много магических чисел. Небольшое пояснение: 26 - расстояние от нижнего края вью, в котором располагается скролл вью, до самого скролл вью (сделано для того, чтобы pageControl всегда был на белом пространстве). Все остальные числа - процентные части от 26 (13 = 50%, 6.5 = 25% итд).
     
-//    func setupSlides (imageNames: [String]) {
-//        var imageIndex = 1
-//        for name in imageNames {
-//            let image = FeedImages()
-//            image.setPostImage(imageName: name)
-//            image.cell = self
-//            image.setId(id: imageIndex)
-//            self.scrollViewImageSlides.append(image)
-//            imageIndex += 1
-//        }
-//    }
+    @IBAction func pageControlValueChanged () {
+        self.scrollView?.setContentOffset(CGPoint(x: ((scrollView?.frame.width)! - 13) * CGFloat((self.pageControl?.currentPage)!), y: 0), animated: true)
+    }
     
     func setupScrollView (imageNames: [String]) {
         for subview in (self.scrollView?.subviews)! {
             guard let feedImage = subview as? FeedImages else { continue }
             if feedImage.tag < imageNames.count {
                 feedImage.setPostImage(imageName: imageNames[feedImage.tag])
-            } else {
-                
             }
             
+            
         }
-        scrollView?.contentSize = CGSize(width: ((scrollView?.frame.width)! * CGFloat(imageNames.count)), height: (scrollView?.frame.height)!)
+        
+        scrollView?.contentSize = CGSize(width: (((scrollView?.frame.width)! * CGFloat(imageNames.count)) - (CGFloat(imageNames.count) * 13)), height: 0)
     }
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        <#code#>
-//    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.newsModel?.scrollPosition = (self.scrollView?.contentOffset)!
+//        print("scroll position in news model \(self.newsModel?.scrollPosition)")
+//        print("scroll position self scrollView \(self.scrollView?.contentOffset)")
+        let pageIndex = round(scrollView.contentOffset.x / ((self.scrollView?.frame.width)! - 13))
+        self.pageControl?.currentPage = Int(pageIndex)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -79,7 +76,12 @@ class FeedTableViewCell: UITableViewCell, UIScrollViewDelegate {
         super.layoutSubviews()
         for subview in (self.scrollView?.subviews)! {
             guard let feedImage = subview as? FeedImages else { continue }
-            feedImage.frame = CGRect(x: ((scrollView?.frame.width)! * CGFloat(feedImage.tag)), y: 0, width: (scrollView?.frame.width)!, height: (scrollView?.frame.height)!)
+            if feedImage.tag == 0 {
+                feedImage.frame = CGRect(x: (((scrollView?.frame.width)! - 13) * CGFloat(feedImage.tag) + 6.5), y: 0, width: ((scrollView?.frame.width)! - 26.0), height: ((scrollView?.frame.height)! - 26.0))
+            } else {
+                feedImage.frame = CGRect(x: (((scrollView?.frame.width)! - 13) * CGFloat(feedImage.tag) + 3.25), y: 0, width: ((scrollView?.frame.width)! - 26.0), height: ((scrollView?.frame.height)! - 26.0))
+            }
+            
         }
     }
 
@@ -92,6 +94,7 @@ class FeedTableViewCell: UITableViewCell, UIScrollViewDelegate {
         
         if news.stackImagesnames.count > 0 {
             setupScrollView(imageNames: news.stackImagesnames)
+            scrollView?.setContentOffset(news.scrollPosition, animated: false)
             pageControl?.numberOfPages = news.stackImagesnames.count
             pageControl?.currentPage = 0
             bringSubviewToFront(pageControl!)
@@ -130,9 +133,6 @@ class FeedTableViewCell: UITableViewCell, UIScrollViewDelegate {
         stackImageView9?.cell = self
         stackImageView10?.cell = self
         
-        
-        
-        
     }
     
     override func prepareForReuse() {
@@ -150,6 +150,12 @@ class FeedTableViewCell: UITableViewCell, UIScrollViewDelegate {
         stackImageView8?.reuse()
         stackImageView9?.reuse()
         stackImageView10?.reuse()
+        
+        
+        for subview in (self.scrollView?.subviews)! {
+            guard let feedImage = subview as? FeedImages else { continue }
+            feedImage.reuse()
+        }
     }
     
     func didSelectedImage(image: FeedImages) {

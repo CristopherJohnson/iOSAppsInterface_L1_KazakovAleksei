@@ -150,7 +150,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="415" height="415"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="x8A-I9-2Kv">
-                                <rect key="frame" x="10" y="368" width="395" height="37"/>
+                                <rect key="frame" x="10" y="392" width="395" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="p0o-8t-Gcd"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="pageControlValueChanged" destination="2KM-Kj-rm5" eventType="valueChanged" id="Nr7-rD-bWk"/>
+                                </connections>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -160,7 +168,7 @@
                             <constraint firstAttribute="bottom" secondItem="jmZ-CY-57d" secondAttribute="bottom" id="MwN-lV-WBX"/>
                             <constraint firstAttribute="trailing" secondItem="jmZ-CY-57d" secondAttribute="trailing" id="OJY-NB-mYJ"/>
                             <constraint firstAttribute="trailing" secondItem="x8A-I9-2Kv" secondAttribute="trailing" constant="10" id="afT-b6-eSb"/>
-                            <constraint firstAttribute="bottom" secondItem="x8A-I9-2Kv" secondAttribute="bottom" constant="10" id="cQg-ga-21k"/>
+                            <constraint firstAttribute="bottom" secondItem="x8A-I9-2Kv" secondAttribute="bottom" constant="3" id="cQg-ga-21k"/>
                             <constraint firstAttribute="width" secondItem="g4R-Vc-wk3" secondAttribute="height" multiplier="1:1" id="j8p-ak-fZN"/>
                             <constraint firstItem="x8A-I9-2Kv" firstAttribute="leading" secondItem="g4R-Vc-wk3" secondAttribute="leading" constant="10" id="u8Q-53-bqt"/>
                         </constraints>
