@@ -256,7 +256,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxb-eO-38u">
-                                                    <rect key="frame" x="60" y="11.5" width="255" height="21"/>
+                                                    <rect key="frame" x="60" y="11.5" width="285" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -477,6 +477,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pfl-Hs-9Gx">
+                                <rect key="frame" x="57" y="269" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gHU-Jo-cFK">
+                                <rect key="frame" x="57" y="269" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -495,6 +503,8 @@
                         <outlet property="detailPhotoConstraintTop" destination="6Ud-6i-MhS" id="zx0-1j-WTd"/>
                         <outlet property="detailPhotoConstraintWidth" destination="9bz-hb-etN" id="aFN-AZ-OSw"/>
                         <outlet property="infoLable" destination="sH3-Mq-9pR" id="wjf-8e-Tc4"/>
+                        <outlet property="leftSideImageView" destination="Pfl-Hs-9Gx" id="KY8-UN-PN2"/>
+                        <outlet property="rigthSideImageView" destination="gHU-Jo-cFK" id="uOb-hy-Y8V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9TC-fc-6aR" userLabel="First Responder" sceneMemberID="firstResponder"/>

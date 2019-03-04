@@ -16,6 +16,10 @@ class CloseDetailNewsPhotoAnimationController: NSObject, UIViewControllerAnimate
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
        
         guard let source = transitionContext.viewController(forKey: .from) else { return }
+        
+        // Анимация работает следующим образом: сначала я получаю текущие координаты и размер самой UIImage в UIImageView, записываю эти данные в переменную imageRect. Далее я приравниваю размер UIImageView к переменной imageRect и устанавливаю значение scaleAspectFill для UIImageView. Таким образом теперь картинка заполняет все текущее пространство и не будет скачка при изменений констрейнтов.
+        
+        
         if let sourceVC = source as? DetailNewsPhotoViewController {
 
             let imageViewSizeOptional = sourceVC.detailPhoto?.frame.size
