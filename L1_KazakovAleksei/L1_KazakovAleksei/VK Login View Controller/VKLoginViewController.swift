@@ -14,6 +14,10 @@ class VKLoginViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var webView: WKWebView?
     
     var session = Session.instance
+    
+    var requestData = RequestData()
+    let configuration = URLSessionConfiguration.default
+    
 
     let client_id = "6888720"
     
@@ -77,6 +81,38 @@ class VKLoginViewController: UIViewController, WKNavigationDelegate {
                         print("token is \(self.session.sessionInfo.token)")
                     }
                 }
+                let session = URLSession(configuration: self.configuration)
+                let getFriendsListDataTask = session.dataTask(with: self.requestData.generateRequestToGetFriensList()!) { (data: Data?, response: URLResponse?, error: Error?) in
+                    if let responseData = data {
+                        let dataString = String(data: responseData, encoding: .utf8)
+                        print("getFriendsListDataTask \(String(describing: dataString))")
+                    }
+                }
+                getFriendsListDataTask.resume()
+                
+                let getPhotosListDataTask = session.dataTask(with: self.requestData.generateRequestToGetPhotos()!) { (data: Data?, response: URLResponse?, error: Error?) in
+                    if let responseData = data {
+                        let dataString = String(data: responseData, encoding: .utf8)
+                        print("getPhotosListDataTask \(String(describing: dataString))")
+                    }
+                }
+                getPhotosListDataTask.resume()
+                
+                let getGroupsListDataTask = session.dataTask(with: self.requestData.generateRequestToGetGroups()!) { (data: Data?, response: URLResponse?, error: Error?) in
+                    if let responseData = data {
+                        let dataString = String(data: responseData, encoding: .utf8)
+                        print("getGroupsListDataTask \(String(describing: dataString))")
+                    }
+                }
+                getGroupsListDataTask.resume()
+                
+                let getGroupsSearchResult = session.dataTask(with: self.requestData.generateReguestToSearchGroups()!) { (data: Data?, response: URLResponse?, error: Error?) in
+                    if let responseData = data {
+                        let dataString = String(data: responseData, encoding: .utf8)
+                        print("getGroupsSearchResult \(String(describing: dataString))")
+                    }
+                }
+                getGroupsSearchResult.resume()
             }
             
         }

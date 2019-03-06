@@ -21,6 +21,7 @@ public class Session {
     static let instance = Session()
     private init () {}
     
+    
     var userInfo = UserInfo()
     var sessionInfo = SessionInfo()
     
