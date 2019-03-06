@@ -30,11 +30,11 @@ class FeedViewController: UIViewController {
         tableView?.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedTableViewCell")
         
         
-        let images = ["NewsImage1", "NewsImage2", "NewsImage3", "NewsImage4"]
+
         let text = ["Эти типы ячеек используются во многих приложениях от Apple, но редко — от других компаний, так как они не соответствуют их дизайну.", "Чтобы сделать кастомную ячейку, нужно создать наследника класса UITableViewCell.​В этом классе можно объявить I​BOutlet’s для вложенных UI-компонентов и нужно переопределить метод prepareForReuse.​ Он вызывается в момент, когда ячейка будет переиспользована. В нем необходимо подготовить ячейку — убрать надписи с лейблов и удалить картинки из ​UIImageView.​ Если этого не сделать, в ячейке могут остаться данные из предыдущего состояния.", "У таблицы, как и у секций, есть header и f​ooter.​Они располагаются вверху и внизу таблицы. Не переиспользуются и чаще всего отображают статичный контент — например, строку поиска или индикатор загрузки. Чтобы добавить в таблицу header или footer,​ нужно установить свойства tableHeaderView и t​ableFooterView.​ В роли этих ​view может выступать любой наследник ​UIView.​ Важно установить f​rame у ​view перед тем, как добавлять ее в качестве ​header или footer.​ Чтобы изменить размер ​header или f​ooter,​нужно установить новый f​rame и вызвать метод r​eloadData у таблицы.", "Если вызвать несколько этих методов"]
         for i in 0...(text.count - 1) {
             let news = NewsModel()
-            news.newsImageName = images[i]
+
             news.newsText = text[i]
             newsArray.append(news)
         }
@@ -83,6 +83,7 @@ extension FeedViewController: UITableViewDataSource {
 //        cell.frameDelegate = self
         cell.cellIndexPath = indexPath
         let news = self.newsArray[indexPath.row]
+        cell.newsModel = news
         cell.setNews(settingNews: news)
         return cell
     }
@@ -104,15 +105,21 @@ extension FeedViewController: ShowDetailImage{
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-        let imageCoord = image.convert(image.frame, to: self.view)
+        let imageCoord = image.superview?.convert(image.frame, to: self.view)
         print("\(imageCoord)")
         self.selectedImageFrame = imageCoord
         detailNewsPhotoVC.allPhotoesNames = news.stackImagesnames
         detailNewsPhotoVC.selectedPhotoIndex = (index - 1)
         detailNewsPhotoVC.imageCoord = self.selectedImageFrame
         detailNewsPhotoVC.transitioningDelegate = self.presentationDelegate
+        detailNewsPhotoVC.fromView = image
         
+        self.providesPresentationContextTransitionStyle = true;
+        self.definesPresentationContext = true;
+        self.modalPresentationStyle = .custom
         
+        detailNewsPhotoVC.modalPresentationStyle = .overCurrentContext;
+        detailNewsPhotoVC.view.backgroundColor = UIColor.clear
         
         appDelegate.window?.rootViewController?.present(detailNewsPhotoVC, animated: true, completion: nil)
         

@@ -57,19 +57,25 @@ class MyFriendsViewController: UIViewController {
 
     
     @IBOutlet weak var tableView: UITableView?
-    @IBOutlet weak var friendsSectionIndexVC: FriendsSectionIndex?
-    @IBAction func charButtonChanged() {
-        print("charButtonChanged")
-        if let char = friendsSectionIndexVC?.selectedChar {
-            if friendsSectionTitles.contains(char.title) {
-                print("friendsSectionTitles.contains")
-                let section = friendsSectionTitles.firstIndex(of: char.title)
-                let indexPath = IndexPath(row: 0, section: section!)
-                self.tableView?.scrollToRow(at: indexPath, at: .top, animated: true)
-            }
-        }
-        
-    }
+    
+    
+//    FriendsSectionIndexVC is hidden because default sectionIndexTitles looks better. To activate  - change constraints an fix IBOutlet, IBAction (value change).
+    
+//    @IBOutlet weak var friendsSectionIndexVC: FriendsSectionIndex?
+    
+    
+//    @IBAction func charButtonChanged() {
+//        print("charButtonChanged")
+//        if let char = friendsSectionIndexVC?.selectedChar {
+//            if friendsSectionTitles.contains(char.title) {
+//                print("friendsSectionTitles.contains")
+//                let section = friendsSectionTitles.firstIndex(of: char.title)
+//                let indexPath = IndexPath(row: 0, section: section!)
+//                self.tableView?.scrollToRow(at: indexPath, at: .top, animated: true)
+//            }
+//        }
+//
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,8 +95,8 @@ class MyFriendsViewController: UIViewController {
         }
         
         self.filterContentFor(searchText: "")
-        self.friendsSectionIndexVC?.allExistingChars = self.friendsSectionTitles
-        self.friendsSectionIndexVC?.reload()
+//        self.friendsSectionIndexVC?.allExistingChars = self.friendsSectionTitles
+//        self.friendsSectionIndexVC?.reload()
         
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController?.searchResultsUpdater = self
