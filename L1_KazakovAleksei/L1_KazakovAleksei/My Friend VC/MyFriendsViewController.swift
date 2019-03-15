@@ -16,6 +16,9 @@ class MyFriendsViewController: UIViewController {
     
     var filteredResultArray: [Friend] = []
     
+    var requestData = RequestData()
+    let configuration = URLSessionConfiguration.default
+    
 
     private var searchController: UISearchController?
     
@@ -27,10 +30,10 @@ class MyFriendsViewController: UIViewController {
             filteredResultArray = friends
         } else {
             filteredResultArray = friends.filter{ (friend) -> Bool in
-                guard let name = friend.name else {
+                guard let name = friend.firstName else {
                     return false
                 }
-                guard let surname = friend.surname else {
+                guard let surname = friend.lastName else {
                     return false
                 }
                     
@@ -40,7 +43,7 @@ class MyFriendsViewController: UIViewController {
         }
         
         for friend in filteredResultArray {
-            let friendKey = String(friend.surname?.prefix(1) ?? "NS")
+            let friendKey = String(friend.lastName?.prefix(1) ?? "NS")
             if var friendValues = self.friendsDictionary[friendKey] {
                 friendValues.append(friend)
                 self.friendsDictionary[friendKey] = friendValues
@@ -51,6 +54,10 @@ class MyFriendsViewController: UIViewController {
         }
         self.friendsSectionTitles = [String](friendsDictionary.keys)
         self.friendsSectionTitles = self.friendsSectionTitles.sorted(by: { $0 < $1 })
+        
+        OperationQueue.main.addOperation {
+            self.tableView!.reloadData()
+        }
         
     }
     
@@ -79,22 +86,29 @@ class MyFriendsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let names = ["Ivan", "Petr", "Ilya", "Lil", "30", "AAA", "BBB", "DDD", "EEE", "FFF", "GGG", "HHH", "KKK", "LLL", "MMM", "NNN", "OOO"]
-        let imageName = ["Avatar1", "Avatar2", "Avatar3", "Avatar4", "Avatar5", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image", "No_Image"]
-        let id = ["11", "22", "33", "44", "55", "66", "77", "88", "99", "111", "222", "333", "444", "555", "666", "777", "888"]
-        let surnames = ["Ivanov", "Petrov", "Just Ilya", "Pip", "Cents", "AAA", "BBB", "DDD", "EEE", "FFF", "GGG", "HHH", "KKK", "LLL", "MMM", "NNN", "OOO"]
         
-        for i in 0...(id.count - 1) {
-            let friend = Friend()
-            friend.name = names[i]
-            friend.surname = surnames[i]
-            friend.imageName = imageName[i]
-            friend.id = id[i]
-            self.friends.append(friend)
+        let session = URLSession(configuration: self.configuration)
+        let getFriendsListDataTask = session.dataTask(with: self.requestData.generateRequestToGetFriensList()!) { (data: Data?, response: URLResponse?, error: Error?) in
+            if let responseData = data {
+                let getFriendsResponse: GetFriends? = Parser.parseFriends(data: responseData)
+                if let items = getFriendsResponse?.response.items {
+                    for item in items {
+                        let friend = Friend()
+                        friend.id = item.id
+                        friend.firstName = item.first_name
+                        friend.lastName = item.last_name
+                        friend.imageURL = item.photo_100
+                        self.friends.append(friend)
+                    }
+                    
+                }
+                self.filterContentFor(searchText: "")
+                
+            }
         }
+        getFriendsListDataTask.resume()
         
-        self.filterContentFor(searchText: "")
+        
 //        self.friendsSectionIndexVC?.allExistingChars = self.friendsSectionTitles
 //        self.friendsSectionIndexVC?.reload()
         
@@ -103,6 +117,7 @@ class MyFriendsViewController: UIViewController {
         self.searchController?.dimsBackgroundDuringPresentation = false
         self.tableView?.tableHeaderView = self.searchController?.searchBar
         definesPresentationContext = true
+        
         
     }
         

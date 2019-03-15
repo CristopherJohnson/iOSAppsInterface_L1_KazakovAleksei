@@ -18,7 +18,7 @@ class AllPublicsTableViewCell: UITableViewCell {
     func setPublic(settingPublic: Public) {
         self.publicNameLable?.text = settingPublic.name
         self.publicImageView?.image = UIImage(named: settingPublic.imageName ?? "No_Image")
-        self.publicId? = settingPublic.id ?? "000000"
+        self.publicId? = settingPublic.fakeId ?? "000000"
     }
     
     override func awakeFromNib() {

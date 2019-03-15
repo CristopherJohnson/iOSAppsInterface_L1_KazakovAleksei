@@ -8,8 +8,17 @@
 
 import Foundation
 
+
 class Public {
     var name: String?
     var imageName: String?
-    var id: String?
+    var fakeId: String?
+    
+// real Data (name is real too)
+    var id: Int?
+    var imageURL: String?
+    
 }
+
+
+

@@ -11,15 +11,20 @@ import UIKit
 class MyFriendTwoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var friendNameLable: UILabel?
-    var friendId: String?
+    var friendFakeId: String?
+    var friendsId: Int?
     @IBOutlet weak var myFriendImageView: FriendPhoto?
     
     func setFriend(settingFriend: Friend) {
-        let name = settingFriend.name ?? "NoName"
-        let surname = settingFriend.surname ?? "NoSurname"
+//        let name = settingFriend.fakeName ?? "NoName"
+//        let surname = settingFriend.fakeSurname ?? "NoSurname"
+        let name = settingFriend.firstName ?? "NoName"
+        let surname = settingFriend.lastName ?? "NoSurname"
         self.friendNameLable?.text = name + " " + surname
-        self.friendId? = settingFriend.id ?? "000000"
-        self.myFriendImageView?.imageView?.image = UIImage(named: settingFriend.imageName ?? "No_Image")
+        self.friendsId? = settingFriend.id!
+        self.friendFakeId? = settingFriend.fakeId ?? "000000"
+//        self.myFriendImageView?.imageView?.image = UIImage(named: settingFriend.imageName ?? "No_Image")
+        self.myFriendImageView?.imageView?.load(url: URL(string: settingFriend.imageURL!)!)
     }
     
 

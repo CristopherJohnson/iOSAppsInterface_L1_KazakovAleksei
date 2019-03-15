@@ -82,13 +82,6 @@ class VKLoginViewController: UIViewController, WKNavigationDelegate {
                     }
                 }
                 let session = URLSession(configuration: self.configuration)
-                let getFriendsListDataTask = session.dataTask(with: self.requestData.generateRequestToGetFriensList()!) { (data: Data?, response: URLResponse?, error: Error?) in
-                    if let responseData = data {
-                        let dataString = String(data: responseData, encoding: .utf8)
-                        print("getFriendsListDataTask \(String(describing: dataString))")
-                    }
-                }
-                getFriendsListDataTask.resume()
                 
                 let getPhotosListDataTask = session.dataTask(with: self.requestData.generateRequestToGetPhotos()!) { (data: Data?, response: URLResponse?, error: Error?) in
                     if let responseData = data {
@@ -98,14 +91,6 @@ class VKLoginViewController: UIViewController, WKNavigationDelegate {
                 }
                 getPhotosListDataTask.resume()
                 
-                let getGroupsListDataTask = session.dataTask(with: self.requestData.generateRequestToGetGroups()!) { (data: Data?, response: URLResponse?, error: Error?) in
-                    if let responseData = data {
-                        let dataString = String(data: responseData, encoding: .utf8)
-                        print("getGroupsListDataTask \(String(describing: dataString))")
-                    }
-                }
-                getGroupsListDataTask.resume()
-                
                 let getGroupsSearchResult = session.dataTask(with: self.requestData.generateReguestToSearchGroups()!) { (data: Data?, response: URLResponse?, error: Error?) in
                     if let responseData = data {
                         let dataString = String(data: responseData, encoding: .utf8)
@@ -113,6 +98,8 @@ class VKLoginViewController: UIViewController, WKNavigationDelegate {
                     }
                 }
                 getGroupsSearchResult.resume()
+                self.performSegue(withIdentifier: "openAppAfterVkLogin", sender: nil)
+                
             }
             
         }

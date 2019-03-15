@@ -44,7 +44,7 @@ class AllPublicsTableViewController: UITableViewController {
             let pub = Public()
             pub.name = names[i]
             pub.imageName = imageName[i]
-            pub.id = id[i]
+            pub.fakeId = id[i]
             
             self.publics.append(pub)
         }
