@@ -10,6 +10,8 @@
 		A3015CDB220C563B0021318E /* TestLikeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3015CDA220C563B0021318E /* TestLikeButtonViewController.swift */; };
 		A3015CDE220C8C9D0021318E /* FriendsSectionIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3015CDD220C8C9D0021318E /* FriendsSectionIndex.swift */; };
 		A328739F222D655200CEB51A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328739E222D655200CEB51A /* Session.swift */; };
+		A32873A2222FED9100CEB51A /* VKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32873A1222FED9100CEB51A /* VKLoginViewController.swift */; };
+		A32873A4223063CD00CEB51A /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32873A3223063CD00CEB51A /* RequestData.swift */; };
 		A330872822036CA3006D70C8 /* AllPublicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330872722036CA3006D70C8 /* AllPublicsTableViewController.swift */; };
 		A330872A22036D14006D70C8 /* AllPublicsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330872922036D14006D70C8 /* AllPublicsTableViewCell.swift */; };
 		A330872D22036F15006D70C8 /* PublicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330872C22036F15006D70C8 /* PublicsModel.swift */; };
@@ -66,6 +68,8 @@
 		A3015CDA220C563B0021318E /* TestLikeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLikeButtonViewController.swift; sourceTree = "<group>"; };
 		A3015CDD220C8C9D0021318E /* FriendsSectionIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsSectionIndex.swift; sourceTree = "<group>"; };
 		A328739E222D655200CEB51A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		A32873A1222FED9100CEB51A /* VKLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginViewController.swift; sourceTree = "<group>"; };
+		A32873A3223063CD00CEB51A /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
 		A330872722036CA3006D70C8 /* AllPublicsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPublicsTableViewController.swift; sourceTree = "<group>"; };
 		A330872922036D14006D70C8 /* AllPublicsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPublicsTableViewCell.swift; sourceTree = "<group>"; };
 		A330872C22036F15006D70C8 /* PublicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicsModel.swift; sourceTree = "<group>"; };
@@ -140,6 +144,14 @@
 			path = "Section Index";
 			sourceTree = "<group>";
 		};
+		A32873A0222FED5900CEB51A /* VK Login View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A32873A1222FED9100CEB51A /* VKLoginViewController.swift */,
+			);
+			path = "VK Login View Controller";
+			sourceTree = "<group>";
+		};
 		A330872622036C49006D70C8 /* All publics */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +168,7 @@
 				A33087382203B46D006D70C8 /* FriendModel.swift */,
 				A33E911E2211E07500814DBF /* NewsModel.swift */,
 				A328739E222D655200CEB51A /* Session.swift */,
+				A32873A3223063CD00CEB51A /* RequestData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -261,6 +274,7 @@
 		A3A94A9821F8D51D001BC531 /* L1_KazakovAleksei */ = {
 			isa = PBXGroup;
 			children = (
+				A32873A0222FED5900CEB51A /* VK Login View Controller */,
 				A36AB96A22243A7F009F6141 /* Custom Navigation Controller */,
 				A335C4A4221F2C2300DF8917 /* DetailNewsPhoto */,
 				A33B314D221AAAFE00CBAEBA /* DownloadAnimation */,
@@ -455,9 +469,11 @@
 				A330872A22036D14006D70C8 /* AllPublicsTableViewCell.swift in Sources */,
 				A36AB9772224849D009F6141 /* PresentationDelegate.swift in Sources */,
 				A330872822036CA3006D70C8 /* AllPublicsTableViewController.swift in Sources */,
+				A32873A4223063CD00CEB51A /* RequestData.swift in Sources */,
 				A33E91192211D29C00814DBF /* FeedViewController.swift in Sources */,
 				A3015CDB220C563B0021318E /* TestLikeButtonViewController.swift in Sources */,
 				A36AB96E2224419E009F6141 /* CustomPopAnimator.swift in Sources */,
+				A32873A2222FED9100CEB51A /* VKLoginViewController.swift in Sources */,
 				A36AB97022244371009F6141 /* CustomNavigationController.swift in Sources */,
 				A330873E2203BC08006D70C8 /* FriendsPhotoesCollectionViewCell.swift in Sources */,
 				A328739F222D655200CEB51A /* Session.swift in Sources */,
