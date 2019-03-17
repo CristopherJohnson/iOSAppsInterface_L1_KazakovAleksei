@@ -36,6 +36,7 @@ class MyFriendsViewController: UIViewController {
                 guard let surname = friend.lastName else {
                     return false
                 }
+
                     
                 return (name.lowercased().contains(text.lowercased()) || surname.lowercased().contains(text.lowercased()))
             }
@@ -58,6 +59,7 @@ class MyFriendsViewController: UIViewController {
         OperationQueue.main.addOperation {
             self.tableView!.reloadData()
         }
+        print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
         
     }
     
@@ -91,18 +93,25 @@ class MyFriendsViewController: UIViewController {
         let getFriendsListDataTask = session.dataTask(with: self.requestData.generateRequestToGetFriensList()!) { (data: Data?, response: URLResponse?, error: Error?) in
             if let responseData = data {
                 let getFriendsResponse: GetFriends? = Parser.parseFriends(data: responseData)
-                if let items = getFriendsResponse?.response.items {
-                    for item in items {
-                        let friend = Friend()
-                        friend.id = item.id
-                        friend.firstName = item.first_name
-                        friend.lastName = item.last_name
-                        friend.imageURL = item.photo_100
-                        self.friends.append(friend)
+                
+                DispatchQueue.main.async{
+                    if let items = getFriendsResponse?.response.items {
+                        for item in items {
+                            let friend = Friend()
+                            friend.id = item.id
+                            friend.firstName = item.first_name
+                            friend.lastName = item.last_name
+                            friend.imageURL = item.photo_100
+                            self.friends.append(friend)
+                        }
+                        
                     }
-                    
+                    self.filterContentFor(searchText: "")
+                    print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
                 }
-                self.filterContentFor(searchText: "")
+                
+                
+                
                 
             }
         }
@@ -117,7 +126,7 @@ class MyFriendsViewController: UIViewController {
         self.searchController?.dimsBackgroundDuringPresentation = false
         self.tableView?.tableHeaderView = self.searchController?.searchBar
         definesPresentationContext = true
-        
+        print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
         
     }
         
@@ -137,6 +146,7 @@ class MyFriendsViewController: UIViewController {
             let friend = friendValues![indexPath!.row]
             friendPhotoesVC.friend = friend
         }
+        print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
     }
 
 }
@@ -169,6 +179,7 @@ extension MyFriendsViewController: UITableViewDataSource {
         if let friendValues = self.friendsDictionary[friend] {
             cell.setFriend(settingFriend: friendValues[indexPath.row])
         }
+
      
         return cell
     }
@@ -189,6 +200,7 @@ extension MyFriendsViewController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         self.filterContentFor(searchText: searchController.searchBar.text!)
         self.tableView?.reloadData()
+        print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
     }
     
 }

@@ -106,7 +106,6 @@ extension FeedViewController: ShowDetailImage{
             return
         }
         let imageCoord = image.superview?.convert(image.frame, to: self.view)
-        print("\(imageCoord)")
         self.selectedImageFrame = imageCoord
         detailNewsPhotoVC.allPhotoesNames = news.stackImagesnames
         detailNewsPhotoVC.selectedPhotoIndex = (index - 1)

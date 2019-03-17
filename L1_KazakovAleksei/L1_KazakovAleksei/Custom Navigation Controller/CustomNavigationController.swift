@@ -31,12 +31,14 @@ class CustomNavigationController: UINavigationController, UINavigationController
         if operation == .push {
             print("animation push")
             self.interactiveTransition.viewController = toVC
+            print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
             return CustomPushAnomator()
         } else if operation == .pop {
             print("animation pop")
             if navigationController.viewControllers.first != toVC {
                 self.interactiveTransition.viewController = toVC
             }
+            print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
             return CustomPopAnimator()
         }
         return nil

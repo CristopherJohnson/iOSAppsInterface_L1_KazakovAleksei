@@ -34,6 +34,7 @@ class Parser {
         do {
             let decoder = JSONDecoder()
             let response: GetFriends = try decoder.decode(GetFriends.self, from: data)
+            print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
             return response
         } catch {
             print("JSONDecoder exception \(#file) \(#function) \(#line) \(error)")
@@ -178,4 +179,7 @@ class  GetFriendsResponseItems: Codable {
         photo_100 = try container.decode(String.self, forKey: .photo_100)
     }
 }
+
+
+
 

@@ -42,6 +42,7 @@ class CustomPopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             }
 
             transitionContext.completeTransition(finished && !transitionContext.transitionWasCancelled)
+            print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
         }
         
     }

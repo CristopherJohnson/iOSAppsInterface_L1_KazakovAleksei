@@ -288,20 +288,13 @@
 		A3A94A9821F8D51D001BC531 /* L1_KazakovAleksei */ = {
 			isa = PBXGroup;
 			children = (
+				A3CDCE6B223EA034001B79FB /* View Controllers */,
 				A33BFF52223BED96009D0159 /* Primitives */,
-				A32873A0222FED5900CEB51A /* VK Login View Controller */,
 				A36AB96A22243A7F009F6141 /* Custom Navigation Controller */,
-				A335C4A4221F2C2300DF8917 /* DetailNewsPhoto */,
 				A33B314D221AAAFE00CBAEBA /* DownloadAnimation */,
-				A33E91172211D26B00814DBF /* Feed */,
 				A3015CDC220C8C570021318E /* Section Index */,
 				A38D78DF2208C8A80018B747 /* LikeButton */,
-				A38D78D622085E400018B747 /* My Friend VC */,
-				A330873A2203BB8C006D70C8 /* Friends Photoes */,
-				A330872E22039B9D006D70C8 /* My publics */,
 				A330872B22036EED006D70C8 /* Models */,
-				A330872622036C49006D70C8 /* All publics */,
-				A3A94AC721F8D534001BC531 /* Login View Controller */,
 				A3A94A9921F8D51D001BC531 /* AppDelegate.swift */,
 				A3A94A9D21F8D51D001BC531 /* Main.storyboard */,
 				A3A94AA021F8D51E001BC531 /* Assets.xcassets */,
@@ -335,6 +328,21 @@
 				A3A94AC821F8D560001BC531 /* loginViewController.swift */,
 			);
 			path = "Login View Controller";
+			sourceTree = "<group>";
+		};
+		A3CDCE6B223EA034001B79FB /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A330873A2203BB8C006D70C8 /* Friends Photoes */,
+				A3A94AC721F8D534001BC531 /* Login View Controller */,
+				A330872622036C49006D70C8 /* All publics */,
+				A330872E22039B9D006D70C8 /* My publics */,
+				A38D78D622085E400018B747 /* My Friend VC */,
+				A33E91172211D26B00814DBF /* Feed */,
+				A335C4A4221F2C2300DF8917 /* DetailNewsPhoto */,
+				A32873A0222FED5900CEB51A /* VK Login View Controller */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
