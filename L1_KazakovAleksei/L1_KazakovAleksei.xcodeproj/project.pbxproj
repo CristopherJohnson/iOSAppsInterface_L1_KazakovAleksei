@@ -169,6 +169,7 @@
 		A330872B22036EED006D70C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A3EF042622401848007C2E0D /* DataBase */,
 				A330872C22036F15006D70C8 /* PublicsModel.swift */,
 				A33087382203B46D006D70C8 /* FriendModel.swift */,
 				A33E911E2211E07500814DBF /* NewsModel.swift */,
@@ -343,6 +344,13 @@
 				A32873A0222FED5900CEB51A /* VK Login View Controller */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A3EF042622401848007C2E0D /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
