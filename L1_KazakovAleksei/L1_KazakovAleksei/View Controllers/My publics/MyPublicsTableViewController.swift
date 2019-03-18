@@ -28,6 +28,7 @@ class MyPublicsTableViewController: UITableViewController {
                         publ.name = item.name
                         publ.imageURL = item.photo_200
                         self.publics.append(publ)
+                        DataStorage.shared.savePublic(publicModel: publ)
                     }
                 }
                 OperationQueue.main.addOperation {

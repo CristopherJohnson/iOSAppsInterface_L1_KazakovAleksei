@@ -1,0 +1,6 @@
+framework module Pods_L1_KazakovAlekseiUITests {
+  umbrella header "Pods-L1_KazakovAlekseiUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

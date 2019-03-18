@@ -94,7 +94,7 @@ class MyFriendsViewController: UIViewController {
             if let responseData = data {
                 let getFriendsResponse: GetFriends? = Parser.parseFriends(data: responseData)
                 
-                DispatchQueue.main.async{
+//                DispatchQueue.main.async{
                     if let items = getFriendsResponse?.response.items {
                         for item in items {
                             let friend = Friend()
@@ -103,12 +103,13 @@ class MyFriendsViewController: UIViewController {
                             friend.lastName = item.last_name
                             friend.imageURL = item.photo_100
                             self.friends.append(friend)
+                            DataStorage.shared.saveFriend(friendModel: friend)
                         }
                         
                     }
                     self.filterContentFor(searchText: "")
                     print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
-                }
+//                }
                 
                 
                 
