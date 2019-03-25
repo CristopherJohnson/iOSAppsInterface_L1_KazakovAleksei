@@ -50,6 +50,8 @@
 		A3A94AAF21F8D51E001BC531 /* L1_KazakovAlekseiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AAE21F8D51E001BC531 /* L1_KazakovAlekseiTests.swift */; };
 		A3A94ABA21F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AB921F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift */; };
 		A3A94AC921F8D560001BC531 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AC821F8D560001BC531 /* loginViewController.swift */; };
+		A3CB87D1224949560004034F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB87D0224949560004034F /* APIManager.swift */; };
+		A3CB87D4224958B90004034F /* LoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB87D3224958B90004034F /* LoadManager.swift */; };
 		A3EF042C22402521007C2E0D /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF042B22402521007C2E0D /* DataStorage.swift */; };
 		A3EF042E22402539007C2E0D /* RealmDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF042D22402539007C2E0D /* RealmDataStorage.swift */; };
 		D016BDFBBFDCD27C5F45DE48 /* Pods_L1_KazakovAleksei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7411F337A374BC034F0BF92 /* Pods_L1_KazakovAleksei.framework */; };
@@ -124,6 +126,8 @@
 		A3A94AB921F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L1_KazakovAlekseiUITests.swift; sourceTree = "<group>"; };
 		A3A94ABB21F8D51E001BC531 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3A94AC821F8D560001BC531 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		A3CB87D0224949560004034F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		A3CB87D3224958B90004034F /* LoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadManager.swift; sourceTree = "<group>"; };
 		A3EF042B22402521007C2E0D /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		A3EF042D22402539007C2E0D /* RealmDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataStorage.swift; sourceTree = "<group>"; };
 		B7411F337A374BC034F0BF92 /* Pods_L1_KazakovAleksei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_L1_KazakovAleksei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,13 +192,13 @@
 		A330872B22036EED006D70C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A3CB87D2224958790004034F /* Entityes */,
 				A3EF042A22402509007C2E0D /* DataBase */,
-				A330872C22036F15006D70C8 /* PublicsModel.swift */,
-				A33087382203B46D006D70C8 /* FriendModel.swift */,
-				A33E911E2211E07500814DBF /* NewsModel.swift */,
 				A328739E222D655200CEB51A /* Session.swift */,
 				A32873A3223063CD00CEB51A /* RequestData.swift */,
 				A3048E27223BAC1D00DFEF64 /* Parser.swift */,
+				A3CB87D0224949560004034F /* APIManager.swift */,
+				A3CB87D3224958B90004034F /* LoadManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -350,6 +354,16 @@
 				A3A94AC821F8D560001BC531 /* loginViewController.swift */,
 			);
 			path = "Login View Controller";
+			sourceTree = "<group>";
+		};
+		A3CB87D2224958790004034F /* Entityes */ = {
+			isa = PBXGroup;
+			children = (
+				A330872C22036F15006D70C8 /* PublicsModel.swift */,
+				A33087382203B46D006D70C8 /* FriendModel.swift */,
+				A33E911E2211E07500814DBF /* NewsModel.swift */,
+			);
+			path = Entityes;
 			sourceTree = "<group>";
 		};
 		A3CDCE6B223EA034001B79FB /* View Controllers */ = {
@@ -629,11 +643,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3A94AC921F8D560001BC531 /* loginViewController.swift in Sources */,
+				A3CB87D4224958B90004034F /* LoadManager.swift in Sources */,
 				A38D78D822085E6A0018B747 /* MyFriendsViewController.swift in Sources */,
 				A36AB96C22243AB4009F6141 /* CustomPushAnomator.swift in Sources */,
 				A330873222039BDD006D70C8 /* MyPublicsTableViewCell.swift in Sources */,
 				A38D78DC220862F20018B747 /* MyFriendTwoTableViewCell.swift in Sources */,
 				A362FB69222ACEC9002A2DD7 /* CloseDetailNewsPhotoAnimationController.swift in Sources */,
+				A3CB87D1224949560004034F /* APIManager.swift in Sources */,
 				A3A94A9A21F8D51D001BC531 /* AppDelegate.swift in Sources */,
 				A33B314F221AAC3D00CBAEBA /* LoaderPoints.swift in Sources */,
 				A330873022039BC6006D70C8 /* MyPublicsTableViewController.swift in Sources */,

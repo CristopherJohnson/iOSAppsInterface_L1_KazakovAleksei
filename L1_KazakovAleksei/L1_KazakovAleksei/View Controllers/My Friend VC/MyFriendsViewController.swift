@@ -16,9 +16,6 @@ class MyFriendsViewController: UIViewController {
     
     var filteredResultArray: [Friend] = []
     
-    var requestData = RequestData()
-    let configuration = URLSessionConfiguration.default
-    
 
     private var searchController: UISearchController?
     
@@ -89,34 +86,7 @@ class MyFriendsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let session = URLSession(configuration: self.configuration)
-        let getFriendsListDataTask = session.dataTask(with: self.requestData.generateRequestToGetFriensList()!) { (data: Data?, response: URLResponse?, error: Error?) in
-            if let responseData = data {
-                let getFriendsResponse: GetFriends? = Parser.parseFriends(data: responseData)
-                
-//                DispatchQueue.main.async{
-                    if let items = getFriendsResponse?.response.items {
-                        for item in items {
-                            let friend = Friend()
-                            friend.id = item.id
-                            friend.firstName = item.first_name
-                            friend.lastName = item.last_name
-                            friend.imageURL = item.photo_100
-                            self.friends.append(friend)
-                            DataStorage.shared.saveFriend(friendModel: friend)
-                        }
-                        
-                    }
-                    self.filterContentFor(searchText: "")
-                    print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
-//                }
-                
-                
-                
-                
-            }
-        }
-        getFriendsListDataTask.resume()
+        
         
         
 //        self.friendsSectionIndexVC?.allExistingChars = self.friendsSectionTitles
@@ -129,6 +99,15 @@ class MyFriendsViewController: UIViewController {
         definesPresentationContext = true
         print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        LoadManager.shared.loadFriends { (friends: [Friend]) in
+            self.friends = friends
+            self.filterContentFor(searchText: "")
+            print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
+        }
     }
         
         
