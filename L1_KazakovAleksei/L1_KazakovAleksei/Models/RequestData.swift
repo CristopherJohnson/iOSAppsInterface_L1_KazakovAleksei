@@ -23,7 +23,7 @@ class RequestData {
         urlComponents.path = "/method/friends.get"
         urlComponents.queryItems = [
             URLQueryItem(name: "order", value: "name"),
-            URLQueryItem(name: "fields", value: "nickname"),
+            URLQueryItem(name: "fields", value: "nickname,photo_100"),
             URLQueryItem(name: "access_token", value: self.session.sessionInfo.token),
             URLQueryItem(name: "v", value: "5.92")
         ]
@@ -46,7 +46,7 @@ class RequestData {
         urlComponents.path = "/method/photos.getAll"
         urlComponents.queryItems = [
             URLQueryItem(name: "extended", value: "1"),
-            URLQueryItem(name: "count", value: "100"),
+            URLQueryItem(name: "count", value: "10"),
             URLQueryItem(name: "photo_sizes", value: "1"),
             URLQueryItem(name: "skip_hidden", value: "0"),
             URLQueryItem(name: "access_token", value: self.session.sessionInfo.token),

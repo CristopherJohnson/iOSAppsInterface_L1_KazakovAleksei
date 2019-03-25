@@ -603,6 +603,7 @@
                     </view>
                     <connections>
                         <outlet property="webView" destination="01G-eX-6Gp" id="2XR-S2-AcA"/>
+                        <segue destination="3r4-Yt-Mpa" kind="show" identifier="openAppAfterVkLogin" id="r6D-0M-R0x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FFm-9Y-ypO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -648,4 +649,7 @@
             <point key="canvasLocation" x="2796" y="-663"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="r6D-0M-R0x"/>
+    </inferredMetricsTieBreakers>
 </document>

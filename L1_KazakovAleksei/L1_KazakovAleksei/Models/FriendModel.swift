@@ -9,8 +9,16 @@
 import Foundation
 
 class Friend {
-    var name: String?
+    
+//    fake data
+    var fakeName: String?
     var imageName: String?
-    var id: String?
-    var surname: String?
+    var fakeId: String?
+    var fakeSurname: String?
+    
+//    real data
+    var id: Int?
+    var firstName: String?
+    var lastName: String?
+    var imageURL: String?
 }
