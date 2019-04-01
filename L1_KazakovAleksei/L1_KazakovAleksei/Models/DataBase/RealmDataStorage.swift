@@ -16,6 +16,10 @@ class PublicsModelObject: Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var imageURL: String = ""
     
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
     static func createForm (publicModel: Public) -> PublicsModelObject {
         let object = PublicsModelObject()
         object.name = publicModel.name!
@@ -24,6 +28,16 @@ class PublicsModelObject: Object {
         
         return object
     }
+    
+    func create () -> Public {
+        let publicModel = Public()
+        publicModel.id = self.id
+        publicModel.imageURL = self.imageURL
+        publicModel.name = self.name
+        
+        return publicModel
+    }
+    
 }
 
 class FriendsModelObject: Object {
@@ -41,64 +55,128 @@ class FriendsModelObject: Object {
         
         return object
     }
+    
+    func create () -> Friend {
+        let friendModel = Friend()
+        friendModel.id = self.id
+        friendModel.imageURL = self.imageURL
+        friendModel.firstName = self.firstName
+        friendModel.lastName = self.lastName
+        
+        return friendModel
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+
+    
 }
 
 
 class RealmDataStorage: IDataStorage {
     
-    let dispathQueue = DispatchQueue(label: "RealmDataStorage")
     
-    var realm: Realm?
+    
+    let dispathQueue = DispatchQueue(label: "RealmDataStorage")
     
     init() {
         self.dispathQueue.sync {
-            do {
-                self.realm = try Realm()
-            } catch {
-                print("RealmDataStorage init exception \(#file) \(#function) \(#line) \(error)")
-            }
+          
         }
     }
     
     
     
-    func savePublic(publicModel: Public) {
+    func savePublic(publicModel: [Public]) {
         self.dispathQueue.sync {
-            guard let realm = self.realm else {
+            guard let realm = try? Realm() else {
                 return
             }
             
-            let object = PublicsModelObject.createForm(publicModel: publicModel)
-            
-            do {
-                try realm.write {
-                    realm.add(object)
+            for publ in publicModel {
+                let object = PublicsModelObject.createForm(publicModel: publ)
+                
+                do {
+                    try realm.write {
+                        realm.add(object, update: true)
+                    }
+                } catch {
+                    print("save publicModel exception \(#file) \(#function) \(#line) \(error)")
                 }
-            } catch {
-                print("save publicModel exception \(#file) \(#function) \(#line) \(error)")
+            }
+            
+            
+            
+        }
+    }
+    
+    func saveFriend(friendModel: [Friend]) {
+        self.dispathQueue.sync {
+            guard let realm = try? Realm() else {
+                return
+            }
+            
+            for friend in friendModel {
+                let object = FriendsModelObject.createForm(friendModel: friend)
+                
+                do {
+                    try realm.write {
+                        realm.add(object, update: true)
+                    }
+                } catch {
+                    print("save friendModel exception \(#file) \(#function) \(#line) \(error)")
+                }
             }
             
         }
     }
     
-    func saveFriend(friendModel: Friend) {
+    
+    func loadFriends (complition: @escaping ([Friend])->()) {
         self.dispathQueue.sync {
-            guard let realm = self.realm else {
+            guard let realm = try? Realm() else {
+                complition([])
                 return
             }
             
-            let object = FriendsModelObject.createForm(friendModel: friendModel)
+            var friendsArray: [Friend] = []
             
-            do {
-                try realm.write {
-                    realm.add(object)
-                }
-            } catch {
-                print("save friendModel exception \(#file) \(#function) \(#line) \(error)")
+            let objects = realm.objects(FriendsModelObject.self)
+            
+            for object in objects {
+                let friend = object.create()
+                friendsArray.append(friend)
             }
             
+            DispatchQueue.main.async {
+                complition(friendsArray)
+            }
         }
     }
+    
+    func loadPublics(complition: @escaping ([Public]) -> ()) {
+        self.dispathQueue.sync {
+            guard let realm = try? Realm() else {
+                complition([])
+                return
+            }
+            
+            var publicsArray: [Public] = []
+            
+            let objects = realm.objects(PublicsModelObject.self)
+            
+            for object in objects {
+                let publ = object.create()
+                publicsArray.append(publ)
+            }
+            
+            DispatchQueue.main.async {
+                complition(publicsArray)
+            }
+        }
+    }
+    
     
     
 }

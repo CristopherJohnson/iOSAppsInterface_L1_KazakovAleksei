@@ -9,8 +9,10 @@
 import Foundation
 
 protocol IDataStorage {
-    func savePublic(publicModel: Public)
-    func saveFriend(friendModel: Friend)
+    func savePublic(publicModel: [Public])
+    func saveFriend(friendModel: [Friend])
+    func loadFriends (complition: @escaping ([Friend])->())
+    func loadPublics (complition: @escaping ([Public])->())
 }
 
 class DataStorage {
