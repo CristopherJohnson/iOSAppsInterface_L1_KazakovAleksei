@@ -13,6 +13,7 @@ protocol IDataStorage {
     func saveFriend(friendModel: [Friend])
     func loadFriends (complition: @escaping ([Friend])->())
     func loadPublics (complition: @escaping ([Public])->())
+    func delatePublics(publicsToDelete:[Public])
 }
 
 class DataStorage {

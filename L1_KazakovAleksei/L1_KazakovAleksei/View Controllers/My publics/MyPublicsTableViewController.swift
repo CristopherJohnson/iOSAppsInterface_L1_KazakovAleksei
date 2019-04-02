@@ -38,16 +38,22 @@ class MyPublicsTableViewController: UITableViewController {
 //            }
 //        }
 //        getGroupsListDataTask.resume()
+        
+        LoadManager.shared.refreshPublics { (publics: [Public]) in
+            self.publics = publics
+            self.tableView.reloadData()
+            print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
+        }
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        LoadManager.shared.loadPublics { (publics: [Public]) in
-            self.publics = publics
-            self.tableView.reloadData()
-            print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
-        }
+//        LoadManager.shared.loadPublics { (publics: [Public]) in
+//            self.publics = publics
+//            self.tableView.reloadData()
+//            print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
+//        }
     }
 
     // MARK: - Table view data source

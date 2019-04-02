@@ -76,8 +76,6 @@ class FriendsModelObject: Object {
 
 class RealmDataStorage: IDataStorage {
     
-    
-    
     let dispathQueue = DispatchQueue(label: "RealmDataStorage")
     
     init() {
@@ -177,6 +175,26 @@ class RealmDataStorage: IDataStorage {
         }
     }
     
+    func delatePublics(publicsToDelete: [Public]) {
+        self.dispathQueue.sync {
+            guard let realm = try? Realm() else {
+                return
+            }
+            
+            var objects: [PublicsModelObject] = []
+            for publ in publicsToDelete {
+                let publicObject = PublicsModelObject.createForm(publicModel: publ)
+                objects.append(publicObject)
+            }
+            do {
+                try realm.write {
+                    realm.delete(objects)
+                }
+            } catch {
+                print("delete publics exception \(#file) \(#function) \(#line) \(error)")
+            }
+        }
+    }
     
     
 }
