@@ -8,18 +8,17 @@
 
 import Foundation
 
+public let groupsRealmDataWasChanged = "groupsRealmDataWasChanged"
+public let friendsRealmDataWasChanged = "friendsRealmDataWasChanged"
 
 class LoadManager {
     static let shared = LoadManager()
+    private init () {}
     
-    
-    func refreshPublics (complition: @escaping ([Public])->()) {
+    public func refreshPublics () {
         APIManager.shared.getPublics { (publicsArray: [Public]?) in
             if let publics = publicsArray {
                 self.comparePublics(loadedPublics: publics)
-                OperationQueue.main.addOperation {
-                    complition(publics)
-                }
             }
         }
     }
@@ -40,74 +39,58 @@ class LoadManager {
                     publicsToDelete.append(publ)
                 }
             }
-            DataStorage.shared.delatePublics(publicsToDelete: publicsToDelete)
-        }
-    }
-    
-    
-    func loadFriends (complition: @escaping ([Friend])->()) {
-        var friendsArray: [Friend] = []
-        DataStorage.shared.loadFriends { (friends: [Friend]) in
-            friendsArray = friends
-            if friendsArray.count > 0 {
-                
-                OperationQueue.main.addOperation {
-                    complition(friendsArray)
-                }
-                print("loading from Realm")
-                
-            } else if friendsArray.count == 0 {
-                APIManager.shared.getFriends { (friends: GetFriends?) in
-                    if let items = friends?.response.items {
-                        for item in items {
-                            let friend = Friend()
-                            friend.id = item.id
-                            friend.firstName = item.first_name
-                            friend.lastName = item.last_name
-                            friend.imageURL = item.photo_100
-                            friendsArray.append(friend)
-                        }
-                        OperationQueue.main.addOperation {
-                            complition(friendsArray)
-                        }
-                        DataStorage.shared.saveFriend(friendModel: friendsArray)
-                    }
-                }
-                
-            }
-        }
-    }
-    
-    
-    func loadPublics (complition: @escaping ([Public])->()){
-        var publicArray: [Public] = []
-        
-        DataStorage.shared.loadPublics { (publics: [Public]) in
-            publicArray = publics
+            DataStorage.shared.delatePublics(publicsToDelete: publicsToDelete, complition: {
+                DataStorage.shared.savePublic(publicModel: loadedPublics, complition: {
+                    self.postPublicsUpdateNitifications()
+                })
+            })
             
-            if publicArray.count > 0 {
-                OperationQueue.main.addOperation {
-                    complition(publicArray)
-                }
-                print("loading from Realm")
-            } else if publicArray.count == 0 {
-//                APIManager.shared.getPublics(complition: { (groups: GetGroups?) in
-//                    if let items = groups?.response.items {
-//                        for item in items {
-//                            let publ = Public()
-//                            publ.id = item.id
-//                            publ.name = item.name
-//                            publ.imageURL = item.photo_200
-//                            publicArray.append(publ)
-//                        }
-//                        OperationQueue.main.addOperation {
-//                            complition(publicArray)
-//                        }
-//                        DataStorage.shared.savePublic(publicModel: publicArray)
-//                    }
-//                })
+        }
+    }
+    
+    private func postPublicsUpdateNitifications () {
+        let nitificationName = Notification.Name(groupsRealmDataWasChanged)
+        let notification = Notification(name: nitificationName)
+        NotificationCenter.default.post(notification)
+    }
+    
+    
+    public func refreshfriends () {
+        APIManager.shared.getFriends { (friendsArray: [Friend]?) in
+            if let friends = friendsArray {
+                self.compareFriends(loadedFriends: friends)
             }
         }
     }
+    
+    private func compareFriends (loadedFriends: [Friend]) {
+        DataStorage.shared.loadFriends { (oldFriends:[Friend] ) in
+            var friendsToDelete: [Friend] = []
+            for friend in oldFriends {
+                let contains = loadedFriends.contains(where: { (newFriend) -> Bool in
+                    if newFriend.id == friend.id {
+                        return true
+                    } else {
+                        return false
+                    }
+                })
+                if contains == false {
+                    friendsToDelete.append(friend)
+                }
+            }
+            DataStorage.shared.delateFriends(friendsToDelete: friendsToDelete, complition: {
+                DataStorage.shared.saveFriend(friendModel: loadedFriends, complition: {
+                    self.postFriendsUpdateNotification()
+                })
+            })
+        }
+    }
+    
+    private func postFriendsUpdateNotification () {
+        let nitificationName = Notification.Name(friendsRealmDataWasChanged)
+        let notification = Notification(name: nitificationName)
+        NotificationCenter.default.post(notification)
+    }
+    
     
 }

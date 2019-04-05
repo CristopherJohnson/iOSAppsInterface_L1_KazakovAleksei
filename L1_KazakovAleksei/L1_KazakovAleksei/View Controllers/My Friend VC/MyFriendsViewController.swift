@@ -85,8 +85,13 @@ class MyFriendsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addNotifications()
         
-        
+        DataStorage.shared.loadFriends { (friends: [Friend]) in
+            self.friends = friends
+            self.filterContentFor(searchText: "")
+            LoadManager.shared.refreshfriends()
+        }
         
         
 //        self.friendsSectionIndexVC?.allExistingChars = self.friendsSectionTitles
@@ -101,15 +106,9 @@ class MyFriendsViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        LoadManager.shared.loadFriends { (friends: [Friend]) in
-            self.friends = friends
-            self.filterContentFor(searchText: "")
-            print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
-        }
+    deinit {
+        self.removeNotifications()
     }
-        
         
 
 
@@ -183,4 +182,24 @@ extension MyFriendsViewController : UISearchResultsUpdating {
         print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
     }
     
+}
+
+extension MyFriendsViewController {
+    func addNotifications () {
+        let notificationName = Notification.Name(friendsRealmDataWasChanged)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFriends(notification:)), name: notificationName, object: nil)
+    }
+    
+    func removeNotifications () {
+        let notificationName = Notification.Name(friendsRealmDataWasChanged)
+        NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
+    }
+    
+    @objc func updateFriends (notification: NSNotification) {
+        DataStorage.shared.loadFriends { (friends: [Friend]) in
+            self.friends = friends
+            self.filterContentFor(searchText: "")
+            print("updateFriends")
+        }
+    }
 }

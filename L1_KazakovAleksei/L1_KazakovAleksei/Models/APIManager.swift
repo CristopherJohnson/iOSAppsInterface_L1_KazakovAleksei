@@ -10,7 +10,7 @@ import Foundation
 
 
 protocol APIProtocol: class {
-    func getFriends (complition: @escaping (GetFriends?)->())
+    func getFriends (complition: @escaping ([Friend]?)->())
     func getPublics (complition: @escaping ([Public]?)->())
 }
 
@@ -34,18 +34,26 @@ private class URLSessionAPIManager: APIProtocol {
     }
     
     
-    func getFriends(complition: @escaping (GetFriends?) -> ()) {
+    func getFriends(complition: @escaping ([Friend]?) -> ()) {
         let getFriendsListDataTask = urlSession?.dataTask(with: self.requestData.generateRequestToGetFriensList()!) { (data: Data?, response: URLResponse?, error: Error?) in
             if let responseData = data {
+                var friends: [Friend] = []
                 let getFriendsResponse: GetFriends? = Parser.parseFriends(data: responseData)
-                complition(getFriendsResponse)
-                
-                print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
-                
+                if let items = getFriendsResponse?.response.items {
+                    for item in items {
+                        let friend = Friend()
+                        friend.id = item.id
+                        friend.firstName = item.first_name
+                        friend.lastName = item.last_name
+                        friend.imageURL = item.photo_100
+                        friends.append(friend)
+                    }
+                }
+                complition(friends)
             }
+            complition(nil)
         }
         getFriendsListDataTask?.resume()
-        
     }
     
     func getPublics(complition: @escaping ([Public]?) -> ()) {

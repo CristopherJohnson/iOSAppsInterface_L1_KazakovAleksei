@@ -9,11 +9,12 @@
 import Foundation
 
 protocol IDataStorage {
-    func savePublic(publicModel: [Public])
-    func saveFriend(friendModel: [Friend])
+    func savePublic(publicModel: [Public], complition: @escaping ()->())
+    func saveFriend(friendModel: [Friend], complition: @escaping ()->())
     func loadFriends (complition: @escaping ([Friend])->())
     func loadPublics (complition: @escaping ([Public])->())
-    func delatePublics(publicsToDelete:[Public])
+    func delatePublics(publicsToDelete:[Public], complition: @escaping ()->())
+    func delateFriends(friendsToDelete:[Friend], complition: @escaping ()->())
 }
 
 class DataStorage {
