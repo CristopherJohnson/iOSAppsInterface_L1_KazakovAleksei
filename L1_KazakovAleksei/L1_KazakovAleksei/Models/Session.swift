@@ -9,7 +9,7 @@
 import Foundation
 
 struct UserInfo {
-    var userId: Int = 0
+    var userId: String = ""
 }
 
 struct SessionInfo {
