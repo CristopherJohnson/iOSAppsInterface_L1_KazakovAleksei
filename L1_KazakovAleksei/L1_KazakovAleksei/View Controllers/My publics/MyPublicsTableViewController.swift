@@ -16,38 +16,18 @@ class MyPublicsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addNotifications()
         
-//        let session = URLSession(configuration: self.configuration)
-//        let getGroupsListDataTask = session.dataTask(with: self.requestData.generateRequestToGetGroups()!) { (data: Data?, response: URLResponse?, error: Error?) in
-//            if let responseData = data {
-//                let getGroupsResponse: GetGroups? = Parser.parseGroups(data: responseData)
-//                if let items = getGroupsResponse?.response.items {
-//                    for item in items {
-//                        let publ = Public()
-//                        publ.id = item.id
-//                        publ.name = item.name
-//                        publ.imageURL = item.photo_200
-//                        self.publics.append(publ)
-//                        DataStorage.shared.savePublic(publicModel: publ)
-//                    }
-//                }
-//                OperationQueue.main.addOperation {
-//                    self.tableView.reloadData()
-//                }
-//
-//            }
-//        }
-//        getGroupsListDataTask.resume()
+        DataStorage.shared.loadPublics { (publics: [Public]) in
+            self.publics = publics
+            self.tableView.reloadData()
+            LoadManager.shared.refreshPublics()
+        }
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        LoadManager.shared.loadPublics { (publics: [Public]) in
-            self.publics = publics
-            self.tableView.reloadData()
-            print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
-        }
+    deinit {
+        self.removeNotifications()
     }
 
     // MARK: - Table view data source
@@ -101,6 +81,26 @@ class MyPublicsTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+}
 
 
+extension MyPublicsTableViewController {
+    
+    func addNotifications () {
+        let notificationName = Notification.Name(groupsRealmDataWasChanged)
+        NotificationCenter.default.addObserver(self, selector: #selector(updatePublics(notification:)), name: notificationName, object: nil)
+    }
+    
+    func removeNotifications () {
+        let notificationName = Notification.Name(groupsRealmDataWasChanged)
+        NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
+    }
+    
+    @objc func updatePublics (notification: NSNotification) {
+        DataStorage.shared.loadPublics { (publics: [Public]) in
+            self.publics = publics
+            self.tableView.reloadData()
+            print("updatePublics")
+        }
+    }
 }

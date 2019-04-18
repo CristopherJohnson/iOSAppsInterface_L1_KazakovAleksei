@@ -10,8 +10,8 @@ import Foundation
 
 
 protocol APIProtocol: class {
-    func getFriends (complition: @escaping (GetFriends?)->())
-    func getPublics (complition: @escaping (GetGroups?)->())
+    func getFriends (complition: @escaping ([Friend]?)->())
+    func getPublics (complition: @escaping ([Public]?)->())
 }
 
 
@@ -34,28 +34,47 @@ private class URLSessionAPIManager: APIProtocol {
     }
     
     
-    func getFriends(complition: @escaping (GetFriends?) -> ()) {
+    func getFriends(complition: @escaping ([Friend]?) -> ()) {
         let getFriendsListDataTask = urlSession?.dataTask(with: self.requestData.generateRequestToGetFriensList()!) { (data: Data?, response: URLResponse?, error: Error?) in
             if let responseData = data {
+                var friends: [Friend] = []
                 let getFriendsResponse: GetFriends? = Parser.parseFriends(data: responseData)
-                complition(getFriendsResponse)
-                
-                print("\(Thread.isMainThread) \(#file) \(#function) \(#line)")
-                
+                if let items = getFriendsResponse?.response.items {
+                    for item in items {
+                        let friend = Friend()
+                        friend.id = item.id
+                        friend.firstName = item.first_name
+                        friend.lastName = item.last_name
+                        friend.imageURL = item.photo_100
+                        friends.append(friend)
+                    }
+                }
+                complition(friends)
             }
+            complition(nil)
         }
         getFriendsListDataTask?.resume()
-        
     }
     
-    func getPublics(complition: @escaping (GetGroups?) -> ()) {
+    func getPublics(complition: @escaping ([Public]?) -> ()) {
+        
         let getGroupsListDataTask = urlSession?.dataTask(with: self.requestData.generateRequestToGetGroups()!) { (data: Data?, response: URLResponse?, error: Error?) in
             if let responseData = data {
+                var publics: [Public] = []
                 let getGroupsResponse: GetGroups? = Parser.parseGroups(data: responseData)
-                complition(getGroupsResponse)
+                if let items = getGroupsResponse?.response.items {
+                    for item in items {
+                        let publ = Public()
+                        publ.id = item.id
+                        publ.name = item.name
+                        publ.imageURL = item.photo_200
+                        publics.append(publ)
+                    }
                 }
-                
+                complition(publics)
             }
+            complition(nil)
+        }
         getGroupsListDataTask?.resume()
     }
     

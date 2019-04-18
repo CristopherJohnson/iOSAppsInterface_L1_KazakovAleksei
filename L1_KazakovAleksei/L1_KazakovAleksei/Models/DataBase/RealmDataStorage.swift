@@ -75,9 +75,7 @@ class FriendsModelObject: Object {
 
 
 class RealmDataStorage: IDataStorage {
-    
-    
-    
+
     let dispathQueue = DispatchQueue(label: "RealmDataStorage")
     
     init() {
@@ -88,7 +86,7 @@ class RealmDataStorage: IDataStorage {
     
     
     
-    func savePublic(publicModel: [Public]) {
+    func savePublic(publicModel: [Public], complition: @escaping ()->()) {
         self.dispathQueue.sync {
             guard let realm = try? Realm() else {
                 return
@@ -106,12 +104,14 @@ class RealmDataStorage: IDataStorage {
                 }
             }
             
-            
+            DispatchQueue.main.async {
+                complition()
+            }
             
         }
     }
     
-    func saveFriend(friendModel: [Friend]) {
+    func saveFriend(friendModel: [Friend], complition: @escaping ()->()) {
         self.dispathQueue.sync {
             guard let realm = try? Realm() else {
                 return
@@ -127,6 +127,10 @@ class RealmDataStorage: IDataStorage {
                 } catch {
                     print("save friendModel exception \(#file) \(#function) \(#line) \(error)")
                 }
+            }
+            
+            DispatchQueue.main.async {
+                complition()
             }
             
         }
@@ -177,6 +181,53 @@ class RealmDataStorage: IDataStorage {
         }
     }
     
+    func delatePublics(publicsToDelete: [Public], complition: @escaping ()->()) {
+        self.dispathQueue.sync {
+            guard let realm = try? Realm() else {
+                return
+            }
+            
+            if publicsToDelete.count > 0 {
+                for publ in publicsToDelete {
+                    do {
+                        try realm.write {
+                            realm.delete(realm.object(ofType: PublicsModelObject.self, forPrimaryKey: publ.id)!)
+                        }
+                    } catch {
+                        print("delete publics exception \(#file) \(#function) \(#line) \(error)")
+                    }
+                }
+            }
+            
+            DispatchQueue.main.async {
+                complition()
+            }
+        }
+    }
     
+    
+    func delateFriends(friendsToDelete: [Friend], complition: @escaping () -> ()) {
+        self.dispathQueue.sync {
+            guard let realm = try? Realm() else {
+                return
+            }
+            
+            if friendsToDelete.count > 0 {
+                for friend in friendsToDelete {
+                    do {
+                        try realm.write {
+                            realm.delete(realm.object(ofType: FriendsModelObject.self, forPrimaryKey: friend.id)!)
+                        }
+                    } catch {
+                        print("delete publics exception \(#file) \(#function) \(#line) \(error)")
+                    }
+                }
+            }
+            
+            DispatchQueue.main.async {
+                complition()
+            }
+        }
+    }
     
 }
