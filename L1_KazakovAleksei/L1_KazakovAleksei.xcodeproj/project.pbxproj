@@ -50,6 +50,7 @@
 		A3A94AAF21F8D51E001BC531 /* L1_KazakovAlekseiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AAE21F8D51E001BC531 /* L1_KazakovAlekseiTests.swift */; };
 		A3A94ABA21F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AB921F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift */; };
 		A3A94AC921F8D560001BC531 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AC821F8D560001BC531 /* loginViewController.swift */; };
+		A3C71DEF2257B43F00A6717B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3C71DEE2257B43F00A6717B /* GoogleService-Info.plist */; };
 		A3CB87D1224949560004034F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB87D0224949560004034F /* APIManager.swift */; };
 		A3CB87D4224958B90004034F /* LoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB87D3224958B90004034F /* LoadManager.swift */; };
 		A3EF042C22402521007C2E0D /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF042B22402521007C2E0D /* DataStorage.swift */; };
@@ -126,6 +127,7 @@
 		A3A94AB921F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L1_KazakovAlekseiUITests.swift; sourceTree = "<group>"; };
 		A3A94ABB21F8D51E001BC531 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3A94AC821F8D560001BC531 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		A3C71DEE2257B43F00A6717B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3CB87D0224949560004034F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		A3CB87D3224958B90004034F /* LoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadManager.swift; sourceTree = "<group>"; };
 		A3EF042B22402521007C2E0D /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				A3A94A9D21F8D51D001BC531 /* Main.storyboard */,
 				A3A94AA021F8D51E001BC531 /* Assets.xcassets */,
 				A3A94AA221F8D51E001BC531 /* LaunchScreen.storyboard */,
+				A3C71DEE2257B43F00A6717B /* GoogleService-Info.plist */,
 				A3A94AA521F8D51E001BC531 /* Info.plist */,
 			);
 			path = L1_KazakovAleksei;
@@ -523,6 +526,7 @@
 			files = (
 				A3A94AA421F8D51E001BC531 /* LaunchScreen.storyboard in Resources */,
 				A33E9121221200EB00814DBF /* FeedTableViewCell.xib in Resources */,
+				A3C71DEF2257B43F00A6717B /* GoogleService-Info.plist in Resources */,
 				A3A94AA121F8D51E001BC531 /* Assets.xcassets in Resources */,
 				A3A94A9F21F8D51D001BC531 /* Main.storyboard in Resources */,
 			);
@@ -554,15 +558,23 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-L1_KazakovAleksei/Pods-L1_KazakovAleksei-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

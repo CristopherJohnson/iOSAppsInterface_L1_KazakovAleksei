@@ -79,6 +79,9 @@ class VKLoginViewController: UIViewController, WKNavigationDelegate {
                     if item.name == "access_token" {
                         self.session.sessionInfo.token = item.value ?? ""
                         print("token is \(self.session.sessionInfo.token)")
+                    } else if item.name == "user_id" {
+                        self.session.userInfo.userId = item.value ?? ""
+                        print("user id is \(self.session.userInfo.userId)")
                     }
                 }
                 let session = URLSession(configuration: self.configuration)
