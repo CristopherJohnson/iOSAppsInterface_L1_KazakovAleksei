@@ -12,6 +12,7 @@ import Foundation
 protocol APIProtocol: class {
     func getFriends (complition: @escaping ([Friend]?)->())
     func getPublics (complition: @escaping ([Public]?)->())
+    func getNewsFeedTypePost ()
 }
 
 
@@ -78,5 +79,14 @@ private class URLSessionAPIManager: APIProtocol {
         getGroupsListDataTask?.resume()
     }
     
+    func getNewsFeedTypePost () {
+        let getNewsFeedTypePostDataTask = urlSession?.dataTask(with: self.requestData.generateRequestToGetNewsFeed()!, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            if let responseData = data {
+                let getNewsFeedTypePostResponse: GetNewsFeedTypePost? = Parser.parseNewsFeed(data: responseData)
+                print("getNewsFeedTypePostResponse \(String(describing: getNewsFeedTypePostResponse))")
+            }
+        })
+        getNewsFeedTypePostDataTask?.resume()
+    }
  
 }

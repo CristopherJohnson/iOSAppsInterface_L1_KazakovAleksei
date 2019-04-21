@@ -10,11 +10,12 @@ import Foundation
 
 
 class Public {
-    var name: String?
+    
     var imageName: String?
     var fakeId: String?
     
 // real Data (name is real too)
+    var name: String?
     var id: Int?
     var imageURL: String?
     

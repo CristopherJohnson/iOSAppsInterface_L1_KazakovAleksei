@@ -53,6 +53,8 @@
 		A3C71DEF2257B43F00A6717B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3C71DEE2257B43F00A6717B /* GoogleService-Info.plist */; };
 		A3CB87D1224949560004034F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB87D0224949560004034F /* APIManager.swift */; };
 		A3CB87D4224958B90004034F /* LoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB87D3224958B90004034F /* LoadManager.swift */; };
+		A3DF49DF226C715700F26A87 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF49DE226C715700F26A87 /* NewsFeedViewController.swift */; };
+		A3DF49E1226C717C00F26A87 /* NewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF49E0226C717C00F26A87 /* NewsFeedTableViewCell.swift */; };
 		A3EF042C22402521007C2E0D /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF042B22402521007C2E0D /* DataStorage.swift */; };
 		A3EF042E22402539007C2E0D /* RealmDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF042D22402539007C2E0D /* RealmDataStorage.swift */; };
 		D016BDFBBFDCD27C5F45DE48 /* Pods_L1_KazakovAleksei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7411F337A374BC034F0BF92 /* Pods_L1_KazakovAleksei.framework */; };
@@ -130,6 +132,8 @@
 		A3C71DEE2257B43F00A6717B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3CB87D0224949560004034F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		A3CB87D3224958B90004034F /* LoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadManager.swift; sourceTree = "<group>"; };
+		A3DF49DE226C715700F26A87 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
+		A3DF49E0226C717C00F26A87 /* NewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedTableViewCell.swift; sourceTree = "<group>"; };
 		A3EF042B22402521007C2E0D /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		A3EF042D22402539007C2E0D /* RealmDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataStorage.swift; sourceTree = "<group>"; };
 		B7411F337A374BC034F0BF92 /* Pods_L1_KazakovAleksei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_L1_KazakovAleksei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +265,15 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
+		A35BCA562268F2FD0065D550 /* NewsFeed VC */ = {
+			isa = PBXGroup;
+			children = (
+				A3DF49DE226C715700F26A87 /* NewsFeedViewController.swift */,
+				A3DF49E0226C717C00F26A87 /* NewsFeedTableViewCell.swift */,
+			);
+			path = "NewsFeed VC";
+			sourceTree = "<group>";
+		};
 		A36AB96A22243A7F009F6141 /* Custom Navigation Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +385,7 @@
 		A3CDCE6B223EA034001B79FB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A35BCA562268F2FD0065D550 /* NewsFeed VC */,
 				A330873A2203BB8C006D70C8 /* Friends Photoes */,
 				A3A94AC721F8D534001BC531 /* Login View Controller */,
 				A330872622036C49006D70C8 /* All publics */,
@@ -672,6 +686,7 @@
 				A3EF042C22402521007C2E0D /* DataStorage.swift in Sources */,
 				A330872A22036D14006D70C8 /* AllPublicsTableViewCell.swift in Sources */,
 				A36AB9772224849D009F6141 /* PresentationDelegate.swift in Sources */,
+				A3DF49E1226C717C00F26A87 /* NewsFeedTableViewCell.swift in Sources */,
 				A330872822036CA3006D70C8 /* AllPublicsTableViewController.swift in Sources */,
 				A32873A4223063CD00CEB51A /* RequestData.swift in Sources */,
 				A33E91192211D29C00814DBF /* FeedViewController.swift in Sources */,
@@ -692,6 +707,7 @@
 				A38D78DA220861E00018B747 /* FriendPhoto.swift in Sources */,
 				A33BFF54223BEDD3009D0159 /* UIImageViewExtensions.swift in Sources */,
 				A330873C2203BBDB006D70C8 /* FriendsPhotoesCollectionViewController.swift in Sources */,
+				A3DF49DF226C715700F26A87 /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
