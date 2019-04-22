@@ -55,6 +55,8 @@
 		A3CB87D4224958B90004034F /* LoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB87D3224958B90004034F /* LoadManager.swift */; };
 		A3DF49DF226C715700F26A87 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF49DE226C715700F26A87 /* NewsFeedViewController.swift */; };
 		A3DF49E1226C717C00F26A87 /* NewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF49E0226C717C00F26A87 /* NewsFeedTableViewCell.swift */; };
+		A3DF49E3226CD1C100F26A87 /* NewsFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF49E2226CD1C100F26A87 /* NewsFeedModel.swift */; };
+		A3DF49E5226CD61E00F26A87 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF49E4226CD61E00F26A87 /* PhotoModel.swift */; };
 		A3EF042C22402521007C2E0D /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF042B22402521007C2E0D /* DataStorage.swift */; };
 		A3EF042E22402539007C2E0D /* RealmDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF042D22402539007C2E0D /* RealmDataStorage.swift */; };
 		D016BDFBBFDCD27C5F45DE48 /* Pods_L1_KazakovAleksei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7411F337A374BC034F0BF92 /* Pods_L1_KazakovAleksei.framework */; };
@@ -134,6 +136,8 @@
 		A3CB87D3224958B90004034F /* LoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadManager.swift; sourceTree = "<group>"; };
 		A3DF49DE226C715700F26A87 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		A3DF49E0226C717C00F26A87 /* NewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedTableViewCell.swift; sourceTree = "<group>"; };
+		A3DF49E2226CD1C100F26A87 /* NewsFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedModel.swift; sourceTree = "<group>"; };
+		A3DF49E4226CD61E00F26A87 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		A3EF042B22402521007C2E0D /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		A3EF042D22402539007C2E0D /* RealmDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataStorage.swift; sourceTree = "<group>"; };
 		B7411F337A374BC034F0BF92 /* Pods_L1_KazakovAleksei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_L1_KazakovAleksei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,6 +382,8 @@
 				A330872C22036F15006D70C8 /* PublicsModel.swift */,
 				A33087382203B46D006D70C8 /* FriendModel.swift */,
 				A33E911E2211E07500814DBF /* NewsModel.swift */,
+				A3DF49E2226CD1C100F26A87 /* NewsFeedModel.swift */,
+				A3DF49E4226CD61E00F26A87 /* PhotoModel.swift */,
 			);
 			path = Entityes;
 			sourceTree = "<group>";
@@ -675,6 +681,7 @@
 				A330873222039BDD006D70C8 /* MyPublicsTableViewCell.swift in Sources */,
 				A38D78DC220862F20018B747 /* MyFriendTwoTableViewCell.swift in Sources */,
 				A362FB69222ACEC9002A2DD7 /* CloseDetailNewsPhotoAnimationController.swift in Sources */,
+				A3DF49E3226CD1C100F26A87 /* NewsFeedModel.swift in Sources */,
 				A3CB87D1224949560004034F /* APIManager.swift in Sources */,
 				A3A94A9A21F8D51D001BC531 /* AppDelegate.swift in Sources */,
 				A33B314F221AAC3D00CBAEBA /* LoaderPoints.swift in Sources */,
@@ -685,6 +692,7 @@
 				A33E911F2211E07500814DBF /* NewsModel.swift in Sources */,
 				A3EF042C22402521007C2E0D /* DataStorage.swift in Sources */,
 				A330872A22036D14006D70C8 /* AllPublicsTableViewCell.swift in Sources */,
+				A3DF49E5226CD61E00F26A87 /* PhotoModel.swift in Sources */,
 				A36AB9772224849D009F6141 /* PresentationDelegate.swift in Sources */,
 				A3DF49E1226C717C00F26A87 /* NewsFeedTableViewCell.swift in Sources */,
 				A330872822036CA3006D70C8 /* AllPublicsTableViewController.swift in Sources */,
