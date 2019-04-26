@@ -38,12 +38,32 @@ class NewsFeedModel {
     var compactHeight: CGFloat?
     var totalPhotosHeigh: CGFloat?
     var isCompact = false
+    let autorViewHeigh: CGFloat = 45
+    let bottomViewHeigh: CGFloat = 25
+    let compactTextlimit: CGFloat = 144
+    let showMoreButtonHeigh: CGFloat = 22
     
     private let photoHeight = (UIScreen.main.bounds.size.width - 12) * 2 / 3
     private let photosPageControlHeight: CGFloat = 39
+    private var totalSpace: CGFloat = 12
+    private let spaceBetweenCells: CGFloat = 12
+    
     
     public func calculateSize () {
-        self.totalHeight = 45 + 12 + 25 + 6
+        
+        if let text = self.postText, text.count > 0 {
+            self.textHeigh = text.heightOfString(withConstrainedWidth: UIScreen.main.bounds.size.width - 24, font: UIFont.systemFont(ofSize: 17))
+            if self.textHeigh! >= self.compactTextlimit {
+                self.isCompact = true
+            }
+            self.totalSpace += 6
+        }
+        
+        self.totalHeight = self.autorViewHeigh + self.bottomViewHeigh + self.totalSpace + self.spaceBetweenCells + (self.textHeigh ?? 0) + (self.isCompact ? self.showMoreButtonHeigh : 0)
+        
+        if self.isCompact == true {
+            self.compactHeight = self.autorViewHeigh + self.bottomViewHeigh + self.totalSpace + self.spaceBetweenCells + self.compactTextlimit + self.showMoreButtonHeigh
+        }
     }
     
     public func getAuthorName () -> String {

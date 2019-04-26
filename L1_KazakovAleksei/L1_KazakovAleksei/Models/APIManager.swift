@@ -96,6 +96,7 @@ private class URLSessionAPIManager: APIProtocol {
                             let post = NewsFeedModel()
                             
                             post.date = Date(timeIntervalSince1970: item.date)
+                            post.postId = item.post_id
                             
                             if item.text.count > 0 {
                                 post.postText = item.text

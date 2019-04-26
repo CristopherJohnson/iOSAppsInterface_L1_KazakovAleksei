@@ -118,7 +118,7 @@ class RequestData {
             URLQueryItem(name: "filters", value: "post"),
             URLQueryItem(name: "return_banned", value: "0"),
             URLQueryItem(name: "max_photos", value: "10"),
-            URLQueryItem(name: "count", value: "10"),
+            URLQueryItem(name: "count", value: "50"),
             URLQueryItem(name: "access_token", value: self.session.sessionInfo.token),
             URLQueryItem(name: "v", value: self.apiVersion)
         ]

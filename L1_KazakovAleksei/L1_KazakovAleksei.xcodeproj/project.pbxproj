@@ -51,6 +51,7 @@
 		A3A94ABA21F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AB921F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift */; };
 		A3A94AC921F8D560001BC531 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AC821F8D560001BC531 /* loginViewController.swift */; };
 		A3C71DEF2257B43F00A6717B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3C71DEE2257B43F00A6717B /* GoogleService-Info.plist */; };
+		A3C7F66022730E710094D69F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C7F65F22730E710094D69F /* StringExtension.swift */; };
 		A3CB87D1224949560004034F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB87D0224949560004034F /* APIManager.swift */; };
 		A3CB87D4224958B90004034F /* LoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB87D3224958B90004034F /* LoadManager.swift */; };
 		A3D826E72272522A00BF6F1B /* PostAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D826E62272522A00BF6F1B /* PostAuthorView.swift */; };
@@ -137,6 +138,7 @@
 		A3A94ABB21F8D51E001BC531 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3A94AC821F8D560001BC531 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		A3C71DEE2257B43F00A6717B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A3C7F65F22730E710094D69F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		A3CB87D0224949560004034F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		A3CB87D3224958B90004034F /* LoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadManager.swift; sourceTree = "<group>"; };
 		A3D826E62272522A00BF6F1B /* PostAuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthorView.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				A33BFF53223BEDD3009D0159 /* UIImageViewExtensions.swift */,
+				A3C7F65F22730E710094D69F /* StringExtension.swift */,
 			);
 			path = Primitives;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				A33E911F2211E07500814DBF /* NewsModel.swift in Sources */,
 				A3EF042C22402521007C2E0D /* DataStorage.swift in Sources */,
 				A330872A22036D14006D70C8 /* AllPublicsTableViewCell.swift in Sources */,
+				A3C7F66022730E710094D69F /* StringExtension.swift in Sources */,
 				A3DF49E5226CD61E00F26A87 /* PhotoModel.swift in Sources */,
 				A36AB9772224849D009F6141 /* PresentationDelegate.swift in Sources */,
 				A3DF49E1226C717C00F26A87 /* NewsFeedTableViewCell.swift in Sources */,
@@ -921,6 +925,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLGYVU27YQ;
 				INFOPLIST_FILE = L1_KazakovAleksei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -939,6 +944,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLGYVU27YQ;
 				INFOPLIST_FILE = L1_KazakovAleksei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -33,14 +33,27 @@ class NewsFeedViewController: UIViewController {
         
         self.tableView?.separatorStyle = .none
         self.tableView?.backgroundColor = UIColor(red: (237 / 255), green: (238 / 255), blue: (240 / 255), alpha: 1)
+        tableView?.estimatedRowHeight = 0
+        tableView?.estimatedSectionHeaderHeight = 0
+        tableView?.estimatedSectionFooterHeight = 0
         
     }
 }
 
 extension NewsFeedViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
 }
 extension NewsFeedViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let post = postsArray[indexPath.row]
+        print("postHeigh\(post.isCompact ? post.compactHeight! : post.totalHeight!)")
+        post.calculateSize()
+        return post.isCompact ? post.compactHeight! : post.totalHeight!
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return postsArray.count
@@ -49,14 +62,14 @@ extension NewsFeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! NewsFeedTableViewCell
         let post = self.postsArray[indexPath.row]
+        post.calculateSize()
         cell.setup(post: post)
+//        cell.updateContent(text: post.postText, textHeight: post.textHeigh ?? 0, totalHeight: post.isCompact ? post.compactHeight! : post.totalHeight!, isCompact: post.isCompact)
+        
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let post = postsArray[indexPath.row]
-        return post.totalHeight ?? 45
-    }
+    
     
 }

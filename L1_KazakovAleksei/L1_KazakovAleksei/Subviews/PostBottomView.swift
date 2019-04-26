@@ -31,7 +31,7 @@ class PostBottomView: UIView {
     //MARK: - Setup
     
     private func addSubviews() {
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = UIColor.white
         if self.likeView == nil {
             let view = LikeButton()
             self.addSubview(view)
