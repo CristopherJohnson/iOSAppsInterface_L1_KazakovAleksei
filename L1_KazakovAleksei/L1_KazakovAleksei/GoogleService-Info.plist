@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>95013635672-v7oq761bhl188lbu7kc0pgrojfq75clp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.95013635672-v7oq761bhl188lbu7kc0pgrojfq75clp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA0fQLO5Sbw2kei3cil4cNbwp-lg5JecjU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>95013635672</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>CristopherJohnson.L1-KazakovAleksei</string>
+	<key>PROJECT_ID</key>
+	<string>vkapp-3c901</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vkapp-3c901.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:95013635672:ios:100448bf141b786f</string>
+	<key>DATABASE_URL</key>
+	<string>https://vkapp-3c901.firebaseio.com</string>
+</dict>
+</plist>

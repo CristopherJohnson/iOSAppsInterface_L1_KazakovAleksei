@@ -50,7 +50,6 @@
 		A3A94AAF21F8D51E001BC531 /* L1_KazakovAlekseiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AAE21F8D51E001BC531 /* L1_KazakovAlekseiTests.swift */; };
 		A3A94ABA21F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AB921F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift */; };
 		A3A94AC921F8D560001BC531 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AC821F8D560001BC531 /* loginViewController.swift */; };
-		A3C71DEF2257B43F00A6717B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3C71DEE2257B43F00A6717B /* GoogleService-Info.plist */; };
 		A3C7F66022730E710094D69F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C7F65F22730E710094D69F /* StringExtension.swift */; };
 		A3CB87D1224949560004034F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB87D0224949560004034F /* APIManager.swift */; };
 		A3CB87D4224958B90004034F /* LoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB87D3224958B90004034F /* LoadManager.swift */; };
@@ -63,6 +62,7 @@
 		A3DF49E1226C717C00F26A87 /* NewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF49E0226C717C00F26A87 /* NewsFeedTableViewCell.swift */; };
 		A3DF49E3226CD1C100F26A87 /* NewsFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF49E2226CD1C100F26A87 /* NewsFeedModel.swift */; };
 		A3DF49E5226CD61E00F26A87 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF49E4226CD61E00F26A87 /* PhotoModel.swift */; };
+		A3EEF1D822736CAD0024A88F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3EEF1D722736CAD0024A88F /* GoogleService-Info.plist */; };
 		A3EF042C22402521007C2E0D /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF042B22402521007C2E0D /* DataStorage.swift */; };
 		A3EF042E22402539007C2E0D /* RealmDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF042D22402539007C2E0D /* RealmDataStorage.swift */; };
 		D016BDFBBFDCD27C5F45DE48 /* Pods_L1_KazakovAleksei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7411F337A374BC034F0BF92 /* Pods_L1_KazakovAleksei.framework */; };
@@ -137,7 +137,6 @@
 		A3A94AB921F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L1_KazakovAlekseiUITests.swift; sourceTree = "<group>"; };
 		A3A94ABB21F8D51E001BC531 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3A94AC821F8D560001BC531 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
-		A3C71DEE2257B43F00A6717B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3C7F65F22730E710094D69F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		A3CB87D0224949560004034F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		A3CB87D3224958B90004034F /* LoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadManager.swift; sourceTree = "<group>"; };
@@ -150,6 +149,7 @@
 		A3DF49E0226C717C00F26A87 /* NewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedTableViewCell.swift; sourceTree = "<group>"; };
 		A3DF49E2226CD1C100F26A87 /* NewsFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedModel.swift; sourceTree = "<group>"; };
 		A3DF49E4226CD61E00F26A87 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		A3EEF1D722736CAD0024A88F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "L1_KazakovAleksei/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A3EF042B22402521007C2E0D /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		A3EF042D22402539007C2E0D /* RealmDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataStorage.swift; sourceTree = "<group>"; };
 		B7411F337A374BC034F0BF92 /* Pods_L1_KazakovAleksei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_L1_KazakovAleksei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -356,9 +356,9 @@
 				A330872B22036EED006D70C8 /* Models */,
 				A3A94A9921F8D51D001BC531 /* AppDelegate.swift */,
 				A3A94A9D21F8D51D001BC531 /* Main.storyboard */,
+				A3EEF1D722736CAD0024A88F /* GoogleService-Info.plist */,
 				A3A94AA021F8D51E001BC531 /* Assets.xcassets */,
 				A3A94AA221F8D51E001BC531 /* LaunchScreen.storyboard */,
-				A3C71DEE2257B43F00A6717B /* GoogleService-Info.plist */,
 				A3A94AA521F8D51E001BC531 /* Info.plist */,
 			);
 			path = L1_KazakovAleksei;
@@ -572,7 +572,7 @@
 			files = (
 				A3A94AA421F8D51E001BC531 /* LaunchScreen.storyboard in Resources */,
 				A33E9121221200EB00814DBF /* FeedTableViewCell.xib in Resources */,
-				A3C71DEF2257B43F00A6717B /* GoogleService-Info.plist in Resources */,
+				A3EEF1D822736CAD0024A88F /* GoogleService-Info.plist in Resources */,
 				A3A94AA121F8D51E001BC531 /* Assets.xcassets in Resources */,
 				A3A94A9F21F8D51D001BC531 /* Main.storyboard in Resources */,
 			);
