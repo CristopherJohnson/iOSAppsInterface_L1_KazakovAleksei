@@ -101,7 +101,7 @@ class VKLoginViewController: UIViewController, WKNavigationDelegate {
                     }
                 }
                 getGroupsSearchResult.resume()
-                APIManager.shared.getNewsFeedTypePost ()
+                
                 self.performSegue(withIdentifier: "openAppAfterVkLogin", sender: nil)
                 
             }

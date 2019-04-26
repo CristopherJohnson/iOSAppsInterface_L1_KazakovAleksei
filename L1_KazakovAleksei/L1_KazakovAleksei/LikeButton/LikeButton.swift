@@ -10,7 +10,12 @@ import UIKit
 
 class LikeButton: UIControl {
     
-    var counter: Int = 10
+    var counter: Int = 0  {
+        didSet {
+            self.update()
+            self.layoutSubviews()
+        }
+    }
     
     var isLiked: Bool = false {
         didSet {
@@ -65,8 +70,9 @@ class LikeButton: UIControl {
         super.layoutSubviews()
         
         self.iconImageView?.frame = CGRect(x: 0, y: 0, width: self.frame.size.width / 2, height: self.frame.size.height)
-        self.iconImageView?.contentMode = UIView.ContentMode.scaleAspectFill
+        self.iconImageView?.contentMode = UIView.ContentMode.scaleAspectFit
         self.countLable?.frame = CGRect(x: self.frame.size.width / 2, y: 0, width: self.frame.size.width / 2, height: self.frame.size.height)
+        self.countLable?.font = UIFont.systemFont(ofSize: 14)
     }
     
     // MARK: - Actions
@@ -77,7 +83,7 @@ class LikeButton: UIControl {
     }
     
     @objc private func tapAction(tap: UITapGestureRecognizer){
-        self.isLiked = !self.isLiked
+//        self.isLiked = !self.isLiked
 
     }
     
@@ -126,7 +132,7 @@ class LikeButton: UIControl {
     }
     
     private func updateCountLable() {
-        let textColor = self.isLiked ? UIColor.red : UIColor.gray
+        let textColor = self.isLiked ? UIColor.red : UIColor(red: (115 / 255), green: (162 / 255), blue: (172 / 255), alpha: 1)
         self.countLable?.textColor = textColor
         
         self.countLable?.text = "\(self.counter)"

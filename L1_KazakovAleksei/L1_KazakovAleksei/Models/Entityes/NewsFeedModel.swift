@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class NewsFeedModel {
     var date: Date?
@@ -31,4 +32,26 @@ class NewsFeedModel {
     
     var userAuthor: Friend?
     var groupAuthor: Public?
+    
+    var totalHeight: CGFloat?
+    var textHeigh: CGFloat?
+    var compactHeight: CGFloat?
+    var totalPhotosHeigh: CGFloat?
+    var isCompact = false
+    
+    private let photoHeight = (UIScreen.main.bounds.size.width - 12) * 2 / 3
+    private let photosPageControlHeight: CGFloat = 39
+    
+    public func calculateSize () {
+        self.totalHeight = 45 + 12 + 25 + 6
+    }
+    
+    public func getAuthorName () -> String {
+        if let user = self.userAuthor {
+            return "\(user.firstName ?? "No firstName") \(user.lastName ?? "No lastName")"
+        } else if let group = self.groupAuthor {
+            return "\(group.name ?? "No groupName")"
+        }
+        return "No authror Name"
+    }
 }

@@ -9,22 +9,54 @@
 import UIKit
 
 class NewsFeedViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView?
+    
+    private var postsArray: [NewsFeedModel] = []
+    private var nextFrom: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        APIManager.shared.getNewsFeedTypePost { (news: [NewsFeedModel]?, nextFrom: String?, error: Error?) in
+            if error != nil {
+                print(error?.localizedDescription ?? "unknown Error")
+                return
+            }
+            if let newsArray = news {
+                self.postsArray = newsArray
+            }
+            if let next = nextFrom {
+                self.nextFrom = next
+            }
+            self.tableView?.reloadData()
+        }
+        
+        self.tableView?.separatorStyle = .none
+        self.tableView?.backgroundColor = UIColor(red: (237 / 255), green: (238 / 255), blue: (240 / 255), alpha: 1)
+        
+    }
+}
 
-        // Do any additional setup after loading the view.
+extension NewsFeedViewController: UITableViewDelegate {
+    
+}
+extension NewsFeedViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return postsArray.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! NewsFeedTableViewCell
+        let post = self.postsArray[indexPath.row]
+        cell.setup(post: post)
+        
+        return cell
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let post = postsArray[indexPath.row]
+        return post.totalHeight ?? 45
+    }
+    
 }
