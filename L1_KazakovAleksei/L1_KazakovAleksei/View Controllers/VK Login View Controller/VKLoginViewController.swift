@@ -50,8 +50,9 @@ class VKLoginViewController: UIViewController, WKNavigationDelegate {
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
             URLQueryItem(name: "client_id", value: client_id),
-            URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html "),
             URLQueryItem(name: "display", value: "mobile"),
+            URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+            
             URLQueryItem(name: "scope", value: "270342"),
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "v", value: "5.92"),
