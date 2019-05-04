@@ -62,6 +62,12 @@ class PostBottomView: UIView {
         self.watchView?.counter = viewsCount
     }
     
+    public func reuse () {
+        self.commentView?.reuse()
+        self.likeView?.reuse()
+        self.repostView?.reuse()
+        self.watchView?.reuse()
+    }
     //MARK: - Layout
     
     override func layoutSubviews() {

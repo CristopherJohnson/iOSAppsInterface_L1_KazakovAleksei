@@ -86,6 +86,7 @@ private class URLSessionAPIManager: APIProtocol {
         DispatchQueue.global(qos: .userInteractive).async {
             let getNewsFeedTypePostDataTask = self.urlSession?.dataTask(with: self.requestData.generateRequestToGetNewsFeed()!, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
                 if let responseData = data {
+                    
                     var newsPosts: [NewsFeedModel] = []
                     
                     let getNewsFeedTypePostResponse: GetNewsFeedTypePost? = Parser.parseNewsFeed(data: responseData)

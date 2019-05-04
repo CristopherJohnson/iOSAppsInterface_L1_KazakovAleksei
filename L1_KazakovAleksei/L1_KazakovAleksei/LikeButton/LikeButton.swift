@@ -138,5 +138,9 @@ class LikeButton: UIControl {
         self.countLable?.text = "\(self.counter)"
     }
  
+    public func reuse () {
+        self.countLable?.text = nil
+        self.iconImageView?.image = nil
+    }
 
 }

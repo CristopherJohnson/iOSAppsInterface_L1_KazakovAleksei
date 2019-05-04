@@ -87,4 +87,8 @@ class WatchCount: UIView {
         
     }
 
+    public func reuse () {
+        self.countLable?.text = nil
+        self.iconImageView?.image = nil
+    }
 }

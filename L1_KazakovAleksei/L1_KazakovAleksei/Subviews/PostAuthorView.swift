@@ -64,6 +64,12 @@ class PostAuthorView: UIView {
         
     }
     
+    public func reuse () {
+        self.authorImageView?.image = nil
+        self.authorLabel?.text = nil
+        self.dateLabel?.text = nil
+    }
+    
     //MARK: - Layout
     
     override func layoutSubviews() {
