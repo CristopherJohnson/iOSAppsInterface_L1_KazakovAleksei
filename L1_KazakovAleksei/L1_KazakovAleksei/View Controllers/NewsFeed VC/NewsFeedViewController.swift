@@ -48,7 +48,7 @@ class NewsFeedViewController: UIViewController {
             UIView.animate(withDuration: 0.25) {
                 cell.updateContent(post: post)
                 if post.isCompact == true {
-                    self.tableView?.scrollToRow(at: indexPath, at: .top, animated: true)
+                    self.tableView?.scrollToRow(at: indexPath, at: .top, animated: false)
                 }
                 
             }
