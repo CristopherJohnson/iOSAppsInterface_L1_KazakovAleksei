@@ -395,7 +395,7 @@ class GetNewsFeedTypePostResponseItemsAttachmentsPhoto: Codable {
             return nil
         }
         
-        var priorities: [String] = ["m", "x", "s", "o", "p", "q", "r", "y", "z", "w"]
+        var priorities: [String] = ["x", "m", "s", "o", "p", "q", "r", "y", "z", "w"]
         
         switch size {
         case .cellSize:

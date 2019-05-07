@@ -59,10 +59,18 @@ class NewsFeedModel {
             self.totalSpace += 6
         }
         
-        self.totalHeight = self.autorViewHeigh + self.bottomViewHeigh + self.totalSpace + self.spaceBetweenCells + (self.textHeigh ?? 0) + (self.isCompact ? self.showMoreButtonHeigh : 0)
+        if self.photos.count > 0 && self.photos.count == 1 {
+            self.totalPhotosHeigh = photoHeight
+            self.totalSpace += 6
+        } else if self.photos.count > 1 {
+            self.totalPhotosHeigh = photoHeight + photosPageControlHeight
+            self.totalSpace += 6
+        }
+        
+        self.totalHeight = self.autorViewHeigh + self.bottomViewHeigh + self.totalSpace + self.spaceBetweenCells + (self.textHeigh ?? 0) + (self.isCompact ? self.showMoreButtonHeigh : 0) + (self.totalPhotosHeigh ?? 0)
         
         if self.isCompact == true {
-            self.compactHeight = self.autorViewHeigh + self.bottomViewHeigh + self.totalSpace + self.spaceBetweenCells + self.compactTextlimit + self.showMoreButtonHeigh
+            self.compactHeight = self.autorViewHeigh + self.bottomViewHeigh + self.totalSpace + self.spaceBetweenCells + self.compactTextlimit + self.showMoreButtonHeigh + (self.totalPhotosHeigh ?? 0)
         }
     }
     

@@ -24,7 +24,14 @@ class MyFriendTwoTableViewCell: UITableViewCell {
         self.friendsId? = settingFriend.id!
         self.friendFakeId? = settingFriend.fakeId ?? "000000"
 //        self.myFriendImageView?.imageView?.image = UIImage(named: settingFriend.imageName ?? "No_Image")
-        self.myFriendImageView?.imageView?.load(url: URL(string: settingFriend.imageURL!)!)
+        ImageService.shared.get(urlString: settingFriend.imageURL!) { (image: UIImage?) in
+            if let loadedImage = image {
+                self.myFriendImageView?.imageView?.image = loadedImage
+            } else {
+                print("friend photo load error")
+            }
+        }
+//        self.myFriendImageView?.imageView?.load(url: URL(string: settingFriend.imageURL!)!)
     }
     
 

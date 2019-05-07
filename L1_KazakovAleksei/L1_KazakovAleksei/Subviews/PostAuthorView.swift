@@ -51,7 +51,14 @@ class PostAuthorView: UIView {
     }
     
     public func setup (imageUrl: String, authorName: String, date: Date?) {
-        self.authorImageView?.load(url: URL(string: imageUrl)!)
+        ImageService.shared.get(urlString: imageUrl) { (image: UIImage?) in
+            if let loadedImage = image {
+                self.authorImageView?.image = loadedImage
+            } else {
+                print("post author Image loading error")
+            }
+        }
+//        self.authorImageView?.load(url: URL(string: imageUrl)!)
         self.authorLabel?.text = authorName
         if let postDate = date {
             let formatter = DateFormatter()

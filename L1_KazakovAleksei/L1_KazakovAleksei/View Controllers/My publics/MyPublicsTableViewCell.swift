@@ -17,7 +17,15 @@ class MyPublicsTableViewCell: UITableViewCell {
     
     func setPublic(settingPublic: Public) {
         self.publicNameLable?.text = settingPublic.name
-        self.publicImageView?.load(url: URL(string: settingPublic.imageURL!)!)
+//        self.publicImageView?.load(url: URL(string: settingPublic.imageURL!)!)
+        ImageService.shared.get(urlString: settingPublic.imageURL!) { (image: UIImage?) in
+            if let loadedImage = image {
+                self.publicImageView?.image = loadedImage
+            } else {
+                print("Loading public image error")
+            }
+            
+        }
 
 //        self.publicImageView?.image = UIImage(named: settingPublic.imageName ?? "No_Image")
         self.publicId? = settingPublic.fakeId ?? "000000"
