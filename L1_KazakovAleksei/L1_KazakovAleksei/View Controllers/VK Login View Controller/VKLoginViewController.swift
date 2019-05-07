@@ -19,7 +19,7 @@ class VKLoginViewController: UIViewController, WKNavigationDelegate {
     let configuration = URLSessionConfiguration.default
     
 
-    let client_id = "6961836"
+    let client_id = "6888720"
     
     override func viewDidLoad() {
         super.viewDidLoad()

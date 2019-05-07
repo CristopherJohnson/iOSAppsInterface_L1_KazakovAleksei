@@ -258,7 +258,7 @@ class GetNewsFeedTypePostResponseItems: Codable {
     var source_id: Int
     var date: TimeInterval
     var text: String
-    var marked_as_ads: Int
+    var marked_as_ads: Int?
     var attachments: [GetNewsFeedTypePostResponseItemsAttachments]?
     var comments: GetNewsFeedTypePostResponseItemsComents
     var likes: GetNewsFeedTypePostResponseItemsLikes
@@ -288,7 +288,7 @@ class GetNewsFeedTypePostResponseItems: Codable {
         try container.encode(source_id, forKey: .source_id)
         try container.encode(date, forKey: .date)
         try container.encode(text, forKey: .text)
-        try container.encode(marked_as_ads, forKey: .marked_as_ads)
+        try? container.encode(marked_as_ads, forKey: .marked_as_ads)
         try? container.encode(attachments, forKey: .attachments)
         try container.encode(comments, forKey: .comments)
         try container.encode(likes, forKey: .likes)
@@ -304,7 +304,7 @@ class GetNewsFeedTypePostResponseItems: Codable {
         source_id = try container.decode(Int.self, forKey: .source_id)
         date = try container.decode(TimeInterval.self, forKey: .date)
         text = try container.decode(String.self, forKey: .text)
-        marked_as_ads = try container.decode(Int.self, forKey: .marked_as_ads)
+        marked_as_ads = try? container.decode(Int.self, forKey: .marked_as_ads)
         attachments = try? container.decode([GetNewsFeedTypePostResponseItemsAttachments].self, forKey: .attachments)
         comments = try container.decode(GetNewsFeedTypePostResponseItemsComents.self, forKey: .comments)
         likes = try container.decode(GetNewsFeedTypePostResponseItemsLikes.self, forKey: .likes)

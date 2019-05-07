@@ -118,6 +118,7 @@ class NewsFeedTableViewCell: UITableViewCell {
             frame.origin.y = (self.postAuthorView?.frame.size.height)! + 12 + realTextHieght!
             self.showFull?.frame = frame
             self.showFull?.setTitle(post.isCompact ? "Показать полностью" : "Показать меньше", for: .normal)
+            self.showFull?.titleLabel?.font = UIFont.systemFont(ofSize: 15)
             self.showFull?.sizeToFit()
             
         }
