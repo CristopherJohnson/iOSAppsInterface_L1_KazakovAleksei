@@ -41,6 +41,49 @@ class PhotoView: UIView {
             imageView.contentMode = UIView.ContentMode.scaleAspectFill
             imageView.clipsToBounds = true
             self.addSubview(imageView)
+        } else if photos.count > 1 {
+            let scrollView = UIScrollView()
+            scrollView.frame = CGRect(x: 12,
+                                      y: 0,
+                                      width: self.bounds.size.width - 20,
+                                      height: self.bounds.size.height - self.photosPageControlHeigh)
+            scrollView.isPagingEnabled = true
+            scrollView.clipsToBounds = false
+            scrollView.showsHorizontalScrollIndicator = false
+            scrollView.delegate = self
+            
+            let pageControl = UIPageControl()
+            pageControl.numberOfPages = photos.count
+            pageControl.currentPage = 0
+            
+            let color = UIColor(red: 0.32, green: 0.51, blue: 0.72, alpha: 1)
+            pageControl.tintColor = color
+            pageControl.pageIndicatorTintColor = color.withAlphaComponent(0.32)
+            pageControl.currentPageIndicatorTintColor = color
+            self.addSubview(pageControl)
+            pageControl.center = CGPoint(x: center.x, y: self.bounds.size.height - (self.photosPageControlHeigh / 2))
+            self.pageControl = pageControl
+            
+            let photoWidth: CGFloat = scrollView.bounds.size.width
+            
+            for (index, photo) in photos.enumerated() {
+                let imageView = UIImageView()
+                imageView.frame = CGRect(x: CGFloat(index) * photoWidth, y: 0, width: photoWidth - 4, height: scrollView.bounds.size.height)
+                if let url = photo.cellSizeUrl {
+                    ImageService.shared.get(urlString: url) { (image: UIImage?) in
+                        if let loadedImage = image {
+                            imageView.image = loadedImage
+                        } else {
+                            print("NewsFeed post Image in scroll view loading error")
+                        }
+                    }
+                }
+                imageView.clipsToBounds = true
+                imageView.contentMode = UIView.ContentMode.scaleAspectFill
+                scrollView.addSubview(imageView)
+            }
+            scrollView.contentSize = CGSize(width: photoWidth * CGFloat(photos.count), height: 0)
+            self.addSubview(scrollView)
         }
     }
     
@@ -50,5 +93,12 @@ class PhotoView: UIView {
         for view in self.subviews {
             view.removeFromSuperview()
         }
+    }
+}
+
+extension PhotoView: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        pageControl?.currentPage = Int(pageNumber)
     }
 }

@@ -75,7 +75,7 @@ class NewsFeedTableViewCell: UITableViewCell {
 
         let postAuthorImageUrl = post.groupAuthor?.imageURL ?? post.userAuthor?.imageURL
         self.postAuthorView?.setup(imageUrl: postAuthorImageUrl!, authorName: post.getAuthorName(), date: post.date)
-        self.postAuthorView?.frame = CGRect(x: totalSpace, y: 6, width: (self.containerView?.bounds.size.width)! - 12, height: post.autorViewHeigh)
+        self.postAuthorView?.frame = CGRect(x: totalSpace, y: totalSpace, width: (self.containerView?.bounds.size.width)! - 12, height: post.autorViewHeigh)
         totalSpace += 6
         viewsHeight += (postAuthorView?.frame.size.height)!
         
@@ -106,7 +106,7 @@ class NewsFeedTableViewCell: UITableViewCell {
             }
         }
         
-        if post.photos.count > 0 && post.photos.count == 1 {
+        if post.photos.count > 0 {
             self.photoView?.frame = CGRect(x: 0, y: totalSpace + viewsHeight, width: (self.containerView?.frame.size.width)!, height: post.totalPhotosHeigh!)
             self.photoView?.setup(photos: post.photos)
         }
@@ -141,6 +141,7 @@ class NewsFeedTableViewCell: UITableViewCell {
         
         if var frame = showFull?.frame {
             frame.origin.y = viewsHeight + totalSpace
+            frame.size.height = post.showMoreButtonHeigh
             self.showFull?.frame = frame
             self.showFull?.setTitle(post.isCompact ? "Показать полностью" : "Показать меньше", for: .normal)
             self.showFull?.titleLabel?.font = UIFont.systemFont(ofSize: 15)
@@ -151,10 +152,13 @@ class NewsFeedTableViewCell: UITableViewCell {
         }
         
         if var frame = photoView?.frame {
-            frame.origin.y = viewsHeight + totalSpace
+            frame.origin.y = viewsHeight + totalSpace - 6 // Пока не знаю, где просчет. нужно искать
             self.photoView?.frame = frame
-            totalSpace += 6
-            viewsHeight += (photoView?.frame.size.height)!
+            
+            if frame.size.height > 0 {
+                totalSpace += 6
+                viewsHeight += (photoView?.frame.size.height)!
+            }
         }
         
         if var frame = postBottomView?.frame, let containerHeight = containerView?.bounds.size.height {
