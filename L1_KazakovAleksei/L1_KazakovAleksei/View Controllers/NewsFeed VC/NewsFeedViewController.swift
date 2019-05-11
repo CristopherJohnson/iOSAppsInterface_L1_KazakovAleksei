@@ -61,7 +61,13 @@ class NewsFeedViewController: UIViewController {
 
 extension NewsFeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == (postsArray.count - 3) {
+            print("should start loading")
+        }
     }
     
 }
@@ -69,7 +75,7 @@ extension NewsFeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let post = postsArray[indexPath.row]
-        print("postHeigh\(post.isCompact ? post.compactHeight! : post.totalHeight!)")
+//        print("postHeigh\(post.isCompact ? post.compactHeight! : post.totalHeight!)")
 //        post.calculateSize()
         return post.isCompact ? post.compactHeight! : post.totalHeight!
     }
