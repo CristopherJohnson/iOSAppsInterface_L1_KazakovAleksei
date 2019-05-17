@@ -45,13 +45,13 @@ class NewsFeedViewController: UIViewController {
         let indexPath = IndexPath(row: sender.tag, section: 0)
         if let cell = tableView?.cellForRow(at: indexPath) as? NewsFeedTableViewCell {
             tableView?.beginUpdates()
-            UIView.animate(withDuration: 0.25) {
+//            UIView.animate(withDuration: 0.25) {
                 cell.updateContent(post: post)
                 if post.isCompact == true {
                     self.tableView?.scrollToRow(at: indexPath, at: .top, animated: false)
                 }
                 
-            }
+//            }
             tableView?.endUpdates()
             
         }

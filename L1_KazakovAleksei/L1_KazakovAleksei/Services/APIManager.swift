@@ -36,7 +36,8 @@ private class URLSessionAPIManager: APIProtocol {
     
     
     func getFriends(complition: @escaping ([Friend]?) -> ()) {
-        let getFriendsListDataTask = urlSession?.dataTask(with: self.requestData.generateRequestToGetFriensList()!) { (data: Data?, response: URLResponse?, error: Error?) in
+        DispatchQueue.global(qos: .userInteractive).async {
+            let getFriendsListDataTask = self.urlSession?.dataTask(with: self.requestData.generateRequestToGetFriensList()!) { (data: Data?, response: URLResponse?, error: Error?) in
             if let responseData = data {
                 var friends: [Friend] = []
                 let getFriendsResponse: GetFriends? = Parser.parseFriends(data: responseData)
@@ -56,11 +57,13 @@ private class URLSessionAPIManager: APIProtocol {
             }
         }
         getFriendsListDataTask?.resume()
+        }
     }
     
     func getPublics(complition: @escaping ([Public]?) -> ()) {
         
-        let getGroupsListDataTask = urlSession?.dataTask(with: self.requestData.generateRequestToGetGroups()!) { (data: Data?, response: URLResponse?, error: Error?) in
+        DispatchQueue.global(qos: .userInteractive).async {
+            let getGroupsListDataTask = self.urlSession?.dataTask(with: self.requestData.generateRequestToGetGroups()!) { (data: Data?, response: URLResponse?, error: Error?) in
             if let responseData = data {
                 var publics: [Public] = []
                 let getGroupsResponse: GetGroups? = Parser.parseGroups(data: responseData)
@@ -80,6 +83,7 @@ private class URLSessionAPIManager: APIProtocol {
             
         }
         getGroupsListDataTask?.resume()
+        }
     }
     
     func getNewsFeedTypePost (complition: @escaping ([NewsFeedModel]?, String?, Error?)->()) {
