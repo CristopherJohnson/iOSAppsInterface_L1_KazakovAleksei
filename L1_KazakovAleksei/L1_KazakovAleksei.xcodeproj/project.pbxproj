@@ -326,7 +326,6 @@
 		A38D78DF2208C8A80018B747 /* LikeButton */ = {
 			isa = PBXGroup;
 			children = (
-				A38D78E02208C8F10018B747 /* LikeButton.swift */,
 				A3015CDA220C563B0021318E /* TestLikeButtonViewController.swift */,
 			);
 			path = LikeButton;
@@ -438,6 +437,7 @@
 				A3D826EA22726BBD00BF6F1B /* CommetButton.swift */,
 				A3D826EC22726BCD00BF6F1B /* RepostButton.swift */,
 				A3D826EE22726BE700BF6F1B /* WatchCount.swift */,
+				A38D78E02208C8F10018B747 /* LikeButton.swift */,
 				A350E9A82281FEB600D6EFF2 /* PhotoView.swift */,
 				A3580432221AD98A00A5CDE3 /* FeedImages.swift */,
 			);

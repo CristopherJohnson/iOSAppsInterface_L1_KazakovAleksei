@@ -12,7 +12,7 @@ import Foundation
 protocol APIProtocol: class {
     func getFriends (complition: @escaping ([Friend]?)->())
     func getPublics (complition: @escaping ([Public]?)->())
-    func getNewsFeedTypePost (complition: @escaping ([NewsFeedModel]?, String?, Error?)->())
+    func getNewsFeedTypePost (startFrom: String?, complition: @escaping ([NewsFeedModel]?, String?, Error?)->())
 }
 
 
@@ -86,9 +86,9 @@ private class URLSessionAPIManager: APIProtocol {
         }
     }
     
-    func getNewsFeedTypePost (complition: @escaping ([NewsFeedModel]?, String?, Error?)->()) {
+    func getNewsFeedTypePost (startFrom: String?, complition: @escaping ([NewsFeedModel]?, String?, Error?)->()) {
         DispatchQueue.global(qos: .userInteractive).async {
-            let getNewsFeedTypePostDataTask = self.urlSession?.dataTask(with: self.requestData.generateRequestToGetNewsFeed()!, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            let getNewsFeedTypePostDataTask = self.urlSession?.dataTask(with: self.requestData.generateRequestToGetNewsFeed(startFrom: startFrom)!, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
                 if let responseData = data {
                     
                     var newsPosts: [NewsFeedModel] = []
@@ -193,6 +193,7 @@ private class URLSessionAPIManager: APIProtocol {
                                 }
                             }
                             post.calculateSize()
+                            post.searchForLinks()
                             newsPosts.append(post)
                         }
                     }

@@ -14,10 +14,12 @@ class NewsFeedViewController: UIViewController {
     
     private var postsArray: [NewsFeedModel] = []
     private var nextFrom: String?
+    private var isLoadingMore: Bool = false
+    private weak var refreshControl: UIRefreshControl?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        APIManager.shared.getNewsFeedTypePost { (news: [NewsFeedModel]?, nextFrom: String?, error: Error?) in
+        APIManager.shared.getNewsFeedTypePost(startFrom: nil) { (news: [NewsFeedModel]?, nextFrom: String?, error: Error?) in
             if error != nil {
                 print(error?.localizedDescription ?? "unknown Error")
                 return
@@ -36,6 +38,10 @@ class NewsFeedViewController: UIViewController {
         tableView?.estimatedRowHeight = 0
         tableView?.estimatedSectionHeaderHeight = 0
         tableView?.estimatedSectionFooterHeight = 0
+        let refreshControl = UIRefreshControl()
+        self.refreshControl = refreshControl
+        self.tableView?.refreshControl = self.refreshControl
+        self.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         
     }
     
@@ -57,6 +63,31 @@ class NewsFeedViewController: UIViewController {
         }
         
     }
+    
+    @objc private func pullToRefresh () {
+        if !self.isLoadingMore {
+            self.isLoadingMore = true
+            APIManager.shared.getNewsFeedTypePost(startFrom: nil) { (news: [NewsFeedModel]?, nextFrom: String?, error: Error?) in
+                if error != nil {
+                    print(error?.localizedDescription ?? "unknown Error")
+                    self.refreshControl?.endRefreshing()
+                    return
+                }
+                if let newsArray = news {
+                    self.postsArray = newsArray
+                }
+                if let next = nextFrom {
+                    self.nextFrom = next
+                }
+                self.tableView?.reloadData()
+                self.refreshControl?.endRefreshing()
+                self.isLoadingMore = false
+            }
+        } else {
+            self.refreshControl?.endRefreshing()
+        }
+    }
+        
 }
 
 extension NewsFeedViewController: UITableViewDelegate {
@@ -65,18 +96,36 @@ extension NewsFeedViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == (postsArray.count - 3) {
-            print("should start loading")
+        if indexPath.row == (postsArray.count - 3) && !isLoadingMore && nextFrom != nil {
+            self.isLoadingMore = true
+            APIManager.shared.getNewsFeedTypePost(startFrom: nextFrom) { (posts: [NewsFeedModel]?, nextFrom: String?, error: Error?) in
+                if error != nil {
+                    print(error?.localizedDescription ?? "unknown Error")
+                    return
+                }
+                if let newsArray = posts {
+                    if newsArray.count > 0 {
+                        self.postsArray.append(contentsOf: newsArray)
+                    } else {
+                        // TODO - показывать в футтере надпись, что все новости загружены
+                        print("All Newws were loaded")
+                    }
+                }
+                if let next = nextFrom {
+                    self.nextFrom = next
+                }
+                self.tableView?.reloadData()
+                self.isLoadingMore = false
+            }
         }
     }
+    
     
 }
 extension NewsFeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let post = postsArray[indexPath.row]
-//        print("postHeigh\(post.isCompact ? post.compactHeight! : post.totalHeight!)")
-//        post.calculateSize()
         return post.isCompact ? post.compactHeight! : post.totalHeight!
     }
     

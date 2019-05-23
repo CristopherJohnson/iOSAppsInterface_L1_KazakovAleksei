@@ -109,7 +109,7 @@ class RequestData {
         return nil
     }
     
-    func generateRequestToGetNewsFeed () -> URLRequest? {
+    func generateRequestToGetNewsFeed (startFrom: String?) -> URLRequest? {
         var urlComponents = URLComponents()
         urlComponents.scheme = self.scheme
         urlComponents.host = self.host
@@ -118,10 +118,13 @@ class RequestData {
             URLQueryItem(name: "filters", value: "post"),
             URLQueryItem(name: "return_banned", value: "0"),
             URLQueryItem(name: "max_photos", value: "10"),
-            URLQueryItem(name: "count", value: "50"),
+            URLQueryItem(name: "count", value: "20"),
             URLQueryItem(name: "access_token", value: self.session.sessionInfo.token),
             URLQueryItem(name: "v", value: self.apiVersion)
         ]
+        if let from = startFrom {
+            urlComponents.queryItems?.append(URLQueryItem(name: "start_from", value: from))
+        }
         
         if let url = urlComponents.url {
             var request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 60)

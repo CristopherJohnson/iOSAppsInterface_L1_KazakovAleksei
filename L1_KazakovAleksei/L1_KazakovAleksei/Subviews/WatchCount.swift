@@ -11,8 +11,11 @@ import UIKit
 class WatchCount: UIView {
     var counter: Int = 0 {
         didSet {
-            if counter > 1000 {
-                self.countLable?.text = "\(Int(self.counter / 1000))k"
+            if counter > 1000000 {
+                let count: Double = Double(counter / 1000000)
+                self.countLable?.text = "\(Double(round(10 * count)/10))M"
+            } else if counter > 1000 {
+                self.countLable?.text = "\(Int(self.counter / 1000))K"
             } else {
                 self.countLable?.text = "\(self.counter)"
             }
@@ -43,9 +46,9 @@ class WatchCount: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.iconImageView?.frame = CGRect(x: 0, y: 0, width: self.frame.size.width / 2, height: self.frame.size.height)
+        self.iconImageView?.frame = CGRect(x: 0, y: 0, width: self.frame.size.height, height: self.frame.size.height)
         self.iconImageView?.contentMode = UIView.ContentMode.scaleAspectFit
-        self.countLable?.frame = CGRect(x: self.frame.size.width / 2, y: 0, width: self.frame.size.width / 2, height: self.frame.size.height)
+        self.countLable?.frame = CGRect(x: (self.frame.size.height + 5), y: 0, width: (self.frame.size.width - self.frame.size.height - 5), height: self.frame.size.height)
         self.countLable?.font = UIFont.systemFont(ofSize: 14)
         self.countLable?.textAlignment = .left
     }

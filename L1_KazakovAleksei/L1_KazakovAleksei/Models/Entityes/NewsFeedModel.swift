@@ -48,6 +48,10 @@ class NewsFeedModel {
     private var totalSpace: CGFloat = 12
     private let spaceBetweenCells: CGFloat = 12
     
+    public var postTextlinkURL: String?
+    public var postTextLinkLocation: Int = 0
+    public var postTextLinkLength: Int = 0
+    
     
     public func calculateSize () {
         
@@ -82,4 +86,32 @@ class NewsFeedModel {
         }
         return "No authror Name"
     }
+    
+    public func searchForLinks () {
+        if let text = self.postText, text.count > 0 {
+            let input = text
+            let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+            let matches = detector.matches(in: input, options: [], range: NSRange(location: 0, length: input.utf16.count))
+            
+            for match in matches {
+                guard let range = Range(match.range, in: input) else { continue }
+                let url = input[range]
+                print(url)
+                print(match.range)
+            }
+//            let textArray = text.components(separatedBy: " ")
+//            for word in  textArray {
+//                if word.contains("http://") || word.contains("https://") {
+//                    self.postTextlinkURL = word
+//                    self.postTextLinkLength = word.count
+//                    print(word)
+//                    print(postTextLinkLocation)
+//                    break
+//                } else {
+//                    self.postTextLinkLocation += word.count + 1
+//                }
+//            }
+        }
+    }
 }
+
