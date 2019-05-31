@@ -32,6 +32,7 @@ class DetailPostViewController: UIViewController {
             if let commentsArray = comments {
                 self.commentsArray = commentsArray
             }
+            self.tableView?.reloadData()
         }
     }
     
@@ -59,9 +60,9 @@ extension DetailPostViewController: UITableViewDataSource {
 
     }
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//       return 1
-//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+       return 1
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return commentsArray.count + 1
@@ -75,6 +76,9 @@ extension DetailPostViewController: UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailPostCommentTableViewCell", for: indexPath) as! DetailPostCommentTableViewCell
+            let comment = commentsArray[(commentsArray.count - indexPath.row)]
+            cell.addSubviews()
+            cell.setup(comment: comment)
             return cell
         }
     

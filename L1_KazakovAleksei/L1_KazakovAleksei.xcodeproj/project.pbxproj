@@ -52,6 +52,7 @@
 		A3A94AAF21F8D51E001BC531 /* L1_KazakovAlekseiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AAE21F8D51E001BC531 /* L1_KazakovAlekseiTests.swift */; };
 		A3A94ABA21F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AB921F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift */; };
 		A3A94AC921F8D560001BC531 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AC821F8D560001BC531 /* loginViewController.swift */; };
+		A3C19D7C22A11D7100F17717 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C19D7B22A11D7100F17717 /* CommentView.swift */; };
 		A3C4DED322A0442D00E0895C /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C4DED222A0442D00E0895C /* DetailPostViewController.swift */; };
 		A3C4DED522A05B4200E0895C /* DetailPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C4DED422A05B4200E0895C /* DetailPostTableViewCell.swift */; };
 		A3C4DED722A097D200E0895C /* CommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C4DED622A097D200E0895C /* CommentsModel.swift */; };
@@ -145,6 +146,7 @@
 		A3A94AB921F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L1_KazakovAlekseiUITests.swift; sourceTree = "<group>"; };
 		A3A94ABB21F8D51E001BC531 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3A94AC821F8D560001BC531 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		A3C19D7B22A11D7100F17717 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		A3C4DED222A0442D00E0895C /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
 		A3C4DED422A05B4200E0895C /* DetailPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostTableViewCell.swift; sourceTree = "<group>"; };
 		A3C4DED622A097D200E0895C /* CommentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsModel.swift; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				A38D78E02208C8F10018B747 /* LikeButton.swift */,
 				A350E9A82281FEB600D6EFF2 /* PhotoView.swift */,
 				A3580432221AD98A00A5CDE3 /* FeedImages.swift */,
+				A3C19D7B22A11D7100F17717 /* CommentView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -787,6 +790,7 @@
 				A38D78DA220861E00018B747 /* FriendPhoto.swift in Sources */,
 				A33BFF54223BEDD3009D0159 /* UIImageViewExtensions.swift in Sources */,
 				A330873C2203BBDB006D70C8 /* FriendsPhotoesCollectionViewController.swift in Sources */,
+				A3C19D7C22A11D7100F17717 /* CommentView.swift in Sources */,
 				A3DF49DF226C715700F26A87 /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

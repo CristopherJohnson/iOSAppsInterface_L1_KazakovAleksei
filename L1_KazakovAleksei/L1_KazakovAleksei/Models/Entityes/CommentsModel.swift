@@ -22,16 +22,25 @@ class CommentsModel {
     public var totalHeight: CGFloat?
     
     public func calculateSize () {
-        var height: CGFloat = 32
+        var height: CGFloat = 38
         if let text = self.commentText {
-            self.textHeight = text.heightOfString(withConstrainedWidth: UIScreen.main.bounds.size.width - 48, font: UIFont.systemFont(ofSize: 15))
+            self.textHeight = text.heightOfString(withConstrainedWidth: UIScreen.main.bounds.size.width - 45, font: UIFont.systemFont(ofSize: 15))
             height += self.textHeight!
         }
         
-        if height > 42 {
+        if height > 48 {
             self.totalHeight = height
         } else {
-            self.totalHeight = 42
+            self.totalHeight = 48
         }
+    }
+    
+    public func getAuthorName () -> String {
+        if let user = self.userAuthor {
+            return "\(user.firstName ?? "No firstName") \(user.lastName ?? "No lastName")"
+        } else if let group = self.groupAuthor {
+            return "\(group.name ?? "No groupName")"
+        }
+        return "No authror Name"
     }
 }
