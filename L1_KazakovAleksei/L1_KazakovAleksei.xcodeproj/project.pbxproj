@@ -52,6 +52,10 @@
 		A3A94AAF21F8D51E001BC531 /* L1_KazakovAlekseiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AAE21F8D51E001BC531 /* L1_KazakovAlekseiTests.swift */; };
 		A3A94ABA21F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AB921F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift */; };
 		A3A94AC921F8D560001BC531 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A94AC821F8D560001BC531 /* loginViewController.swift */; };
+		A3C4DED322A0442D00E0895C /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C4DED222A0442D00E0895C /* DetailPostViewController.swift */; };
+		A3C4DED522A05B4200E0895C /* DetailPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C4DED422A05B4200E0895C /* DetailPostTableViewCell.swift */; };
+		A3C4DED722A097D200E0895C /* CommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C4DED622A097D200E0895C /* CommentsModel.swift */; };
+		A3C4DED922A0A5E800E0895C /* DetailPostCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C4DED822A0A5E800E0895C /* DetailPostCommentTableViewCell.swift */; };
 		A3C7F66022730E710094D69F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C7F65F22730E710094D69F /* StringExtension.swift */; };
 		A3CB87D1224949560004034F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB87D0224949560004034F /* APIManager.swift */; };
 		A3CB87D4224958B90004034F /* LoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CB87D3224958B90004034F /* LoadManager.swift */; };
@@ -141,6 +145,10 @@
 		A3A94AB921F8D51E001BC531 /* L1_KazakovAlekseiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L1_KazakovAlekseiUITests.swift; sourceTree = "<group>"; };
 		A3A94ABB21F8D51E001BC531 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3A94AC821F8D560001BC531 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		A3C4DED222A0442D00E0895C /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
+		A3C4DED422A05B4200E0895C /* DetailPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostTableViewCell.swift; sourceTree = "<group>"; };
+		A3C4DED622A097D200E0895C /* CommentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsModel.swift; sourceTree = "<group>"; };
+		A3C4DED822A0A5E800E0895C /* DetailPostCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostCommentTableViewCell.swift; sourceTree = "<group>"; };
 		A3C7F65F22730E710094D69F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		A3CB87D0224949560004034F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		A3CB87D3224958B90004034F /* LoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadManager.swift; sourceTree = "<group>"; };
@@ -401,6 +409,16 @@
 			path = "Login View Controller";
 			sourceTree = "<group>";
 		};
+		A3C4DED122A043D900E0895C /* DetailPostViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A3C4DED222A0442D00E0895C /* DetailPostViewController.swift */,
+				A3C4DED422A05B4200E0895C /* DetailPostTableViewCell.swift */,
+				A3C4DED822A0A5E800E0895C /* DetailPostCommentTableViewCell.swift */,
+			);
+			path = DetailPostViewController;
+			sourceTree = "<group>";
+		};
 		A3CB87D2224958790004034F /* Entityes */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +427,7 @@
 				A33E911E2211E07500814DBF /* NewsModel.swift */,
 				A3DF49E2226CD1C100F26A87 /* NewsFeedModel.swift */,
 				A3DF49E4226CD61E00F26A87 /* PhotoModel.swift */,
+				A3C4DED622A097D200E0895C /* CommentsModel.swift */,
 			);
 			path = Entityes;
 			sourceTree = "<group>";
@@ -416,6 +435,7 @@
 		A3CDCE6B223EA034001B79FB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A3C4DED122A043D900E0895C /* DetailPostViewController */,
 				A330872622036C49006D70C8 /* All publics */,
 				A35BCA562268F2FD0065D550 /* NewsFeed VC */,
 				A330873A2203BB8C006D70C8 /* Friends Photoes */,
@@ -722,9 +742,11 @@
 				A38D78DC220862F20018B747 /* MyFriendTwoTableViewCell.swift in Sources */,
 				A362FB69222ACEC9002A2DD7 /* CloseDetailNewsPhotoAnimationController.swift in Sources */,
 				A3DF49E3226CD1C100F26A87 /* NewsFeedModel.swift in Sources */,
+				A3C4DED722A097D200E0895C /* CommentsModel.swift in Sources */,
 				A3CB87D1224949560004034F /* APIManager.swift in Sources */,
 				A3A94A9A21F8D51D001BC531 /* AppDelegate.swift in Sources */,
 				A33B314F221AAC3D00CBAEBA /* LoaderPoints.swift in Sources */,
+				A3C4DED922A0A5E800E0895C /* DetailPostCommentTableViewCell.swift in Sources */,
 				A330873022039BC6006D70C8 /* MyPublicsTableViewController.swift in Sources */,
 				A3EF042E22402539007C2E0D /* RealmDataStorage.swift in Sources */,
 				A33087392203B46D006D70C8 /* FriendModel.swift in Sources */,
@@ -740,6 +762,7 @@
 				A350E9AD2281FF5B00D6EFF2 /* ImageService.swift in Sources */,
 				A350E9A92281FEB600D6EFF2 /* PhotoView.swift in Sources */,
 				A3DF49E1226C717C00F26A87 /* NewsFeedTableViewCell.swift in Sources */,
+				A3C4DED322A0442D00E0895C /* DetailPostViewController.swift in Sources */,
 				A3D826ED22726BCD00BF6F1B /* RepostButton.swift in Sources */,
 				A330872822036CA3006D70C8 /* AllPublicsTableViewController.swift in Sources */,
 				A32873A4223063CD00CEB51A /* RequestData.swift in Sources */,
@@ -753,6 +776,7 @@
 				A330873E2203BC08006D70C8 /* FriendsPhotoesCollectionViewCell.swift in Sources */,
 				A328739F222D655200CEB51A /* Session.swift in Sources */,
 				A3048E28223BAC1D00DFEF64 /* Parser.swift in Sources */,
+				A3C4DED522A05B4200E0895C /* DetailPostTableViewCell.swift in Sources */,
 				A3580433221AD98A00A5CDE3 /* FeedImages.swift in Sources */,
 				A38D78E12208C8F10018B747 /* LikeButton.swift in Sources */,
 				A36AB972222467E5009F6141 /* CustomInteractiveTransition.swift in Sources */,

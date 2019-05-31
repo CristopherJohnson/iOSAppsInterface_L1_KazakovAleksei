@@ -87,12 +87,27 @@ class NewsFeedViewController: UIViewController {
             self.refreshControl?.endRefreshing()
         }
     }
-        
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailPostFromNewsFeed" {
+            let destVC = segue.destination as! DetailPostViewController
+            let sourceVC = segue.source as! NewsFeedViewController
+            let indexPath = sourceVC.tableView?.indexPathForSelectedRow
+            let post = sourceVC.postsArray[(indexPath?.row)!]
+            destVC.post = post
+        }
+    }
+    
 }
 
 extension NewsFeedViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return false
+//    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+//        return false
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("tap at news")
+//        self.navigationController?.pushViewController(DetailPostViewController(), animated: true)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -142,7 +157,5 @@ extension NewsFeedViewController: UITableViewDataSource {
         cell.showFull?.addTarget(self, action: #selector(showFullButtonAction(sender:)), for: .touchUpInside)
         return cell
     }
-    
-    
     
 }

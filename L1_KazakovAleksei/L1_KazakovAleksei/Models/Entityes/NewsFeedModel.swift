@@ -14,6 +14,7 @@ class NewsFeedModel {
     var postText: String?
     var isAdd: Bool?
     var postId: Int?
+    var sourceId: Int?
     
     var commentsCount: Int?
     var canPostComments: Bool?

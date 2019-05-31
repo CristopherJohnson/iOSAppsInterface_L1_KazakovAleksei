@@ -13,6 +13,7 @@ protocol APIProtocol: class {
     func getFriends (complition: @escaping ([Friend]?)->())
     func getPublics (complition: @escaping ([Public]?)->())
     func getNewsFeedTypePost (startFrom: String?, complition: @escaping ([NewsFeedModel]?, String?, Error?)->())
+    func getComments (ownerID: String, postID: String, complition: @escaping ([CommentsModel]?, Error?)->())
 }
 
 
@@ -25,6 +26,8 @@ public class APIManager {
 
 
 private class URLSessionAPIManager: APIProtocol {
+    
+    
     
     var urlSession: URLSession?
     var requestData = RequestData()
@@ -169,7 +172,7 @@ private class URLSessionAPIManager: APIProtocol {
                                     post.photos.append(photo)
                                 }
                             }
-                            
+                            post.sourceId = item.source_id
                             if item.source_id > 0, let profiles = getNewsFeedTypePostResponse?.response.profiles {
                                 for profile in profiles {
                                     if profile.id == item.source_id {
@@ -210,6 +213,62 @@ private class URLSessionAPIManager: APIProtocol {
         }
         
         
+    }
+    
+    func getComments(ownerID: String, postID: String, complition: @escaping ([CommentsModel]?, Error?) -> ()) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            let getCommentsDataTask = self.urlSession?.dataTask(with: self.requestData.generateRequestToGetComments(ownerID: ownerID, postID: postID)!, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+                if let responseData = data {
+                    var commentsArray: [CommentsModel] = []
+                    
+                    let getCommentsResponse: GetWallComents? = Parser.parseComments(data: responseData)
+                    
+                    if let items = getCommentsResponse?.response.items {
+                        for item in items {
+                            let comment = CommentsModel()
+                            
+                            if let text = item.text, text.count > 0 {
+                                comment.commentText = text
+                                print(text)
+                            }
+                            
+                            if item.from_id > 0, let profiles = getCommentsResponse?.response.profiles {
+                                for profile in profiles {
+                                    if profile.id == item.from_id {
+                                        let friend = Friend()
+                                        friend.id = profile.id
+                                        friend.imageURL = profile.photo_100
+                                        friend.firstName = profile.first_name
+                                        friend.lastName = profile.last_name
+                                        comment.userAuthor = friend
+                                    }
+                                }
+                            } else if item.from_id < 0, let groups = getCommentsResponse?.response.groups {
+                                for group in groups {
+                                    if abs(item.from_id) == group.id {
+                                        let groupModel = Public()
+                                        groupModel.id = group.id
+                                        groupModel.imageURL = group.photo_100
+                                        groupModel.name = group.name
+                                        comment.groupAuthor = groupModel
+                                    }
+                                }
+                            }
+                            comment.calculateSize()
+                            commentsArray.append(comment)
+                        }
+                    }
+                    DispatchQueue.main.async {
+                        complition(commentsArray, nil)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        complition(nil, error)
+                    }
+                }
+            })
+            getCommentsDataTask?.resume()
+        }
     }
  
 }

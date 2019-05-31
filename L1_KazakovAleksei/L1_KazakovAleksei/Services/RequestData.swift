@@ -136,4 +136,32 @@ class RequestData {
         return nil
     }
     
+    func generateRequestToGetComments (ownerID: String, postID: String) -> URLRequest? {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = self.scheme
+        urlComponents.host = self.host
+        urlComponents.path = "/method/wall.getComments"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "owner_id", value: ownerID),
+            URLQueryItem(name: "post_id", value: postID),
+            URLQueryItem(name: "need_likes", value: "1"),
+            URLQueryItem(name: "count", value: "30"),
+            URLQueryItem(name: "sort", value: "desc"),
+            URLQueryItem(name: "preview_length", value: "0"),
+            URLQueryItem(name: "extended", value: "1"),
+            URLQueryItem(name: "thread_items_count", value: "3"),
+            URLQueryItem(name: "access_token", value: self.session.sessionInfo.token),
+            URLQueryItem(name: "v", value: self.apiVersion)
+        ]
+        
+        if let url = urlComponents.url {
+            var request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 60)
+            request.httpMethod = self.method
+            request.httpBody = self.body
+            return request
+            
+        }
+        return nil
+    }
+    
 }

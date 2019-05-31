@@ -199,13 +199,16 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" id="1jl-do-d1p" customClass="NewsFeedTableViewCell" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PostCell" id="1jl-do-d1p" customClass="NewsFeedTableViewCell" customModule="L1_KazakovAleksei" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1jl-do-d1p" id="XbI-RY-9s5">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="d0p-bX-Vq6" kind="show" identifier="ShowDetailPostFromNewsFeed" id="hHy-4C-qCE"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -231,6 +234,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Sg-7N-qXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4514" y="922"/>
+        </scene>
+        <!--Post-->
+        <scene sceneID="RgN-dT-N05">
+            <objects>
+                <viewController storyboardIdentifier="DetailPostViewController" id="d0p-bX-Vq6" customClass="DetailPostViewController" customModule="L1_KazakovAleksei" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZFd-Kz-ahY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3So-sU-I5v">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailPostTableViewCell" id="3E1-6Z-am2" customClass="DetailPostTableViewCell" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3E1-6Z-am2" id="PoS-8e-dn0">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailPostCommentTableViewCell" id="UCZ-a2-eue" customClass="DetailPostCommentTableViewCell" customModule="L1_KazakovAleksei" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UCZ-a2-eue" id="ftw-u8-Rap">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="d0p-bX-Vq6" id="Cjn-St-VWD"/>
+                                    <outlet property="delegate" destination="d0p-bX-Vq6" id="SDv-rZ-68A"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3So-sU-I5v" firstAttribute="leading" secondItem="VlR-c0-t21" secondAttribute="leading" id="BKd-BT-TgO"/>
+                            <constraint firstItem="VlR-c0-t21" firstAttribute="trailing" secondItem="3So-sU-I5v" secondAttribute="trailing" id="G34-cs-5V0"/>
+                            <constraint firstItem="3So-sU-I5v" firstAttribute="top" secondItem="VlR-c0-t21" secondAttribute="top" id="cFv-o3-17k"/>
+                            <constraint firstItem="VlR-c0-t21" firstAttribute="bottom" secondItem="3So-sU-I5v" secondAttribute="bottom" id="zJ0-Rw-N4j"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VlR-c0-t21"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Post" id="o4R-HN-zoW"/>
+                    <connections>
+                        <outlet property="tableView" destination="3So-sU-I5v" id="S8u-wk-gL8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ta9-wr-zzz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5287" y="922"/>
         </scene>
         <!--All publics-->
         <scene sceneID="Wcz-Fy-b8e">
@@ -434,7 +490,7 @@
                                     <constraint firstAttribute="height" constant="144" id="EXb-7E-hKU"/>
                                 </constraints>
                                 <string key="text">Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label Label</string>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -752,6 +808,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="r6D-0M-R0x"/>
+        <segue reference="Yhc-97-LBF"/>
     </inferredMetricsTieBreakers>
 </document>
