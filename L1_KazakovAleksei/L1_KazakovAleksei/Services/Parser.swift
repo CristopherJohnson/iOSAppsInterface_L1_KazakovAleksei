@@ -684,7 +684,9 @@ class GetWallComentsResponseItems: Codable {
     var text: String?
     var likes: GetWallComentsResponseItemsLikes
     var attachments: [GetWallComentsResponseItemsAttachments]?
-//    var thread: GetWallComentsResponseItemsThread
+    var thread: GetWallComentsResponseItemsThread?
+    var reply_to_user: Int?
+    var reply_to_comment: Int?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -696,7 +698,9 @@ class GetWallComentsResponseItems: Codable {
         case text
         case likes
         case attachments
-//        case thread
+        case thread
+        case reply_to_user
+        case reply_to_comment
     }
     
     func encode(to encoder: Encoder) throws {
@@ -710,7 +714,9 @@ class GetWallComentsResponseItems: Codable {
         try? container.encode(text, forKey: .text)
         try container.encode(likes, forKey: .likes)
         try? container.encode(attachments, forKey: .attachments)
-//        try container.encode(thread, forKey: .thread)
+        try? container.encode(thread, forKey: .thread)
+        try? container.encode(reply_to_user, forKey: .reply_to_user)
+        try? container.encode(reply_to_comment, forKey: .reply_to_comment)
     }
     
     required init (from decoder: Decoder) throws {
@@ -724,7 +730,9 @@ class GetWallComentsResponseItems: Codable {
         text = try? container.decode(String.self, forKey: .text)
         likes = try container.decode(GetWallComentsResponseItemsLikes.self, forKey: .likes)
         attachments = try? container.decode([GetWallComentsResponseItemsAttachments].self, forKey: .attachments)
-//        thread = try container.decode(GetWallComentsResponseItemsThread.self, forKey: .thread)
+        thread = try? container.decode(GetWallComentsResponseItemsThread.self, forKey: .thread)
+        reply_to_user = try? container.decode(Int.self, forKey: .reply_to_user)
+        reply_to_comment = try? container.decode(Int.self, forKey: .reply_to_comment)
     }
     
 }
@@ -884,6 +892,37 @@ class GetWallComentsResponseItemsAttachmentsPhotoSizes: Codable {
 
 class GetWallComentsResponseItemsThread: Codable {
     
+    var count: Int
+    var items: [GetWallComentsResponseItems] = []
+    var can_post: Bool
+    var show_reply_button: Bool
+    var groups_can_post: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case count
+        case items
+        case can_post
+        case show_reply_button
+        case groups_can_post
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(count, forKey: .count)
+        try container.encode(items, forKey: .items)
+        try container.encode(can_post, forKey: .can_post)
+        try container.encode(show_reply_button, forKey: .show_reply_button)
+        try container.encode(groups_can_post, forKey: .groups_can_post)
+    }
+    
+    required init (from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        count = try container.decode(Int.self, forKey: .count)
+        items = try container.decode([GetWallComentsResponseItems].self, forKey: .items)
+        can_post = try container.decode(Bool.self, forKey: .can_post)
+        show_reply_button = try container.decode(Bool.self, forKey: .show_reply_button)
+        groups_can_post = try container.decode(Bool.self, forKey: .groups_can_post)
+    }
 }
 
 class GetWallComentsResponseProfiles: Codable {

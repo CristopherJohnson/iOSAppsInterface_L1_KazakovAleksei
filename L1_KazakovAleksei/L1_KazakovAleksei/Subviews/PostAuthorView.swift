@@ -89,9 +89,11 @@ class PostAuthorView: UIView {
         let labelWidth: CGFloat = self.frame.size.width - labelX
         
         self.authorLabel?.frame = CGRect(x: labelX, y: 0, width: labelWidth, height: (self.frame.size.height / 2))
-//        self.authorLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        self.authorLabel?.textColor = UIColor(red: 0.23, green: 0.36, blue: 0.53, alpha: 1)
+        self.authorLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         self.dateLabel?.frame = CGRect(x: labelX, y: (self.frame.size.height / 2), width: labelWidth, height: (self.frame.size.height / 2))
         self.dateLabel?.font = UIFont.systemFont(ofSize: 15)
+        
         
     }
 }

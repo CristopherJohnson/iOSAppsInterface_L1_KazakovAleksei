@@ -44,7 +44,7 @@ class NewsFeedModel {
     let compactTextlimit: CGFloat = 144
     let showMoreButtonHeigh: CGFloat = 22
     
-    private let photoHeight = (UIScreen.main.bounds.size.width - 12) * 2 / 3
+    private let photoHeight = (UIScreen.main.bounds.size.width - 12)
     private let photosPageControlHeight: CGFloat = 39
     private var totalSpace: CGFloat = 12
     private let spaceBetweenCells: CGFloat = 12

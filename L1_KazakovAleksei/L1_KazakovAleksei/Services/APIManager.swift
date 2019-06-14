@@ -227,9 +227,49 @@ private class URLSessionAPIManager: APIProtocol {
                         for item in items {
                             let comment = CommentsModel()
                             
+                            comment.currentComment.commetnId = item.id
+                            comment.currentComment.authorId = item.from_id
+                            comment.currentComment.postId = item.post_id
+                            comment.currentComment.ownerId = item.post_id
+                            
+                            comment.currentComment.parentsStack = item.parents_stack
+                            comment.currentComment.date = Date(timeIntervalSince1970: item.date)
+                            
+                            
                             if let text = item.text, text.count > 0 {
-                                comment.commentText = text
-                                print(text)
+                                comment.currentComment.commentText = text
+                            }
+                            
+                            comment.currentComment.likesCount = item.likes.count
+                            
+                            if item.likes.can_like == 0 {
+                                comment.currentComment.canLike = false
+                            } else if item.likes.can_like == 1 {
+                                comment.currentComment.canLike = true
+                            }
+                            
+                            if item.likes.can_like == 0 {
+                                comment.currentComment.canLike = false
+                            } else if item.likes.can_like == 1 {
+                                comment.currentComment.canLike = true
+                            }
+                            
+                            if let attachments = item.attachments {
+                                for attachment in attachments {
+                                    guard let commentPhoto = attachment.photo else { continue }
+                                    let photo = PhotoModel()
+                                    photo.albumId = commentPhoto.album_id
+                                    photo.date = Date(timeIntervalSince1970: commentPhoto.date)
+                                    photo.id = commentPhoto.id
+                                    photo.ownerId = commentPhoto.owner_id
+                                    if commentPhoto.text.count > 0 {
+                                        photo.text = commentPhoto.text
+                                    }
+                                    
+                                    photo.cellSizeUrl = commentPhoto.getSize(size: .cellSize)?.url
+                                    photo.detailSizeUrl = commentPhoto.getSize(size: .detailSize)?.url
+                                    comment.currentComment.photos.append(photo)
+                                }
                             }
                             
                             if item.from_id > 0, let profiles = getCommentsResponse?.response.profiles {
@@ -240,7 +280,7 @@ private class URLSessionAPIManager: APIProtocol {
                                         friend.imageURL = profile.photo_100
                                         friend.firstName = profile.first_name
                                         friend.lastName = profile.last_name
-                                        comment.userAuthor = friend
+                                        comment.currentComment.userAuthor = friend
                                     }
                                 }
                             } else if item.from_id < 0, let groups = getCommentsResponse?.response.groups {
@@ -250,10 +290,92 @@ private class URLSessionAPIManager: APIProtocol {
                                         groupModel.id = group.id
                                         groupModel.imageURL = group.photo_100
                                         groupModel.name = group.name
-                                        comment.groupAuthor = groupModel
+                                        comment.currentComment.groupAuthor = groupModel
                                     }
                                 }
                             }
+                            
+                            
+                            comment.threadCount = item.thread?.count
+                            print(comment.threadCount, item.thread?.count)
+                            comment.threadCanPost = item.thread?.can_post
+                            comment.threadShowReplyButton = item.thread?.show_reply_button
+                            comment.threadGroupsCanPost = item.thread?.groups_can_post
+                            
+                            if let threadItems = item.thread?.items, threadItems.count > 0 {
+                                for threadItem in threadItems {
+                                    let commentItemModel = CommentsItemModel()
+                                    commentItemModel.commetnId = threadItem.id
+                                    commentItemModel.authorId = threadItem.from_id
+                                    commentItemModel.postId = threadItem.post_id
+                                    commentItemModel.ownerId = threadItem.post_id
+                                    
+                                    commentItemModel.parentsStack = threadItem.parents_stack
+                                    commentItemModel.date = Date(timeIntervalSince1970: threadItem.date)
+                                    
+                                    
+                                    if let text = threadItem.text, text.count > 0 {
+                                        commentItemModel.commentText = text
+                                    }
+                                    
+                                    commentItemModel.likesCount = threadItem.likes.count
+                                    
+                                    if threadItem.likes.can_like == 0 {
+                                        commentItemModel.canLike = false
+                                    } else if threadItem.likes.can_like == 1 {
+                                        commentItemModel.canLike = true
+                                    }
+                                    
+                                    if threadItem.likes.can_like == 0 {
+                                        commentItemModel.canLike = false
+                                    } else if threadItem.likes.can_like == 1 {
+                                        commentItemModel.canLike = true
+                                    }
+                                    
+                                    if let attachments = threadItem.attachments {
+                                        for attachment in attachments {
+                                            guard let commentPhoto = attachment.photo else { continue }
+                                            let photo = PhotoModel()
+                                            photo.albumId = commentPhoto.album_id
+                                            photo.date = Date(timeIntervalSince1970: commentPhoto.date)
+                                            photo.id = commentPhoto.id
+                                            photo.ownerId = commentPhoto.owner_id
+                                            if commentPhoto.text.count > 0 {
+                                                photo.text = commentPhoto.text
+                                            }
+                                            
+                                            photo.cellSizeUrl = commentPhoto.getSize(size: .cellSize)?.url
+                                            photo.detailSizeUrl = commentPhoto.getSize(size: .detailSize)?.url
+                                            commentItemModel.photos.append(photo)
+                                        }
+                                    }
+                                    
+                                    if threadItem.from_id > 0, let profiles = getCommentsResponse?.response.profiles {
+                                        for profile in profiles {
+                                            if profile.id == threadItem.from_id {
+                                                let friend = Friend()
+                                                friend.id = profile.id
+                                                friend.imageURL = profile.photo_100
+                                                friend.firstName = profile.first_name
+                                                friend.lastName = profile.last_name
+                                                commentItemModel.userAuthor = friend
+                                            }
+                                        }
+                                    } else if threadItem.from_id < 0, let groups = getCommentsResponse?.response.groups {
+                                        for group in groups {
+                                            if abs(threadItem.from_id) == group.id {
+                                                let groupModel = Public()
+                                                groupModel.id = group.id
+                                                groupModel.imageURL = group.photo_100
+                                                groupModel.name = group.name
+                                                commentItemModel.groupAuthor = groupModel
+                                            }
+                                        }
+                                    }
+                                    comment.threadComments.append(commentItemModel)
+                                }
+                            }
+                            
                             comment.calculateSize()
                             commentsArray.append(comment)
                         }
