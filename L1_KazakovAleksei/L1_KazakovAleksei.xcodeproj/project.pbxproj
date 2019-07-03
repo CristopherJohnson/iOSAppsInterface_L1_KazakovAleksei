@@ -16,6 +16,8 @@
 		A328739F222D655200CEB51A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328739E222D655200CEB51A /* Session.swift */; };
 		A32873A2222FED9100CEB51A /* VKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32873A1222FED9100CEB51A /* VKLoginViewController.swift */; };
 		A32873A4223063CD00CEB51A /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32873A3223063CD00CEB51A /* RequestData.swift */; };
+		A32F7D1722C7FD870097273D /* LinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32F7D1622C7FD870097273D /* LinkModel.swift */; };
+		A32F7D1922C803F50097273D /* TapGestureRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32F7D1822C803F50097273D /* TapGestureRecognizerExtension.swift */; };
 		A330872822036CA3006D70C8 /* AllPublicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330872722036CA3006D70C8 /* AllPublicsTableViewController.swift */; };
 		A330872A22036D14006D70C8 /* AllPublicsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330872922036D14006D70C8 /* AllPublicsTableViewCell.swift */; };
 		A330872D22036F15006D70C8 /* PublicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330872C22036F15006D70C8 /* PublicsModel.swift */; };
@@ -106,6 +108,8 @@
 		A328739E222D655200CEB51A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		A32873A1222FED9100CEB51A /* VKLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginViewController.swift; sourceTree = "<group>"; };
 		A32873A3223063CD00CEB51A /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
+		A32F7D1622C7FD870097273D /* LinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkModel.swift; sourceTree = "<group>"; };
+		A32F7D1822C803F50097273D /* TapGestureRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGestureRecognizerExtension.swift; sourceTree = "<group>"; };
 		A330872722036CA3006D70C8 /* AllPublicsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPublicsTableViewController.swift; sourceTree = "<group>"; };
 		A330872922036D14006D70C8 /* AllPublicsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPublicsTableViewCell.swift; sourceTree = "<group>"; };
 		A330872C22036F15006D70C8 /* PublicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicsModel.swift; sourceTree = "<group>"; };
@@ -281,6 +285,7 @@
 			children = (
 				A33BFF53223BEDD3009D0159 /* UIImageViewExtensions.swift */,
 				A3C7F65F22730E710094D69F /* StringExtension.swift */,
+				A32F7D1822C803F50097273D /* TapGestureRecognizerExtension.swift */,
 			);
 			path = Primitives;
 			sourceTree = "<group>";
@@ -435,6 +440,7 @@
 				A3DF49E4226CD61E00F26A87 /* PhotoModel.swift */,
 				A3C4DED622A097D200E0895C /* CommentsModel.swift */,
 				A3D4FE0122A5968D00E03D8F /* CommentsItemModel.swift */,
+				A32F7D1622C7FD870097273D /* LinkModel.swift */,
 			);
 			path = Entityes;
 			sourceTree = "<group>";
@@ -750,6 +756,7 @@
 				A36AB96C22243AB4009F6141 /* CustomPushAnomator.swift in Sources */,
 				A330873222039BDD006D70C8 /* MyPublicsTableViewCell.swift in Sources */,
 				A38D78DC220862F20018B747 /* MyFriendTwoTableViewCell.swift in Sources */,
+				A32F7D1922C803F50097273D /* TapGestureRecognizerExtension.swift in Sources */,
 				A362FB69222ACEC9002A2DD7 /* CloseDetailNewsPhotoAnimationController.swift in Sources */,
 				A3DF49E3226CD1C100F26A87 /* NewsFeedModel.swift in Sources */,
 				A3C4DED722A097D200E0895C /* CommentsModel.swift in Sources */,
@@ -768,6 +775,7 @@
 				A330872A22036D14006D70C8 /* AllPublicsTableViewCell.swift in Sources */,
 				A3C7F66022730E710094D69F /* StringExtension.swift in Sources */,
 				A3DF49E5226CD61E00F26A87 /* PhotoModel.swift in Sources */,
+				A32F7D1722C7FD870097273D /* LinkModel.swift in Sources */,
 				A3D4FE0222A5968D00E03D8F /* CommentsItemModel.swift in Sources */,
 				A36AB9772224849D009F6141 /* PresentationDelegate.swift in Sources */,
 				A350E9AD2281FF5B00D6EFF2 /* ImageService.swift in Sources */,

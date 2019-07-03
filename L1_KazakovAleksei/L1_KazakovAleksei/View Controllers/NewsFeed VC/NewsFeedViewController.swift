@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol OpenLink: class {
+    func openLink (link: String, linkWasTapped: Bool, indexPath: IndexPath)
+    
+}
+
+
 class NewsFeedViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView?
@@ -50,6 +56,7 @@ class NewsFeedViewController: UIViewController {
         let post = postsArray[sender.tag]
         let indexPath = IndexPath(row: sender.tag, section: 0)
         if let cell = tableView?.cellForRow(at: indexPath) as? NewsFeedTableViewCell {
+            print("IndexPath before show full \(tableView?.indexPath(for: cell))")
             tableView?.beginUpdates()
 //            UIView.animate(withDuration: 0.25) {
                 cell.updateContent(post: post)
@@ -92,23 +99,33 @@ class NewsFeedViewController: UIViewController {
         if segue.identifier == "ShowDetailPostFromNewsFeed" {
             let destVC = segue.destination as! DetailPostViewController
             let sourceVC = segue.source as! NewsFeedViewController
-            let indexPath = sourceVC.tableView?.indexPathForSelectedRow
-            let post = sourceVC.postsArray[(indexPath?.row)!]
-            destVC.post = post
+            if let indexPath = sourceVC.tableView?.indexPathForSelectedRow {
+                print("normal")
+                let post = sourceVC.postsArray[indexPath.row]
+                destVC.post = post
+            } else if let cell = sender as? NewsFeedTableViewCell, let indexPath = tableView?.indexPath(for: cell) {
+                print("from link")
+                let post = sourceVC.postsArray[indexPath.row]
+                destVC.post = post
+            }
         }
     }
-    
 }
 
 extension NewsFeedViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-//        return false
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+//    }
+//    
+//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//        tableView.cellForRow(at: indexPath)?.accessoryType = .none
 //    }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("tap at news")
-//        self.navigationController?.pushViewController(DetailPostViewController(), animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("tap at news at indexPath \(indexPath)")
+//        //        self.navigationController?.pushViewController(DetailPostViewController(), animated: true)
+//    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == (postsArray.count - 3) && !isLoadingMore && nextFrom != nil {
@@ -150,12 +167,36 @@ extension NewsFeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! NewsFeedTableViewCell
+        cell.delegate = self
+        cell.indexPath = indexPath
         let post = self.postsArray[indexPath.row]
         cell.addSubviews()
         cell.setup(post: post)
         cell.showFull?.tag = indexPath.row
         cell.showFull?.addTarget(self, action: #selector(showFullButtonAction(sender:)), for: .touchUpInside)
+        print("<<<<<<<<<<<<cell indexPath in start \(cell.indexPath)), real indexPath\(indexPath)>>>>>>>>>>>>")
         return cell
     }
     
+}
+
+extension NewsFeedViewController: OpenLink {
+    
+    func openLink(link: String, linkWasTapped: Bool, indexPath: IndexPath) {
+        if linkWasTapped {
+            let urlString = link.hasPrefix("http") ? link : "http://\(link)"
+            if let url = URL(string: urlString) {
+                print("URL is \(url)")
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+            print("was tapped link: \(link)")
+        } else {
+            print("self.tableView?.indexPathsForSelectedRows \(self.tableView?.indexPathForSelectedRow), indexPath \(indexPath)")
+            if let detailPostVC = storyboard?.instantiateViewController(withIdentifier: "DetailPostViewController") as? DetailPostViewController {
+                detailPostVC.post = self.postsArray[indexPath.row]
+                self.navigationController?.pushViewController(detailPostVC, animated: true)
+            }
+//            self.performSegue(withIdentifier: "ShowDetailPostFromNewsFeed", sender: nil)
+        }
+    }
 }

@@ -13,6 +13,7 @@ class DetailPostCommentTableViewCell: UITableViewCell {
     private weak var containerView: UIView?
     private weak var commentView: CommentView?
     private var replyesComments: [CommentView] = []
+    public weak var delegate: OpenDetailPostLink?
     
     public func addSubviews() {
         if self.containerView == nil {
@@ -40,8 +41,8 @@ class DetailPostCommentTableViewCell: UITableViewCell {
         var positionY: CGFloat = 6
         
         let commentAuthorImageUrl = comment.currentComment.groupAuthor?.imageURL ?? comment.currentComment.userAuthor?.imageURL
-        
-        self.commentView?.setup(imageURL: commentAuthorImageUrl!, authorName: comment.currentComment.getAuthorName(), commentText: comment.currentComment.commentText, textHeight: comment.currentComment.commentTextHeight, isReply: false, date: comment.currentComment.date, likesCount: comment.currentComment.likesCount ?? 0)
+        self.commentView?.cell = self
+        self.commentView?.setup(imageURL: commentAuthorImageUrl!, authorName: comment.currentComment.getAuthorName(), commentText: comment.currentComment.commentText, textHeight: comment.currentComment.commentTextHeight, isReply: false, date: comment.currentComment.date, likesCount: comment.currentComment.likesCount ?? 0, linksArray: comment.currentComment.linksArray)
         self.commentView?.frame = CGRect(x: 6, y: positionY, width: (self.containerView?.bounds.size.width)! - 12, height: (comment.currentComment.commentViewHeihgt))
         positionY += comment.currentComment.commentViewHeihgt
         positionY += 6
@@ -50,9 +51,10 @@ class DetailPostCommentTableViewCell: UITableViewCell {
             
             for threadComment in comment.threadComments {
                 let replyComment = CommentView()
+                replyComment.cell = self
                 positionY += 6
                 let commentAuthorImageUrl = threadComment.groupAuthor?.imageURL ?? threadComment.userAuthor?.imageURL
-                replyComment.setup(imageURL: commentAuthorImageUrl!, authorName: threadComment.getAuthorName(), commentText: threadComment.commentText, textHeight: threadComment.commentTextHeight, isReply: true, date: threadComment.date, likesCount: threadComment.likesCount ?? 0)
+                replyComment.setup(imageURL: commentAuthorImageUrl!, authorName: threadComment.getAuthorName(), commentText: threadComment.commentText, textHeight: threadComment.commentTextHeight, isReply: true, date: threadComment.date, likesCount: threadComment.likesCount ?? 0, linksArray: threadComment.linksArray)
                 replyComment.frame = CGRect(x: 42, y: positionY, width: (self.containerView?.bounds.size.width)! - 48, height: (threadComment.commentViewHeihgt))
                 positionY += threadComment.commentViewHeihgt
                 positionY += 6
@@ -64,10 +66,15 @@ class DetailPostCommentTableViewCell: UITableViewCell {
        
     }
     
+    public func linkWasTapped (link: String) {
+        self.delegate?.openLink(link: link)
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         self.containerView?.frame = CGRect.zero
         self.commentView?.reuse()
+        self.delegate = nil
         
         self.containerView = nil
         self.commentView = nil

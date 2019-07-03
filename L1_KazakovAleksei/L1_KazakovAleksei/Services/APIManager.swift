@@ -297,7 +297,7 @@ private class URLSessionAPIManager: APIProtocol {
                             
                             
                             comment.threadCount = item.thread?.count
-                            print(comment.threadCount, item.thread?.count)
+//                            print(comment.threadCount, item.thread?.count)
                             comment.threadCanPost = item.thread?.can_post
                             comment.threadShowReplyButton = item.thread?.show_reply_button
                             comment.threadGroupsCanPost = item.thread?.groups_can_post
@@ -372,10 +372,11 @@ private class URLSessionAPIManager: APIProtocol {
                                             }
                                         }
                                     }
+                                    commentItemModel.searchForLinks()
                                     comment.threadComments.append(commentItemModel)
                                 }
                             }
-                            
+                            comment.currentComment.searchForLinks()
                             comment.calculateSize()
                             commentsArray.append(comment)
                         }

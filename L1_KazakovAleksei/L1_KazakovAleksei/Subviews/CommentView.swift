@@ -18,6 +18,9 @@ class CommentView: UIView {
     private var isReply: Bool = false
     private weak var bottomView: CommentBottomView?
     
+    weak var cell: DetailPostCommentTableViewCell?
+    private var linksArray: [LinkModel] = []
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubviews()
@@ -57,13 +60,15 @@ class CommentView: UIView {
     public func reuse () {
         self.authorImageView?.image = nil
         self.authorNameLabel?.text = nil
-        self.commentTextLabel?.text = nil
+        self.commentTextLabel?.attributedText = nil
         self.commentTextLabel?.frame = CGRect.zero
+        self.cell = nil
+        self.linksArray.removeAll()
         self.textHeight = 0
         self.bottomView?.reuse()
     }
     
-    public func setup (imageURL: String, authorName: String, commentText: String?, textHeight: CGFloat?, isReply: Bool, date: Date?, likesCount: Int) {
+    public func setup (imageURL: String, authorName: String, commentText: String?, textHeight: CGFloat?, isReply: Bool, date: Date?, likesCount: Int, linksArray: [LinkModel]) {
         ImageService.shared.get(urlString: imageURL) { (image: UIImage?) in
             if let loadedImage = image {
                 self.authorImageView?.image = loadedImage
@@ -75,8 +80,21 @@ class CommentView: UIView {
         self.authorNameLabel?.text = authorName
         
         if let text = commentText {
-            self.commentTextLabel?.text = text
+            self.commentTextLabel?.attributedText = NSMutableAttributedString(string: text)
             self.commentTextLabel?.isHidden = false
+            if linksArray.count > 0 {
+                let attributedString = NSMutableAttributedString(string: text)
+                for link in linksArray {
+                    attributedString.addAttribute(.foregroundColor, value: UIColor(red: 85/255, green: 140/255, blue: 202/255, alpha: 1), range: link.range)
+                }
+                self.commentTextLabel?.attributedText = attributedString
+                self.linksArray = linksArray
+                let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.openLabelLink(_:)))
+                self.commentTextLabel?.addGestureRecognizer(gestureRecognizer)
+                commentTextLabel?.isUserInteractionEnabled = true
+            } else {
+                commentTextLabel?.isUserInteractionEnabled = true
+            }
         } else {
             self.commentTextLabel?.isHidden = true
         }
@@ -85,6 +103,19 @@ class CommentView: UIView {
         }
         self.isReply = isReply
         self.bottomView?.setup(date: date, likesCount: likesCount)
+        
+    }
+    
+    @objc func openLabelLink (_ recognizer: UITapGestureRecognizer) {
+        if let label = self.commentTextLabel {
+            for link in self.linksArray {
+                if recognizer.didTapAttributedTextInLabel(label: label, inRange: link.range) {
+                    cell?.linkWasTapped(link: link.link)
+                    return
+                }
+            }
+        }
+        
     }
     
     override func layoutSubviews() {
@@ -115,6 +146,7 @@ class CommentView: UIView {
         positionY += 6
         
         self.bottomView?.frame = CGRect(x: labelX, y: positionY, width: labelWidth, height: 20)
+
     }
     
 }

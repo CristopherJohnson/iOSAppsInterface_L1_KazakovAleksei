@@ -40,6 +40,11 @@ class MyPublicsTableViewCell: UITableViewCell {
         
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.publicImageView?.image = nil
+        self.publicNameLable?.text = nil
+    }
 }
 
 

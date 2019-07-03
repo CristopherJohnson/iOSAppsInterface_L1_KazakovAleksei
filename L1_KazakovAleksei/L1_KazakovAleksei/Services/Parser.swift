@@ -896,7 +896,7 @@ class GetWallComentsResponseItemsThread: Codable {
     var items: [GetWallComentsResponseItems] = []
     var can_post: Bool
     var show_reply_button: Bool
-    var groups_can_post: Bool
+    var groups_can_post: Bool?
     
     enum CodingKeys: String, CodingKey {
         case count
@@ -912,7 +912,7 @@ class GetWallComentsResponseItemsThread: Codable {
         try container.encode(items, forKey: .items)
         try container.encode(can_post, forKey: .can_post)
         try container.encode(show_reply_button, forKey: .show_reply_button)
-        try container.encode(groups_can_post, forKey: .groups_can_post)
+        try? container.encode(groups_can_post, forKey: .groups_can_post)
     }
     
     required init (from decoder: Decoder) throws {
@@ -921,7 +921,7 @@ class GetWallComentsResponseItemsThread: Codable {
         items = try container.decode([GetWallComentsResponseItems].self, forKey: .items)
         can_post = try container.decode(Bool.self, forKey: .can_post)
         show_reply_button = try container.decode(Bool.self, forKey: .show_reply_button)
-        groups_can_post = try container.decode(Bool.self, forKey: .groups_can_post)
+        groups_can_post = try? container.decode(Bool.self, forKey: .groups_can_post)
     }
 }
 

@@ -12,7 +12,7 @@ import UIKit
 class CommentsModel {
     
 
-    var currentComment = CommentsItemModel ()
+    var currentComment = CommentsItemModel()
     var threadCount: Int?
     var threadComments: [CommentsItemModel] = []
     var threadCanPost: Bool?

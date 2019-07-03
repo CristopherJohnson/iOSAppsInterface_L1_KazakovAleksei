@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol OpenDetailPostLink: class {
+    func openLink (link: String)
+//    func reloadCell(atIndexPath: IndexPath)
+}
+
 class DetailPostViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView?
@@ -71,11 +76,19 @@ extension DetailPostViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailPostTableViewCell", for: indexPath) as! DetailPostTableViewCell
+            cell.textLabel?.numberOfLines = 0
+            cell.indexPath = indexPath
+            print("Real Cell Row")
+            cell.delegate = self
             cell.addSubviews()
-            cell.setup(post: post!)
+            cell.setup(post: self.post!) {
+                print("started reload of cell at row \(indexPath.row)")
+                self.tableView?.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailPostCommentTableViewCell", for: indexPath) as! DetailPostCommentTableViewCell
+            cell.delegate = self
             let comment = commentsArray[(commentsArray.count - indexPath.row)]
             cell.addSubviews()
             cell.setup(comment: comment)
@@ -86,3 +99,21 @@ extension DetailPostViewController: UITableViewDataSource {
     
     
 }
+
+extension DetailPostViewController: OpenDetailPostLink {
+//    func reloadCell(atIndexPath: IndexPath) {
+//        self.tableView?.reloadRows(at: [atIndexPath], with: UITableView.RowAnimation.none)
+//        self.tableView?.rowhe
+////        self.tableView.relo
+//    }
+    
+    func openLink(link: String) {
+        let urlString = link.hasPrefix("http") ? link : "http://\(link)"
+        if let url = URL(string: urlString) {
+            print("URL is \(url)")
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+        print("was tapped link: \(link)")
+    }
+}
+

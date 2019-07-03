@@ -13,13 +13,18 @@ class NewsFeedTableViewCell: UITableViewCell {
     private weak var postAuthorView: PostAuthorView?
     private weak var postBottomView: PostBottomView?
     private weak var containerView: UIView?
-    private weak var newsTextLabel: UILabel?
-    private weak var limitView: UIView?
+    weak var newsTextLabel: UILabel?
+//    private weak var limitView: UIView?
     weak var showFull: UIButton?
     private weak var photoView: PhotoView?
     
+    public var indexPath: IndexPath?
+    
     let compactTextHeight: CGFloat = 144
+    private var linksArray: [LinkModel] = []
 //    let limitHeight: CGFloat = 28
+    
+    public weak var delegate: OpenLink?
     
     public func addSubviews () {
         if self.containerView == nil {
@@ -81,15 +86,15 @@ class NewsFeedTableViewCell: UITableViewCell {
         
         
         if let text = post.postText {
-//            let postPositionY = (self.postAuthorView?.frame.size.height)! + 12
             if text.count > 0 && post.compactHeight == nil  {
-                self.newsTextLabel?.text = text
+                self.newsTextLabel?.attributedText = NSMutableAttributedString(string: text)
+
                 self.newsTextLabel?.numberOfLines = 0
                 self.newsTextLabel?.frame = CGRect(x: 6, y: totalSpace + viewsHeight, width: (self.containerView?.bounds.size.width)! - 12, height: post.textHeigh!)
                 totalSpace += 6
                 viewsHeight += (newsTextLabel?.frame.size.height)!
             } else if text.count > 0 && post.compactHeight != nil {
-                self.newsTextLabel?.text = text
+                self.newsTextLabel?.attributedText = NSMutableAttributedString(string: text)
                 self.newsTextLabel?.numberOfLines = 0
                 self.newsTextLabel?.frame = CGRect(x: 6, y: totalSpace + viewsHeight, width: (self.containerView?.bounds.size.width)! - 12, height: (post.isCompact ? post.compactTextlimit : post.textHeigh)!)
                 viewsHeight += (newsTextLabel?.frame.size.height)!
@@ -104,6 +109,24 @@ class NewsFeedTableViewCell: UITableViewCell {
                 self.showFull?.sizeToFit()
                 totalSpace += 6
             }
+            
+            if post.linksArray.count > 0 {
+                let attributedString = NSMutableAttributedString(string: text)
+                for link in post.linksArray {
+                    attributedString.addAttribute(.foregroundColor, value: UIColor(red: 85/255, green: 140/255, blue: 202/255, alpha: 1), range: link.range)
+                }
+                self.newsTextLabel?.attributedText = attributedString
+                self.linksArray = post.linksArray
+                
+                let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.openLabelLink(_:)))
+                self.newsTextLabel?.addGestureRecognizer(gestureRecognizer)
+                newsTextLabel?.isUserInteractionEnabled = true
+                
+            } else {
+                newsTextLabel?.isUserInteractionEnabled = false
+            }
+            
+            
         }
         
         if post.photos.count > 0 {
@@ -135,7 +158,9 @@ class NewsFeedTableViewCell: UITableViewCell {
         if var frame = newsTextLabel?.frame {
             frame.size.height = realTextHieght!
             newsTextLabel?.frame = frame
-            newsTextLabel?.text = post.postText
+//            if let text = post.postText, text.count > 0 {
+//                 newsTextLabel?.attributedText = NSMutableAttributedString(string: text)
+//            }
             viewsHeight += (newsTextLabel?.frame.size.height)!
         }
         
@@ -168,23 +193,51 @@ class NewsFeedTableViewCell: UITableViewCell {
         
     }
     
+    @objc func openLabelLink (_ recognizer: UITapGestureRecognizer) {
+        if let label = self.newsTextLabel {
+            var linkWasTapped: Bool = false
+            for link in self.linksArray {
+                if recognizer.didTapAttributedTextInLabel(label: label, inRange: link.range) {
+                    linkWasTapped = true
+                    self.delegate?.openLink(link: link.link, linkWasTapped: true, indexPath: self.indexPath!)
+                    break
+                }
+            }
+            if !linkWasTapped {
+                self.delegate?.openLink(link: "", linkWasTapped: false, indexPath: self.indexPath!)
+            }
+            print(self.newsTextLabel.debugDescription)
+        }
+        
+    }
+    
     
     override func prepareForReuse() {
         super.prepareForReuse()
         self.newsTextLabel?.text = nil
+        self.newsTextLabel?.gestureRecognizers?.removeAll()
+        self.newsTextLabel?.attributedText = nil
+        self.newsTextLabel = nil
+        self.indexPath = nil
         self.postAuthorView?.reuse()
         self.postBottomView?.reuse()
         self.showFull?.titleLabel?.text = nil
         self.containerView?.frame = CGRect.zero
         self.photoView?.reuse()
+        self.linksArray.removeAll()
+        self.delegate = nil
         self.photoView = nil
-//        self.containerView?.frame = CGRect.zero
         self.postAuthorView = nil
 
         self.containerView = nil
-        self.newsTextLabel = nil
+        
         self.postBottomView = nil
         self.showFull = nil
     }
+    
+//    deinit {
+//        self.newsTextLabel?.gestureRecognizers?.removeAll()
+//        self.indexPath = nil
+//    }
 
 }

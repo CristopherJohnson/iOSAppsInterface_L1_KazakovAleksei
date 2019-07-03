@@ -66,15 +66,22 @@ class CommentBottomView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.dateLabel?.frame = CGRect(x: 0, y: 0, width: 100, height: self.frame.size.height)
         self.dateLabel?.font = UIFont.systemFont(ofSize: 15)
-        self.replyButton?.frame = CGRect(x: 106, y: 0, width: 80, height: self.frame.size.height)
-        self.replyButton?.setTitle("Ответить", for: .normal)
-        self.replyButton?.setTitleColor(UIColor(red: 0.23, green: 0.36, blue: 0.53, alpha: 1), for: .normal)
+        let dateLabelWidth = dateLabel?.text?.widthOfString(withConstrainedHeight: self.frame.size.height, font: UIFont.systemFont(ofSize: 15)) ?? 100
+        var posX: CGFloat = dateLabelWidth
+        self.dateLabel?.frame = CGRect(x: 0, y: 0, width: dateLabelWidth, height: self.frame.size.height)
+        posX += 5
         self.replyButton?.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         self.replyButton?.titleLabel?.textColor = UIColor(red: 0.23, green: 0.36, blue: 0.53, alpha: 1)
+        self.replyButton?.setTitle("Ответить", for: .normal)
+        let repluButtonWidth = self.replyButton?.titleLabel?.text?.widthOfString(withConstrainedHeight: self.frame.size.height, font: UIFont.systemFont(ofSize: 15, weight: .medium)) ?? 80
+        self.replyButton?.frame = CGRect(x: posX, y: 0, width: repluButtonWidth, height: self.frame.size.height)
+        posX += repluButtonWidth + 5
+        self.replyButton?.setTitleColor(UIColor(red: 0.23, green: 0.36, blue: 0.53, alpha: 1), for: .normal)
 //        self.replyButton?.sizeToFit()
         self.replyButton?.titleLabel?.textAlignment = .left
-        self.likeView?.frame = CGRect(x: 206, y: 0, width: self.frame.size.width - 206, height: self.frame.size.height)
+        
+        self.likeView?.frame = CGRect(x: posX, y: 0, width: self.frame.size.width - posX, height: self.frame.size.height)
+        
     }
 }

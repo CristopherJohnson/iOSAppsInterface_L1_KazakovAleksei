@@ -13,7 +13,7 @@ class MyFriendTwoTableViewCell: UITableViewCell {
     @IBOutlet weak var friendNameLable: UILabel?
     var friendFakeId: String?
     var friendsId: Int?
-    @IBOutlet weak var myFriendImageView: FriendPhoto?
+    @IBOutlet weak var myFriendImageView: UIImageView?
     
     func setFriend(settingFriend: Friend) {
 //        let name = settingFriend.fakeName ?? "NoName"
@@ -26,7 +26,7 @@ class MyFriendTwoTableViewCell: UITableViewCell {
 //        self.myFriendImageView?.imageView?.image = UIImage(named: settingFriend.imageName ?? "No_Image")
         ImageService.shared.get(urlString: settingFriend.imageURL!) { (image: UIImage?) in
             if let loadedImage = image {
-                self.myFriendImageView?.imageView?.image = loadedImage
+                self.myFriendImageView?.image = loadedImage
             } else {
                 print("friend photo load error")
             }
@@ -34,15 +34,23 @@ class MyFriendTwoTableViewCell: UITableViewCell {
 //        self.myFriendImageView?.imageView?.load(url: URL(string: settingFriend.imageURL!)!)
     }
     
+    
+    
 
     
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        if let image = friendImageView {
-//            image.layer.cornerRadius = image.frame.size.width / 2
-//            image.clipsToBounds = true
-//        }
-//        
-//    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if let image = myFriendImageView {
+            image.layer.cornerRadius = image.frame.size.width / 2
+            image.clipsToBounds = true
+        }
+        
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.friendNameLable?.text = nil
+        self.myFriendImageView?.image = nil
+    }
 
 }
